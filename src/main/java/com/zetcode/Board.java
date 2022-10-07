@@ -28,12 +28,12 @@ public class Board extends JPanel {
     private Shape curPiece;
     private Tetrominoe[] board;
 
-    public Board(Tetris parent) {
+    public Board(Jugar jugar) {
 
-        initBoard(parent);
+        initBoard(jugar);
     }
 
-    private void initBoard(Tetris parent) {
+    private void initBoard(Jugar parent) {
 
         setFocusable(true);
         statusbar = parent.getStatusBar();
