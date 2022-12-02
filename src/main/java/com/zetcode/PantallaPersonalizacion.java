@@ -15,11 +15,12 @@ import javax.swing.border.EmptyBorder;
 public class PantallaPersonalizacion extends JFrame {
 	
 	private JPanel contentPane;
+	private JPanel panelBotones;
 	private JButton botonColor;
 	private JButton botonLadrillos;
 	private JButton botonSonidos;
 	private JButton botonVolver;
-	private JLabel lblVacio;
+	private JButton botonDificultad;
 
     public PantallaPersonalizacion() {
 
@@ -34,21 +35,32 @@ public class PantallaPersonalizacion extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(2, 3, 0, 0));
-		contentPane.add(getBotonColor());
-		contentPane.add(getbotonLadrillos());
-		contentPane.add(getbotonSonidos());
-		contentPane.add(getlblVacio());
+		contentPane.setLayout(new GridLayout(2, 1, 0, 0));
+		contentPane.add(getPanelBotones());
 		contentPane.add(getBotonVolver());
     	
     }
 
+    private JPanel getPanelBotones() {
+		if (panelBotones == null) {
+			panelBotones = new JPanel();
+			panelBotones.setLayout(new GridLayout(2, 2, 0, 0));
+			panelBotones.add(getBotonColor());
+			panelBotones.add(getBotonLadrillos());
+			panelBotones.add(getBotonSonidos());
+			panelBotones.add(getBotonDificultad());
+		}
+		return panelBotones;
+	}
+    
     private JButton getBotonColor() {
 		if (botonColor == null) {
 			botonColor = new JButton(" Personalizar color de fondo");
 			botonColor.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Jugar frameTab = new Jugar();
+					Window ventana = FocusManager.getCurrentManager().getActiveWindow();
+					ventana.dispose();
+					PantallaColorDeFondo frameTab = new PantallaColorDeFondo();
 					frameTab.setVisible(true);
 				}
 			});
@@ -56,12 +68,14 @@ public class PantallaPersonalizacion extends JFrame {
 		return botonColor;
 	}
     
-    private JButton getbotonLadrillos() {
+    private JButton getBotonLadrillos() {
 		if (botonLadrillos == null) {
 			botonLadrillos = new JButton("Personalizar ladrillos");
 			botonLadrillos.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					PantallaPerfil frameTab = new PantallaPerfil();
+					Window ventana = FocusManager.getCurrentManager().getActiveWindow();
+					ventana.dispose();
+					PantallaColorLadrillos frameTab = new PantallaColorLadrillos();
 					frameTab.setVisible(true);
 				}
 			});
@@ -69,12 +83,14 @@ public class PantallaPersonalizacion extends JFrame {
 		return botonLadrillos;
 	}
     
-    private JButton getbotonSonidos() {
+    private JButton getBotonSonidos() {
 		if (botonSonidos == null) {
 			botonSonidos = new JButton("Personalizar sonidos");
 			botonSonidos.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					PantallaPerfil frameTab = new PantallaPerfil();
+					Window ventana = FocusManager.getCurrentManager().getActiveWindow();
+					ventana.dispose();
+					PantallaSonidos frameTab = new PantallaSonidos();
 					frameTab.setVisible(true);
 				}
 			});
@@ -82,11 +98,11 @@ public class PantallaPersonalizacion extends JFrame {
 		return botonSonidos;
 	}
     
-    private JLabel getlblVacio() {
-    	if (lblVacio == null) {
-			lblVacio = new JLabel();
+    private JButton getBotonDificultad() {
+    	if (botonDificultad == null) {
+			botonDificultad = new JButton("Dificultad");
     	}
-    	return lblVacio;
+    	return botonDificultad;
 	}
     
     private JButton getBotonVolver() {
