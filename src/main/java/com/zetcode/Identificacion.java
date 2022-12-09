@@ -1,5 +1,6 @@
 package com.zetcode;
 
+
 public class Identificacion
 {
     private static Identificacion miId;

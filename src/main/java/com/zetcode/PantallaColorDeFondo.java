@@ -12,12 +12,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.Color;
 
 public class PantallaColorDeFondo extends JFrame {
 	
 	private JPanel contentPane;
 	private JPanel panelColores;
+	private JPanel panelVolverDefault;
 	private JLabel label;
 	private JButton botonRojo;
 	private JButton botonVerde;
@@ -28,7 +30,8 @@ public class PantallaColorDeFondo extends JFrame {
 	private JButton botonNaranja;
 	private JButton botonGrisClaro;
 	private JButton botonCyan;
-	private JButton botonVolver; 
+	private JButton botonVolver;
+	private JButton botonColoresDefault;
 
     public PantallaColorDeFondo() {
 
@@ -46,7 +49,7 @@ public class PantallaColorDeFondo extends JFrame {
 		contentPane.setLayout(new GridLayout(3, 1, 0, 0));
 		contentPane.add(getLabel());
 		contentPane.add(getPanelColores());
-		contentPane.add(getBotonVolver());
+		contentPane.add(getPanelVolverDefault());
     	
     }
 	private JLabel getLabel() {
@@ -80,7 +83,7 @@ public class PantallaColorDeFondo extends JFrame {
 			botonRojo.setBackground(Color.RED);
 			botonRojo.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					
+					Board.getBoard().cambiarColorFondo(Color.RED);
 				}
 			});
 		}
@@ -93,7 +96,7 @@ public class PantallaColorDeFondo extends JFrame {
 			botonVerde.setBackground(Color.GREEN);
 			botonVerde.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					
+					Board.getBoard().cambiarColorFondo(Color.GREEN);
 				}
 			});
 		}
@@ -106,7 +109,7 @@ public class PantallaColorDeFondo extends JFrame {
 			botonAmarillo.setBackground(Color.YELLOW);
 			botonAmarillo.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					
+					Board.getBoard().cambiarColorFondo(Color.YELLOW);
 				}
 			});
 		}
@@ -119,7 +122,7 @@ public class PantallaColorDeFondo extends JFrame {
 			botonAzul.setBackground(Color.BLUE);
 			botonAzul.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					
+					Board.getBoard().cambiarColorFondo(Color.BLUE);
 				}
 			});
 		}
@@ -132,7 +135,7 @@ public class PantallaColorDeFondo extends JFrame {
 			botonRosa.setBackground(Color.PINK);
 			botonRosa.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					
+					Board.getBoard().cambiarColorFondo(Color.PINK);
 				}
 			});
 		}
@@ -145,7 +148,7 @@ public class PantallaColorDeFondo extends JFrame {
 			botonBlanco.setBackground(Color.WHITE);
 			botonBlanco.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					
+					Board.getBoard().cambiarColorFondo(Color.WHITE);
 				}
 			});
 		}
@@ -158,7 +161,7 @@ public class PantallaColorDeFondo extends JFrame {
 			botonNaranja.setBackground(Color.ORANGE);
 			botonNaranja.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					
+					Board.getBoard().cambiarColorFondo(Color.ORANGE);
 				}
 			});
 		}
@@ -171,7 +174,7 @@ public class PantallaColorDeFondo extends JFrame {
 			botonGrisClaro.setBackground(Color.LIGHT_GRAY);
 			botonGrisClaro.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					
+					Board.getBoard().cambiarColorFondo(Color.LIGHT_GRAY);
 				}
 			});
 		}
@@ -184,13 +187,22 @@ public class PantallaColorDeFondo extends JFrame {
 			botonCyan.setBackground(Color.CYAN);
 			botonCyan.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					
+					Board.getBoard().cambiarColorFondo(Color.CYAN);
 				}
 			});
 		}
 		return botonCyan;
 	}
     
+    private JPanel getPanelVolverDefault() {
+		if (panelVolverDefault == null) {
+			panelVolverDefault = new JPanel();
+			panelVolverDefault.setLayout(new GridLayout(1, 2, 0, 0));
+			panelVolverDefault.add(getBotonVolver());
+			panelVolverDefault.add(getBotonColoresDefault());
+		}
+		return panelVolverDefault;
+	}
     private JButton getBotonVolver() {
 		if (botonVolver == null) {
 			botonVolver = new JButton("Volver");
@@ -204,5 +216,16 @@ public class PantallaColorDeFondo extends JFrame {
 			});
 		}
 		return botonVolver;
+	}
+    private JButton getBotonColoresDefault() {
+		if (botonColoresDefault == null) {
+			botonColoresDefault = new JButton("Color default");
+			botonColoresDefault.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					Board.getBoard().ponerColorDeFondoDefault();
+				}
+			});
+		}
+		return botonColoresDefault;
 	}
 }

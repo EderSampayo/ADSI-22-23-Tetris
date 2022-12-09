@@ -1,10 +1,11 @@
 package com.zetcode;
 
-import com.zetcode.Shape.Tetrominoe;
-
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+
+import com.zetcode.Shape.Tetrominoe;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -14,6 +15,7 @@ import java.awt.event.KeyEvent;
 
 public class Board extends JPanel {
 
+	private static Board miBoard;
     private final int BOARD_WIDTH = 10;
     private final int BOARD_HEIGHT = 22;
     private final int PERIOD_INTERVAL = 300;
@@ -27,16 +29,34 @@ public class Board extends JPanel {
     private JLabel statusbar;
     private Shape curPiece;
     private Tetrominoe[] board;
+    private Color colorFondo;
+    private Color ladrillo1;
+    private Color ladrillo2;
+    private Color ladrillo3;
+    private Color ladrillo4;
+    private Color ladrillo5;
+    private Color ladrillo6;
+    private Color ladrillo7;
+    private int sonido;
+    
 
-    public Board(Jugar jugar) {
-
-        initBoard(jugar);
+    public Board() {
+    	
     }
 
-    private void initBoard(Jugar parent) {
+    public static Board getBoard() {
+		if (Board.miBoard == null) {
+			Board.miBoard = new Board();
+			
+		}
+		return Board.miBoard;
+	}
+    
+    public void initBoard(Jugar jugar) {
 
         setFocusable(true);
-        statusbar = parent.getStatusBar();
+        statusbar = jugar.getStatusBar();
+        this.setBackground(colorFondo);
         addKeyListener(new TAdapter());
     }
 
@@ -55,7 +75,7 @@ public class Board extends JPanel {
         return board[(y * BOARD_WIDTH) + x];
     }
 
-    void start() {
+    public void start() {
 
         curPiece = new Shape();
         board = new Tetrominoe[BOARD_WIDTH * BOARD_HEIGHT];
@@ -256,10 +276,10 @@ public class Board extends JPanel {
 
     private void drawSquare(Graphics g, int x, int y, Tetrominoe shape) {
 
-        Color colors[] = {new Color(0, 0, 0), new Color(204, 102, 102),
-                new Color(102, 204, 102), new Color(102, 102, 204),
-                new Color(204, 204, 102), new Color(204, 102, 204),
-                new Color(102, 204, 204), new Color(218, 170, 0)
+        Color colors[] = {new Color(0, 0, 0), ladrillo1,
+        		ladrillo2, ladrillo3,
+        		ladrillo4, ladrillo5,
+        		ladrillo6, ladrillo7
         };
 
         var color = colors[shape.ordinal()];
@@ -276,6 +296,56 @@ public class Board extends JPanel {
                 x + squareWidth() - 1, y + squareHeight() - 1);
         g.drawLine(x + squareWidth() - 1, y + squareHeight() - 1,
                 x + squareWidth() - 1, y + 1);
+    }
+    
+    public void cambiarColorFondo(Color color) {
+    	colorFondo = color;
+    }
+    
+    public void cambiarColorLadrillo(Color color,int num) {
+    	if(num == 1) {
+    		ladrillo1 = color;
+    	}
+    	else if(num == 2) {
+    		ladrillo2 = color;
+    	}
+    	else if(num == 3) {
+    		ladrillo3 = color;
+    	}
+    	else if(num == 4) {
+    		ladrillo4 = color;
+    	}
+    	else if(num == 5) {
+    		ladrillo5 = color;
+    	}
+    	else if(num == 6) {
+    		ladrillo6 = color;
+    	}
+    	else if(num == 7) {
+    		ladrillo7 = color;
+    	}
+    }
+    
+    public void ponerColorDeFondoDefault() {
+    	
+    	colorFondo = null;
+    	
+    }
+    
+    public void ponerColoresDefault() {
+    	
+    	ladrillo1 = new Color(204, 102, 204);
+    	ladrillo2 = new Color(102, 102, 204);
+    	ladrillo3 = new Color(102, 204, 204);
+    	ladrillo4 = new Color(218, 170, 0);
+    	ladrillo5 = new Color(204, 204, 102);
+    	ladrillo6 = new Color(204, 102, 102);
+    	ladrillo7 = new Color(102, 204, 102);
+    	
+    }
+    
+    public void cambiarSonido(int num) {
+    	
     }
 
     private class GameCycle implements ActionListener {

@@ -21,13 +21,14 @@ public class PantallaColorLadrillos extends JFrame {
 	private JPanel contentPane;
 	private JPanel panelColores;
 	private JPanel panelLadrillos;
+	private JPanel panelVolverDefault;
 	private JLabel label;
 	private ButtonGroup g;
 	private JRadioButton botonCuadrado;
 	private JRadioButton botonRecto;
 	private JRadioButton botonL;
 	private JRadioButton botonLInversa;
-	private JRadioButton botonTpequena;
+	private JRadioButton botonTPequena;
 	private JRadioButton botonZ;
 	private JRadioButton botonZInversa;
 	private JButton botonRojo;
@@ -40,6 +41,7 @@ public class PantallaColorLadrillos extends JFrame {
 	private JButton botonGrisClaro;
 	private JButton botonCyan;
 	private JButton botonVolver;
+	private JButton botonColoresDefault;
 
     public PantallaColorLadrillos() {
 
@@ -57,13 +59,13 @@ public class PantallaColorLadrillos extends JFrame {
 		contentPane.setLayout(new GridLayout(3, 1, 0, 0));
 		contentPane.add(getPanelLadrillos());
 		contentPane.add(getPanelColores());
-		contentPane.add(getBotonVolver());
+		contentPane.add(getPanelVolverDefault());
 		g = getButtonGroup();
 		g.add(botonCuadrado);
 		g.add(botonRecto);
 		g.add(botonL);
 		g.add(botonLInversa);
-		g.add(botonTpequena);
+		g.add(botonTPequena);
 		g.add(botonZ);
 		g.add(botonZInversa);
     	
@@ -128,11 +130,11 @@ public class PantallaColorLadrillos extends JFrame {
 		return botonLInversa;
 	}
 	private JRadioButton getBotonTPequena() {
-		if (botonTpequena == null) {
-			botonTpequena = new JRadioButton("T pequeña");
-			botonTpequena.setHorizontalAlignment(SwingConstants.CENTER);
+		if (botonTPequena == null) {
+			botonTPequena = new JRadioButton("T pequeña");
+			botonTPequena.setHorizontalAlignment(SwingConstants.CENTER);
 		}
-		return botonTpequena;
+		return botonTPequena;
 	}
 	private JRadioButton getBotonZ() {
 		if (botonZ == null) {
@@ -171,6 +173,27 @@ public class PantallaColorLadrillos extends JFrame {
 			botonRojo.setBackground(Color.RED);
 			botonRojo.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					if(botonCuadrado.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.RED,1);
+					}
+					else if(botonRecto.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.RED,2);
+					}
+					else if(botonL.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.RED,3);
+					}
+					else if(botonLInversa.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.RED,4);
+					}
+					else if(botonTPequena.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.RED,5);
+					}
+					else if(botonZ.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.RED,6);
+					}
+					else if(botonZInversa.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.RED,7);
+					}
 					
 				}
 			});
@@ -184,6 +207,27 @@ public class PantallaColorLadrillos extends JFrame {
 			botonVerde.setBackground(Color.GREEN);
 			botonVerde.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					if(botonCuadrado.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.GREEN,1);
+					}
+					else if(botonRecto.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.GREEN,2);
+					}
+					else if(botonL.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.GREEN,3);
+					}
+					else if(botonLInversa.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.GREEN,4);
+					}
+					else if(botonTPequena.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.GREEN,5);
+					}
+					else if(botonZ.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.GREEN,6);
+					}
+					else if(botonZInversa.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.GREEN,7);
+					}
 					
 				}
 			});
@@ -197,7 +241,27 @@ public class PantallaColorLadrillos extends JFrame {
 			botonAmarillo.setBackground(Color.YELLOW);
 			botonAmarillo.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					
+					if(botonCuadrado.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.YELLOW,1);
+					}
+					else if(botonRecto.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.YELLOW,2);
+					}
+					else if(botonL.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.YELLOW,3);
+					}
+					else if(botonLInversa.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.YELLOW,4);
+					}
+					else if(botonTPequena.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.YELLOW,5);
+					}
+					else if(botonZ.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.YELLOW,6);
+					}
+					else if(botonZInversa.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.YELLOW,7);
+					}
 				}
 			});
 		}
@@ -210,7 +274,27 @@ public class PantallaColorLadrillos extends JFrame {
 			botonAzul.setBackground(Color.BLUE);
 			botonAzul.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					
+					if(botonCuadrado.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.BLUE,1);
+					}
+					else if(botonRecto.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.BLUE,2);
+					}
+					else if(botonL.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.BLUE,3);
+					}
+					else if(botonLInversa.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.BLUE,4);
+					}
+					else if(botonTPequena.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.BLUE,5);
+					}
+					else if(botonZ.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.BLUE,6);
+					}
+					else if(botonZInversa.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.BLUE,7);
+					}
 				}
 			});
 		}
@@ -223,7 +307,27 @@ public class PantallaColorLadrillos extends JFrame {
 			botonRosa.setBackground(Color.PINK);
 			botonRosa.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					
+					if(botonCuadrado.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.PINK,1);
+					}
+					else if(botonRecto.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.PINK,2);
+					}
+					else if(botonL.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.PINK,3);
+					}
+					else if(botonLInversa.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.PINK,4);
+					}
+					else if(botonTPequena.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.PINK,5);
+					}
+					else if(botonZ.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.PINK,6);
+					}
+					else if(botonZInversa.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.PINK,7);
+					}
 				}
 			});
 		}
@@ -236,7 +340,27 @@ public class PantallaColorLadrillos extends JFrame {
 			botonBlanco.setBackground(Color.WHITE);
 			botonBlanco.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					
+					if(botonCuadrado.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.WHITE,1);
+					}
+					else if(botonRecto.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.WHITE,2);
+					}
+					else if(botonL.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.WHITE,3);
+					}
+					else if(botonLInversa.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.WHITE,4);
+					}
+					else if(botonTPequena.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.WHITE,5);
+					}
+					else if(botonZ.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.WHITE,6);
+					}
+					else if(botonZInversa.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.WHITE,7);
+					}
 				}
 			});
 		}
@@ -249,7 +373,27 @@ public class PantallaColorLadrillos extends JFrame {
 			botonNaranja.setBackground(Color.ORANGE);
 			botonNaranja.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					
+					if(botonCuadrado.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.ORANGE,1);
+					}
+					else if(botonRecto.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.ORANGE,2);
+					}
+					else if(botonL.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.ORANGE,3);
+					}
+					else if(botonLInversa.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.ORANGE,4);
+					}
+					else if(botonTPequena.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.ORANGE,5);
+					}
+					else if(botonZ.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.ORANGE,6);
+					}
+					else if(botonZInversa.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.ORANGE,7);
+					}
 				}
 			});
 		}
@@ -262,7 +406,27 @@ public class PantallaColorLadrillos extends JFrame {
 			botonGrisClaro.setBackground(Color.LIGHT_GRAY);
 			botonGrisClaro.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					
+					if(botonCuadrado.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.LIGHT_GRAY,1);
+					}
+					else if(botonRecto.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.LIGHT_GRAY,2);
+					}
+					else if(botonL.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.LIGHT_GRAY,3);
+					}
+					else if(botonLInversa.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.LIGHT_GRAY,4);
+					}
+					else if(botonTPequena.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.LIGHT_GRAY,5);
+					}
+					else if(botonZ.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.LIGHT_GRAY,6);
+					}
+					else if(botonZInversa.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.LIGHT_GRAY,7);
+					}
 				}
 			});
 		}
@@ -275,13 +439,42 @@ public class PantallaColorLadrillos extends JFrame {
 			botonCyan.setBackground(Color.CYAN);
 			botonCyan.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					
+					if(botonCuadrado.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.CYAN,1);
+					}
+					else if(botonRecto.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.CYAN,2);
+					}
+					else if(botonL.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.CYAN,3);
+					}
+					else if(botonLInversa.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.CYAN,4);
+					}
+					else if(botonTPequena.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.CYAN,5);
+					}
+					else if(botonZ.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.CYAN,6);
+					}
+					else if(botonZInversa.isSelected()) {
+						Board.getBoard().cambiarColorLadrillo(Color.CYAN,7);
+					}
 				}
 			});
 		}
 		return botonCyan;
 	}
     
+    private JPanel getPanelVolverDefault() {
+		if (panelVolverDefault == null) {
+			panelVolverDefault = new JPanel();
+			panelVolverDefault.setLayout(new GridLayout(1, 2, 0, 0));
+			panelVolverDefault.add(getBotonVolver());
+			panelVolverDefault.add(getBotonColoresDefault());
+		}
+		return panelVolverDefault;
+	}
     private JButton getBotonVolver() {
 		if (botonVolver == null) {
 			botonVolver = new JButton("Volver");
@@ -295,5 +488,16 @@ public class PantallaColorLadrillos extends JFrame {
 			});
 		}
 		return botonVolver;
+	}
+    private JButton getBotonColoresDefault() {
+		if (botonColoresDefault == null) {
+			botonColoresDefault = new JButton("Colores default");
+			botonColoresDefault.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					Board.getBoard().ponerColoresDefault();
+				}
+			});
+		}
+		return botonColoresDefault;
 	}
 }

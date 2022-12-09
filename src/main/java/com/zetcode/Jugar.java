@@ -20,7 +20,8 @@ public class Jugar extends JFrame {
 		statusbar = new JLabel(" 0");
         add(statusbar, BorderLayout.SOUTH);
 
-        var board = new Board(this);
+        var board = Board.getBoard();
+        board.initBoard(this);
         add(board);
         board.start();
 
@@ -31,7 +32,7 @@ public class Jugar extends JFrame {
 		
 	}
 	
-	JLabel getStatusBar() {
+	public JLabel getStatusBar() {
 
         return statusbar;
     }
