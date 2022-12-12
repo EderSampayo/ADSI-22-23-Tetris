@@ -18,27 +18,13 @@ import java.awt.Color;
 public class PantallaColorDeFondo extends JFrame {
 	
 	private JPanel contentPane;
-	private JPanel panelColores;
-	private JPanel panelVolverDefault;
-	private JLabel label;
-	private JButton botonRojo;
-	private JButton botonVerde;
-	private JButton botonAmarillo;
-	private JButton botonAzul;
-	private JButton botonRosa;
-	private JButton botonBlanco;
-	private JButton botonNaranja;
-	private JButton botonGrisClaro;
-	private JButton botonCyan;
-	private JButton botonVolver;
-	private JButton botonColoresDefault;
 
-    public PantallaColorDeFondo() {
+    public PantallaColorDeFondo(String pUsuario) {
 
-        pantallaColorDeFondo();
+        pantallaColorDeFondo(pUsuario);
     }
 
-    private void pantallaColorDeFondo() {
+    private void pantallaColorDeFondo(String pUsuario) {
 
     	setTitle("Personalizar color de fondo");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,185 +33,106 @@ public class PantallaColorDeFondo extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(3, 1, 0, 0));
-		contentPane.add(getLabel());
-		contentPane.add(getPanelColores());
-		contentPane.add(getPanelVolverDefault());
-    	
+		
+		JLabel label = new JLabel("Elige un color:");
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		contentPane.add(label);
+		
+		JPanel panelColores = new JPanel();
+		panelColores.setLayout(new GridLayout(3, 3, 0, 0));
+		JButton botonRojo = new JButton("");
+		botonRojo.setBackground(Color.RED);
+		botonRojo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Board.getBoard().cambiarColorFondo(Color.RED);
+			}
+		});
+		panelColores.add(botonRojo);
+		JButton botonVerde = new JButton("");
+		botonVerde.setBackground(Color.GREEN);
+		botonVerde.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Board.getBoard().cambiarColorFondo(Color.GREEN);
+			}
+		});
+		panelColores.add(botonVerde);
+		JButton botonAmarillo = new JButton("");
+		botonAmarillo.setBackground(Color.YELLOW);
+		botonAmarillo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Board.getBoard().cambiarColorFondo(Color.YELLOW);
+			}
+		});
+		panelColores.add(botonAmarillo);
+		JButton botonAzul = new JButton("");
+		botonAzul.setBackground(Color.BLUE);
+		botonAzul.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Board.getBoard().cambiarColorFondo(Color.BLUE);
+			}
+		});
+		panelColores.add(botonAzul);
+		JButton botonRosa = new JButton("");
+		botonRosa.setBackground(Color.PINK);
+		botonRosa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Board.getBoard().cambiarColorFondo(Color.PINK);
+			}
+		});
+		panelColores.add(botonRosa);
+		JButton botonBlanco = new JButton("");
+		botonBlanco.setBackground(Color.WHITE);
+		botonBlanco.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Board.getBoard().cambiarColorFondo(Color.WHITE);
+			}
+		});
+		panelColores.add(botonBlanco);
+		JButton botonNaranja = new JButton("");
+		botonNaranja.setBackground(Color.ORANGE);
+		botonNaranja.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Board.getBoard().cambiarColorFondo(Color.ORANGE);
+			}
+		});
+		panelColores.add(botonNaranja);
+		JButton botonGrisClaro = new JButton("");
+		botonGrisClaro.setBackground(Color.LIGHT_GRAY);
+		botonGrisClaro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Board.getBoard().cambiarColorFondo(Color.LIGHT_GRAY);
+			}
+		});
+		panelColores.add(botonGrisClaro);
+		JButton botonCyan = new JButton("");
+		botonCyan.setBackground(Color.CYAN);
+		botonCyan.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Board.getBoard().cambiarColorFondo(Color.CYAN);
+			}
+		});
+		panelColores.add(botonCyan);
+		contentPane.add(panelColores);
+		
+		JPanel panelVolverDefault = new JPanel();
+		panelVolverDefault.setLayout(new GridLayout(1, 2, 0, 0));
+		JButton botonVolver = new JButton("Volver");
+		botonVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Window ventana = FocusManager.getCurrentManager().getActiveWindow();
+				ventana.dispose();
+				PantallaPersonalizacion frameTab = new PantallaPersonalizacion(pUsuario);
+				frameTab.setVisible(true);
+			}
+		});
+		panelVolverDefault.add(botonVolver);
+		JButton botonColoresDefault = new JButton("Colores default");
+		botonColoresDefault.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Board.getBoard().ponerColorDeFondoDefault();
+			}
+		});
+		panelVolverDefault.add(botonColoresDefault);
+		contentPane.add(panelVolverDefault); 
     }
-	private JLabel getLabel() {
-		if (label == null) {
-			label = new JLabel("Elige un color:");
-			label.setHorizontalAlignment(SwingConstants.CENTER);
-		}
-		return label;
-	}
-    
-    private JPanel getPanelColores() {
-		if (panelColores == null) {
-			panelColores = new JPanel();
-			panelColores.setLayout(new GridLayout(3, 3, 0, 0));
-			panelColores.add(getBotonRojo());
-			panelColores.add(getBotonVerde());
-			panelColores.add(getBotonAmarillo());
-			panelColores.add(getBotonAzul());
-			panelColores.add(getBotonRosa());
-			panelColores.add(getBotonBlanco());
-			panelColores.add(getBotonNaranja());
-			panelColores.add(getBotonGrisClaro());
-			panelColores.add(getBotonCyan());
-		}
-		return panelColores;
-	}
-    
-    private JButton getBotonRojo() {
-		if (botonRojo == null) {
-			botonRojo = new JButton("");
-			botonRojo.setBackground(Color.RED);
-			botonRojo.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					Board.getBoard().cambiarColorFondo(Color.RED);
-				}
-			});
-		}
-		return botonRojo;
-	}
-    
-    private JButton getBotonVerde() {
-		if (botonVerde == null) {
-			botonVerde = new JButton("");
-			botonVerde.setBackground(Color.GREEN);
-			botonVerde.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					Board.getBoard().cambiarColorFondo(Color.GREEN);
-				}
-			});
-		}
-		return botonVerde;
-	}
-    
-    private JButton getBotonAmarillo() {
-		if (botonAmarillo == null) {
-			botonAmarillo = new JButton("");
-			botonAmarillo.setBackground(Color.YELLOW);
-			botonAmarillo.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					Board.getBoard().cambiarColorFondo(Color.YELLOW);
-				}
-			});
-		}
-		return botonAmarillo;
-	}
-    
-    private JButton getBotonAzul() {
-		if (botonAzul == null) {
-			botonAzul = new JButton("");
-			botonAzul.setBackground(Color.BLUE);
-			botonAzul.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					Board.getBoard().cambiarColorFondo(Color.BLUE);
-				}
-			});
-		}
-		return botonAzul;
-	}
-    
-    private JButton getBotonRosa() {
-		if (botonRosa == null) {
-			botonRosa = new JButton("");
-			botonRosa.setBackground(Color.PINK);
-			botonRosa.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					Board.getBoard().cambiarColorFondo(Color.PINK);
-				}
-			});
-		}
-		return botonRosa;
-	}
-    
-    private JButton getBotonBlanco() {
-		if (botonBlanco == null) {
-			botonBlanco = new JButton("");
-			botonBlanco.setBackground(Color.WHITE);
-			botonBlanco.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					Board.getBoard().cambiarColorFondo(Color.WHITE);
-				}
-			});
-		}
-		return botonBlanco;
-	}
-    
-    private JButton getBotonNaranja() {
-		if (botonNaranja == null) {
-			botonNaranja = new JButton("");
-			botonNaranja.setBackground(Color.ORANGE);
-			botonNaranja.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					Board.getBoard().cambiarColorFondo(Color.ORANGE);
-				}
-			});
-		}
-		return botonNaranja;
-	}
-    
-    private JButton getBotonGrisClaro() {
-		if (botonGrisClaro == null) {
-			botonGrisClaro = new JButton("");
-			botonGrisClaro.setBackground(Color.LIGHT_GRAY);
-			botonGrisClaro.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					Board.getBoard().cambiarColorFondo(Color.LIGHT_GRAY);
-				}
-			});
-		}
-		return botonGrisClaro;
-	}
-    
-    private JButton getBotonCyan() {
-		if (botonCyan == null) {
-			botonCyan = new JButton("");
-			botonCyan.setBackground(Color.CYAN);
-			botonCyan.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					Board.getBoard().cambiarColorFondo(Color.CYAN);
-				}
-			});
-		}
-		return botonCyan;
-	}
-    
-    private JPanel getPanelVolverDefault() {
-		if (panelVolverDefault == null) {
-			panelVolverDefault = new JPanel();
-			panelVolverDefault.setLayout(new GridLayout(1, 2, 0, 0));
-			panelVolverDefault.add(getBotonVolver());
-			panelVolverDefault.add(getBotonColoresDefault());
-		}
-		return panelVolverDefault;
-	}
-    private JButton getBotonVolver() {
-		if (botonVolver == null) {
-			botonVolver = new JButton("Volver");
-			botonVolver.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					Window ventana = FocusManager.getCurrentManager().getActiveWindow();
-					ventana.dispose();
-					PantallaPersonalizacion frameTab = new PantallaPersonalizacion();
-					frameTab.setVisible(true);
-				}
-			});
-		}
-		return botonVolver;
-	}
-    private JButton getBotonColoresDefault() {
-		if (botonColoresDefault == null) {
-			botonColoresDefault = new JButton("Color default");
-			botonColoresDefault.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					Board.getBoard().ponerColorDeFondoDefault();
-				}
-			});
-		}
-		return botonColoresDefault;
-	}
 }

@@ -28,65 +28,40 @@ public class Tetris extends JFrame {
 	
 	private static final Logger logger = LogManager.getLogger(Tetris.class);
 
-    private JPanel contentPane;
-	private JButton botonJugar;
-	private JButton botonPerfil;
+	private JLabel statusbar;
 
-    public Tetris() {
+    public Tetris(String pEstadoPartida, String pUsuario) { //ADSI
 
-        initUI();
+        initUI(pEstadoPartida);
     }
 
-    private void initUI() {
+    private void initUI(String pEstadoPartida) { //ADSI
 
-    	setTitle("Tetris");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(0, 2, 0, 0));
-		contentPane.add(getBotonJugar());
-		contentPane.add(getBotonPerfil());
-    	
+        statusbar = new JLabel(" 0");
+        add(statusbar, BorderLayout.SOUTH);
+
+        var board = Board.getBoard();
+        board.initBoard(this);
+        add(board);
+        board.start(pEstadoPartida); //ADSI
+
+        setTitle("Tetris");
+        setSize(200, 400);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
     }
 
-    private JButton getBotonJugar() {
-		if (botonJugar == null) {
-			botonJugar = new JButton("Jugar");
-			botonJugar.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					Window ventana = FocusManager.getCurrentManager().getActiveWindow();
-					ventana.dispose();
-					Jugar frameTab = new Jugar();
-					frameTab.setVisible(true);
-				}
-			});
-		}
-		return botonJugar;
-	}
-    
-    private JButton getBotonPerfil() {
-		if (botonPerfil == null) {
-			botonPerfil = new JButton("Perfil");
-			botonPerfil.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					Window ventana = FocusManager.getCurrentManager().getActiveWindow();
-					ventana.dispose();
-					PantallaPerfil frameTab = new PantallaPerfil();
-					frameTab.setVisible(true);
-				}
-			});
-		}
-		return botonPerfil;
-	}
+    JLabel getStatusBar() {
+
+        return statusbar;
+    }
     
     public static void main(String[] args) {
 
     	logger.info("Playing");
         EventQueue.invokeLater(() -> {
 
-            var game = new Tetris();
+        	var game = new Tetris(null, "eder");
             game.setVisible(true);
         });
     }

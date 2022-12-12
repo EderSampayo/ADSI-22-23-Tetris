@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.SQLException;
 
 public class Board extends JPanel {
 
@@ -38,13 +39,18 @@ public class Board extends JPanel {
     private Color ladrillo6;
     private Color ladrillo7;
     private int sonido;
+    /** ADSI **/
+    private String usuario = "eder";
+    private Tetris padre;
+    /** ADSI **/
     
 
-    public Board() {
+    public Board(){
+    	int idPersonalizacion = Controlador.getControlador().obtenerId(usuario);
     	
     }
 
-    public static Board getBoard() {
+    public static Board getBoard(){
 		if (Board.miBoard == null) {
 			Board.miBoard = new Board();
 			
@@ -52,10 +58,11 @@ public class Board extends JPanel {
 		return Board.miBoard;
 	}
     
-    public void initBoard(Jugar jugar) {
+    public void initBoard(Tetris parent) {
 
+    	this.padre = parent;
         setFocusable(true);
-        statusbar = jugar.getStatusBar();
+        statusbar = parent.getStatusBar();
         this.setBackground(colorFondo);
         addKeyListener(new TAdapter());
     }
@@ -75,12 +82,21 @@ public class Board extends JPanel {
         return board[(y * BOARD_WIDTH) + x];
     }
 
-    public void start() {
+    void start(String pEstadoPartida) {
 
         curPiece = new Shape();
-        board = new Tetrominoe[BOARD_WIDTH * BOARD_HEIGHT];
-
-        clearBoard();
+        /** ADSI **/
+        if(pEstadoPartida != null)
+        {
+            Tetrominoe[] partida = this.convertirStringABoard(pEstadoPartida);
+            board = partida;
+        }
+        else
+        {
+            board = new Tetrominoe[BOARD_WIDTH * BOARD_HEIGHT];
+            clearBoard();
+        }
+        /** ADSI **/
         newPiece();
 
         timer = new Timer(PERIOD_INTERVAL, new GameCycle());
@@ -92,14 +108,86 @@ public class Board extends JPanel {
         isPaused = !isPaused;
 
         if (isPaused) {
-
             statusbar.setText("paused");
+            this.setVisible(false);
+            padre.dispose();
+            String estadoPartida = this.convertirBoardAString();
+
+            IU_Pausa pausa= new IU_Pausa(estadoPartida, usuario);
+            pausa.setVisible(true);
         } else {
 
             statusbar.setText(String.valueOf(numLinesRemoved));
         }
 
         repaint();
+    }
+    
+    private String convertirBoardAString()
+    /** Convierte el Board Tetrominoe[] al String estadoPartida **/
+    {
+        String s = "";
+        for(int i=0; i<board.length; i++)
+        {
+            Tetrominoe te = board[i];
+            if(i != board.length-1)
+            {
+                s = s + te + " ";
+            }
+            else
+            {
+                s = s + te;
+            }
+        }
+
+        //System.out.println(s);
+        return s;
+    }
+    
+    private Tetrominoe[] convertirStringABoard(String pEstadoPartida)
+    /** Convierte el String estadoPartida al Board Tetrominoe[] **/
+    {
+        String[] textoSeparado = pEstadoPartida.split(" ");     //Devuelve un array de String por cada palabra separada por un espacio
+
+        Tetrominoe[] resultado = new Tetrominoe[BOARD_WIDTH * BOARD_HEIGHT];
+        for(int i=0; i< textoSeparado.length; i++)
+        {
+            String s = textoSeparado[i];
+            if(s.equals("NoShape"))
+            {
+                resultado[i] = Tetrominoe.NoShape;
+            }
+            else if(s.equals("ZShape"))
+            {
+                resultado[i] = Tetrominoe.ZShape;
+            }
+            else if(s.equals("SShape"))
+            {
+                resultado[i] = Tetrominoe.SShape;
+            }
+            else if(s.equals("LineShape"))
+            {
+                resultado[i] = Tetrominoe.LineShape;
+            }
+            else if(s.equals("TShape"))
+            {
+                resultado[i] = Tetrominoe.TShape;
+            }
+            else if(s.equals("SquareShape"))
+            {
+                resultado[i] = Tetrominoe.SquareShape;
+            }
+            else if(s.equals("LShape"))
+            {
+                resultado[i] = Tetrominoe.LShape;
+            }
+            else if(s.equals("MirroredLShape"))
+            {
+                resultado[i] = Tetrominoe.MirroredLShape;
+            }
+        }
+
+        return resultado;
     }
 
     @Override
