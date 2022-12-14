@@ -25,9 +25,9 @@ import java.sql.SQLException;
 public class Board extends JPanel {
 
 	private static Board miBoard;
-    private final int BOARD_WIDTH = 10;
-    private final int BOARD_HEIGHT = 22;
-    private final int PERIOD_INTERVAL = 300;
+    private int BOARD_WIDTH = 10;
+    private int BOARD_HEIGHT = 22;
+    private int PERIOD_INTERVAL = 300;
 
     private Timer timer;
     private boolean isFallingFinished = false;
@@ -490,6 +490,21 @@ public class Board extends JPanel {
     
     public void cambiarSonido(int num) {
     	sonido = num;
+    }
+    
+    public void setBoardWidth(int width) {
+    	this.BOARD_WIDTH = width;
+    	
+    }
+    
+    public void setBoardHeight(int height) {
+    	this.BOARD_HEIGHT = height;
+    	
+    }
+    
+    public void setPeriodInterval(int periodInterval){
+    	this.PERIOD_INTERVAL = periodInterval;
+    	
     }
 
     private class GameCycle implements ActionListener {

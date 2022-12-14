@@ -67,25 +67,45 @@ public class Controlador
             return null;
         }
     }
-    
+
     public void cambiarColorFondoBD(int pColor)
     {
-        GestorPersonalizacion.getGestorPersonalizacion().cambiarColorFondoBD(pColor);
+    	GestorPersonalizacion.getGestorPersonalizacion().cambiarColorFondoBD(pColor);
     }
     public void cambiarColorLadrilloBD(int pColor,int pLadrillo)
     {
-        GestorPersonalizacion.getGestorPersonalizacion().cambiarColorLadrilloBD(pColor,pLadrillo);
+    	GestorPersonalizacion.getGestorPersonalizacion().cambiarColorLadrilloBD(pColor,pLadrillo);
     }
     public void cambiarSonidoBD(int pSonido)
     {
 
-        GestorPersonalizacion.getGestorPersonalizacion().cambiarSonidoBD(pSonido);
+    	GestorPersonalizacion.getGestorPersonalizacion().cambiarSonidoBD(pSonido);
 
     }
     public void ponerColoresDefaultBD()
     {
     	GestorPersonalizacion.getGestorPersonalizacion().cambiarColoresDefaultBD();
-        
+
     }
+    public void cambiarDificultad(String dificultad) {
+    	if (dificultad == "Facil") {
+			Board.getBoard().setBoardWidth(5);
+			Board.getBoard().setBoardHeight(11);
+			Board.getBoard().setPeriodInterval(450);
+
+		} else if (dificultad == "Normal") {
+			Board.getBoard().setBoardWidth(10);
+			Board.getBoard().setBoardHeight(22);
+			Board.getBoard().setPeriodInterval(300);
+
+		} else if (dificultad == "Dificil") {
+			Board.getBoard().setBoardWidth(20);
+			Board.getBoard().setBoardHeight(44);
+			Board.getBoard().setPeriodInterval(150);
+
+		}
+    	
+    }
+
 }
 
