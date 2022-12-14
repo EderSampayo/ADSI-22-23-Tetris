@@ -1,8 +1,15 @@
 package com.zetcode;
 
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+
+import org.json.JSONObject;
 
 import com.zetcode.Shape.Tetrominoe;
 
@@ -12,6 +19,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.sql.SQLException;
 
 public class Board extends JPanel {
@@ -47,7 +55,21 @@ public class Board extends JPanel {
 
     public Board(){
     	int idPersonalizacion = Controlador.getControlador().obtenerId(usuario);
-    	
+    	if(idPersonalizacion == 0)	//no existe personalizacion
+		{
+			System.out.println("No tienes ninguna personalizacion guardada");
+			ponerColoresDefault();
+		}
+		else
+		{
+			JSONObject personalizacion = Controlador.getControlador().obtenerPersonalizacion(idPersonalizacion);
+			if(personalizacion == null) {
+				System.out.println("No tienes ninguna personalizacion guardada");
+			}
+			else {
+				
+			}
+		}
     }
 
     public static Board getBoard(){
@@ -65,6 +87,40 @@ public class Board extends JPanel {
         statusbar = parent.getStatusBar();
         this.setBackground(colorFondo);
         addKeyListener(new TAdapter());
+        if(sonido == 1) {
+        	File audioFile = new File(audioFilePath);
+			 
+			AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+			AudioFormat format = audioStream.getFormat();
+			 
+			DataLine.Info info = new DataLine.Info(Clip.class, format);
+			Clip audioClip = (Clip) AudioSystem.getLine(info);
+			audioClip.open(audioStream);
+			audioClip.start();
+		}
+		else if(sonido == 2) {
+			File audioFile = new File(audioFilePath);
+			 
+			AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+			AudioFormat format = audioStream.getFormat();
+			 
+			DataLine.Info info = new DataLine.Info(Clip.class, format);
+			Clip audioClip = (Clip) AudioSystem.getLine(info);
+			audioClip.open(audioStream);
+			audioClip.start();
+
+		}
+		else if(sonido == 3) {
+			File audioFile = new File(audioFilePath);
+			 
+			AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+			AudioFormat format = audioStream.getFormat();
+			 
+			DataLine.Info info = new DataLine.Info(Clip.class, format);
+			Clip audioClip = (Clip) AudioSystem.getLine(info);
+			audioClip.open(audioStream);
+			audioClip.start();
+		}
     }
 
     private int squareWidth() {
@@ -433,7 +489,7 @@ public class Board extends JPanel {
     }
     
     public void cambiarSonido(int num) {
-    	
+    	sonido = num;
     }
 
     private class GameCycle implements ActionListener {

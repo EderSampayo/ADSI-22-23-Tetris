@@ -42,21 +42,24 @@ public class PantallaSonidos extends JFrame {
 		JButton botonSonido1 = new JButton("Sonido 1");
 		botonSonido1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				Board.getBoard().cambiarSonido(1);
+				Controlador.getControlador().cambiarSonidoBD(1);
 			}
 		});
 		panelSonidos.add(botonSonido1);
 		JButton botonSonido2 = new JButton("Sonido 2");
 		botonSonido2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				Board.getBoard().cambiarSonido(2);
+				Controlador.getControlador().cambiarSonidoBD(2);
 			}
 		});
 		panelSonidos.add(botonSonido2);
 		JButton botonSonido3 = new JButton("Sonido 3");
 		botonSonido3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				Board.getBoard().cambiarSonido(3);
+				Controlador.getControlador().cambiarSonidoBD(3);
 			}
 		});
 		panelSonidos.add(botonSonido3);

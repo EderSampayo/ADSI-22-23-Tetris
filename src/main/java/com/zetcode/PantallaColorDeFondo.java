@@ -45,6 +45,7 @@ public class PantallaColorDeFondo extends JFrame {
 		botonRojo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Board.getBoard().cambiarColorFondo(Color.RED);
+				Controlador.getControlador().cambiarColorFondoBD(1);
 			}
 		});
 		panelColores.add(botonRojo);
@@ -53,6 +54,7 @@ public class PantallaColorDeFondo extends JFrame {
 		botonVerde.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Board.getBoard().cambiarColorFondo(Color.GREEN);
+				Controlador.getControlador().cambiarColorFondoBD(2);
 			}
 		});
 		panelColores.add(botonVerde);
@@ -61,6 +63,7 @@ public class PantallaColorDeFondo extends JFrame {
 		botonAmarillo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Board.getBoard().cambiarColorFondo(Color.YELLOW);
+				Controlador.getControlador().cambiarColorFondoBD(3);
 			}
 		});
 		panelColores.add(botonAmarillo);
@@ -69,6 +72,7 @@ public class PantallaColorDeFondo extends JFrame {
 		botonAzul.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Board.getBoard().cambiarColorFondo(Color.BLUE);
+				Controlador.getControlador().cambiarColorFondoBD(4);
 			}
 		});
 		panelColores.add(botonAzul);
@@ -77,6 +81,7 @@ public class PantallaColorDeFondo extends JFrame {
 		botonRosa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Board.getBoard().cambiarColorFondo(Color.PINK);
+				Controlador.getControlador().cambiarColorFondoBD(5);
 			}
 		});
 		panelColores.add(botonRosa);
@@ -85,6 +90,7 @@ public class PantallaColorDeFondo extends JFrame {
 		botonBlanco.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Board.getBoard().cambiarColorFondo(Color.WHITE);
+				Controlador.getControlador().cambiarColorFondoBD(6);
 			}
 		});
 		panelColores.add(botonBlanco);
@@ -93,6 +99,7 @@ public class PantallaColorDeFondo extends JFrame {
 		botonNaranja.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Board.getBoard().cambiarColorFondo(Color.ORANGE);
+				Controlador.getControlador().cambiarColorFondoBD(7);
 			}
 		});
 		panelColores.add(botonNaranja);
@@ -101,6 +108,7 @@ public class PantallaColorDeFondo extends JFrame {
 		botonGrisClaro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Board.getBoard().cambiarColorFondo(Color.LIGHT_GRAY);
+				Controlador.getControlador().cambiarColorFondoBD(8);
 			}
 		});
 		panelColores.add(botonGrisClaro);
@@ -109,6 +117,7 @@ public class PantallaColorDeFondo extends JFrame {
 		botonCyan.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Board.getBoard().cambiarColorFondo(Color.CYAN);
+				Controlador.getControlador().cambiarColorFondoBD(9);
 			}
 		});
 		panelColores.add(botonCyan);
@@ -130,6 +139,7 @@ public class PantallaColorDeFondo extends JFrame {
 		botonColoresDefault.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Board.getBoard().ponerColorDeFondoDefault();
+				Controlador.getControlador().cambiarColorFondoBD(0);
 			}
 		});
 		panelVolverDefault.add(botonColoresDefault);

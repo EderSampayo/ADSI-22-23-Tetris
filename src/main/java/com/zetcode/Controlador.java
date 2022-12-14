@@ -3,6 +3,8 @@ package com.zetcode;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.json.JSONObject;
+
 public class Controlador
 {
     private static Controlador miControlador;
@@ -44,28 +46,46 @@ public class Controlador
         }
     }
    
-    public int obtenerId(String pUsuario)throws SQLException
+    public int obtenerId(String pUsuario)
     {
-    	ResultSet resultadoSQL= GestorBD.getGestorBD().execSQL("SELECT idpersonalizacion FROM Usuario WHERE usuario='"+pUsuario+"'");
-    	boolean hayPersonalizacion = resultadoSQL.next();
-    	int rdo = 0;
-        if(hayPersonalizacion)
-        {
-            rdo = resultadoSQL.getInt(1);
-            resultadoSQL.close();
-            return rdo;
+    	try {
+            return GestorPersonalizacion.getGestorPersonalizacion().obtenerId(pUsuario);
         }
-        else
-        {
-            System.out.println("No tienes ninguna partida guardada");
-            resultadoSQL.close();
+        catch (SQLException e) {
+            e.printStackTrace();
             return 0;
         }
     }
     
-    public void obtenerPersonalizacion(int pId)throws SQLException
+    public JSONObject obtenerPersonalizacion(int pId)
     {
-    	ResultSet resultadoSQL= GestorBD.getGestorBD().execSQL("SELECT * FROM Personalizacion WHERE id='"+pId+"'");
-        boolean hayPersonalizacion = resultadoSQL.next();
+    	try {
+            return GestorPersonalizacion.getGestorPersonalizacion().obtenerPersonalizacion(pId);
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public void cambiarColorFondoBD(int pColor)
+    {
+        GestorPersonalizacion.getGestorPersonalizacion().cambiarColorFondoBD(pColor);
+    }
+    public void cambiarColorLadrilloBD(int pColor,int pLadrillo)
+    {
+        GestorPersonalizacion.getGestorPersonalizacion().cambiarColorLadrilloBD(pColor,pLadrillo);
+    }
+    public void cambiarSonidoBD(int pSonido)
+    {
+
+        GestorPersonalizacion.getGestorPersonalizacion().cambiarSonidoBD(pSonido);
+
+    }
+    public void ponerColoresDefaultBD()
+    {
+    	GestorPersonalizacion.getGestorPersonalizacion().cambiarColoresDefaultBD();
+        
     }
 }
+
