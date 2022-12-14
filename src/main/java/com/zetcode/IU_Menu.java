@@ -6,8 +6,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.FocusManager;
 import javax.swing.JButton;
 import java.awt.GridLayout;
+import java.awt.Window;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -55,7 +57,9 @@ public class IU_Menu extends JFrame {
 		JButton btnPerfil = new JButton("Perfil");
 		btnPerfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TODO Controlador de Perfil
+				dispose();
+				PantallaPerfil perfil = new PantallaPerfil(pUsuario);
+				perfil.setVisible(true);
 			}
 		});
 		contentPane.add(btnPerfil);

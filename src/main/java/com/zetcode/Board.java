@@ -1,21 +1,30 @@
 package com.zetcode;
 
-import com.zetcode.Shape.Tetrominoe;
-
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+
+import org.json.JSONObject;
+
+import com.zetcode.Shape.Tetrominoe;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.Arrays;
-import java.util.Enumeration;
+import java.io.File;
+import java.sql.SQLException;
 
 public class Board extends JPanel {
 
+	private static Board miBoard;
     private final int BOARD_WIDTH = 10;
     private final int BOARD_HEIGHT = 22;
     private final int PERIOD_INTERVAL = 300;
@@ -29,21 +38,89 @@ public class Board extends JPanel {
     private JLabel statusbar;
     private Shape curPiece;
     private Tetrominoe[] board;
+    private Color colorFondo;
+    private Color ladrillo1;
+    private Color ladrillo2;
+    private Color ladrillo3;
+    private Color ladrillo4;
+    private Color ladrillo5;
+    private Color ladrillo6;
+    private Color ladrillo7;
+    private int sonido;
     /** ADSI **/
     private String usuario = "eder";
     private Tetris padre;
     /** ADSI **/
+    
 
-    public Board(Tetris parent) {
-        this.padre = parent;
-        initBoard(parent);
+    public Board(){
+    	int idPersonalizacion = Controlador.getControlador().obtenerId(usuario);
+    	if(idPersonalizacion == 0)	//no existe personalizacion
+		{
+			System.out.println("No tienes ninguna personalizacion guardada");
+			ponerColoresDefault();
+		}
+		else
+		{
+			JSONObject personalizacion = Controlador.getControlador().obtenerPersonalizacion(idPersonalizacion);
+			if(personalizacion == null) {
+				System.out.println("No tienes ninguna personalizacion guardada");
+			}
+			else {
+				
+			}
+		}
     }
 
-    private void initBoard(Tetris parent) {
+    public static Board getBoard(){
+		if (Board.miBoard == null) {
+			Board.miBoard = new Board();
+			
+		}
+		return Board.miBoard;
+	}
+    
+    public void initBoard(Tetris parent) {
 
+    	this.padre = parent;
         setFocusable(true);
         statusbar = parent.getStatusBar();
+        this.setBackground(colorFondo);
         addKeyListener(new TAdapter());
+        if(sonido == 1) {
+        	File audioFile = new File(audioFilePath);
+			 
+			AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+			AudioFormat format = audioStream.getFormat();
+			 
+			DataLine.Info info = new DataLine.Info(Clip.class, format);
+			Clip audioClip = (Clip) AudioSystem.getLine(info);
+			audioClip.open(audioStream);
+			audioClip.start();
+		}
+		else if(sonido == 2) {
+			File audioFile = new File(audioFilePath);
+			 
+			AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+			AudioFormat format = audioStream.getFormat();
+			 
+			DataLine.Info info = new DataLine.Info(Clip.class, format);
+			Clip audioClip = (Clip) AudioSystem.getLine(info);
+			audioClip.open(audioStream);
+			audioClip.start();
+
+		}
+		else if(sonido == 3) {
+			File audioFile = new File(audioFilePath);
+			 
+			AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+			AudioFormat format = audioStream.getFormat();
+			 
+			DataLine.Info info = new DataLine.Info(Clip.class, format);
+			Clip audioClip = (Clip) AudioSystem.getLine(info);
+			audioClip.open(audioStream);
+			audioClip.start();
+		}
     }
 
     private int squareWidth() {
@@ -101,7 +178,7 @@ public class Board extends JPanel {
 
         repaint();
     }
-
+    
     private String convertirBoardAString()
     /** Convierte el Board Tetrominoe[] al String estadoPartida **/
     {
@@ -122,7 +199,7 @@ public class Board extends JPanel {
         //System.out.println(s);
         return s;
     }
-
+    
     private Tetrominoe[] convertirStringABoard(String pEstadoPartida)
     /** Convierte el String estadoPartida al Board Tetrominoe[] **/
     {
@@ -343,10 +420,10 @@ public class Board extends JPanel {
 
     private void drawSquare(Graphics g, int x, int y, Tetrominoe shape) {
 
-        Color colors[] = {new Color(0, 0, 0), new Color(204, 102, 102),
-                new Color(102, 204, 102), new Color(102, 102, 204),
-                new Color(204, 204, 102), new Color(204, 102, 204),
-                new Color(102, 204, 204), new Color(218, 170, 0)
+        Color colors[] = {new Color(0, 0, 0), ladrillo1,
+        		ladrillo2, ladrillo3,
+        		ladrillo4, ladrillo5,
+        		ladrillo6, ladrillo7
         };
 
         var color = colors[shape.ordinal()];
@@ -363,6 +440,56 @@ public class Board extends JPanel {
                 x + squareWidth() - 1, y + squareHeight() - 1);
         g.drawLine(x + squareWidth() - 1, y + squareHeight() - 1,
                 x + squareWidth() - 1, y + 1);
+    }
+    
+    public void cambiarColorFondo(Color color) {
+    	colorFondo = color;
+    }
+    
+    public void cambiarColorLadrillo(Color color,int num) {
+    	if(num == 1) {
+    		ladrillo1 = color;
+    	}
+    	else if(num == 2) {
+    		ladrillo2 = color;
+    	}
+    	else if(num == 3) {
+    		ladrillo3 = color;
+    	}
+    	else if(num == 4) {
+    		ladrillo4 = color;
+    	}
+    	else if(num == 5) {
+    		ladrillo5 = color;
+    	}
+    	else if(num == 6) {
+    		ladrillo6 = color;
+    	}
+    	else if(num == 7) {
+    		ladrillo7 = color;
+    	}
+    }
+    
+    public void ponerColorDeFondoDefault() {
+    	
+    	colorFondo = null;
+    	
+    }
+    
+    public void ponerColoresDefault() {
+    	
+    	ladrillo1 = new Color(204, 102, 204);
+    	ladrillo2 = new Color(102, 102, 204);
+    	ladrillo3 = new Color(102, 204, 204);
+    	ladrillo4 = new Color(218, 170, 0);
+    	ladrillo5 = new Color(204, 204, 102);
+    	ladrillo6 = new Color(204, 102, 102);
+    	ladrillo7 = new Color(102, 204, 102);
+    	
+    }
+    
+    public void cambiarSonido(int num) {
+    	sonido = num;
     }
 
     private class GameCycle implements ActionListener {
