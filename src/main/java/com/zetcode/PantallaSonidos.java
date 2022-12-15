@@ -43,7 +43,8 @@ public class PantallaSonidos extends JFrame {
 		botonSonido1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Board.getBoard().cambiarSonido(1);
-				Controlador.getControlador().cambiarSonidoBD(1);
+				int id = Controlador.getControlador().obtenerId(pUsuario);
+				Controlador.getControlador().cambiarSonidoBD(id,1);
 			}
 		});
 		panelSonidos.add(botonSonido1);
@@ -51,7 +52,8 @@ public class PantallaSonidos extends JFrame {
 		botonSonido2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Board.getBoard().cambiarSonido(2);
-				Controlador.getControlador().cambiarSonidoBD(2);
+				int id = Controlador.getControlador().obtenerId(pUsuario);
+				Controlador.getControlador().cambiarSonidoBD(id,2);
 			}
 		});
 		panelSonidos.add(botonSonido2);
@@ -59,7 +61,8 @@ public class PantallaSonidos extends JFrame {
 		botonSonido3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Board.getBoard().cambiarSonido(3);
-				Controlador.getControlador().cambiarSonidoBD(3);
+				int id = Controlador.getControlador().obtenerId(pUsuario);
+				Controlador.getControlador().cambiarSonidoBD(id,3);
 			}
 		});
 		panelSonidos.add(botonSonido3);

@@ -14,25 +14,6 @@ public class IU_Menu_Partidas extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					IU_Menu_Partidas frame = new IU_Menu_Partidas(null);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public IU_Menu_Partidas(String pUsuario) {
 		String usuario = pUsuario;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -74,11 +55,11 @@ public class IU_Menu_Partidas extends JFrame {
 		});
 		panel.add(btnCargar);
 		
-		JButton btnVolver = new JButton("Volver al men\u00FA");
+		JButton btnVolver = new JButton("Volver al menu");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();	//Cierra la ventana actual
-				IU_Menu menuPrincipal = new IU_Menu(pUsuario);
+				IU_Menu menuPrincipal = new IU_Menu();
 				menuPrincipal.setVisible(true);
 			}
 		});

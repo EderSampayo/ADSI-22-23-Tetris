@@ -26,7 +26,7 @@ public class GestorPersonalizacion
 
     public int obtenerId(String pUsuario)throws SQLException
     {
-    	ResultSet resultadoSQL= GestorBD.execSQL("SELECT idpersonalizacion FROM Usuario WHERE usuario='"+pUsuario+"'");
+    	ResultSet resultadoSQL= GestorBD.execSQL("SELECT idPersonalizacion FROM USUARIO WHERE usuario='"+pUsuario+"'");
     	boolean hayPersonalizacion = resultadoSQL.next();
     	int rdo = 0;
         if(hayPersonalizacion)
@@ -37,7 +37,7 @@ public class GestorPersonalizacion
         }
         else
         {
-            System.out.println("No tienes ninguna partida guardada");
+            System.out.println("No tienes ninguna personalizacion guardada");
             resultadoSQL.close();
             return 0;
         }
@@ -45,7 +45,7 @@ public class GestorPersonalizacion
     
     public JSONObject obtenerPersonalizacion(int pId)throws SQLException
     {
-    	ResultSet resultadoSQL= GestorBD.execSQL("SELECT * FROM Personalizacion WHERE id='"+pId+"'");
+    	ResultSet resultadoSQL= GestorBD.execSQL("SELECT * FROM PERSONALIZACION WHERE id='"+pId+"'");
         boolean hayPersonalizacion = resultadoSQL.next();
         if(hayPersonalizacion) {
         	
@@ -67,40 +67,40 @@ public class GestorPersonalizacion
         }
     }
 
-	public void cambiarColorFondoBD(int pColor) {
-		GestorBD.execSQLVoid("INSERT INTO Personalizacion(colorFondo) VALUES ('"+pColor+"')");
+	public void cambiarColorFondoBD(int pId,int pColor) {
+		GestorBD.execSQLVoid("UPDATE PERSONALIZACION SET colorFondo="+pColor+" WHERE id="+pId+"");
         System.out.println("Color de fondo cambiado correctamente");
 	}
-	public void cambiarColorLadrilloBD(int pColor,int pLadrillo) {
+	public void cambiarColorLadrilloBD(int pId,int pColor,int pLadrillo) {
 		if(pLadrillo == 1) {
-			GestorBD.execSQLVoid("INSERT INTO Personalizacion(ladrillo1) VALUES ('"+pColor+"')");
+			GestorBD.execSQLVoid("UPDATE PERSONALIZACION SET ladrillo1="+pColor+" WHERE id="+pId+"");
 		}
 		else if(pLadrillo == 2) {
-			GestorBD.execSQLVoid("INSERT INTO Personalizacion(ladrillo2) VALUES ('"+pColor+"')");
+			GestorBD.execSQLVoid("UPDATE PERSONALIZACION SET ladrillo2="+pColor+" WHERE id="+pId+"");
 		}
 		else if(pLadrillo == 3) {
-			GestorBD.execSQLVoid("INSERT INTO Personalizacion(ladrillo3) VALUES ('"+pColor+"')");
+			GestorBD.execSQLVoid("UPDATE PERSONALIZACION SET ladrillo3="+pColor+" WHERE id="+pId+"");
 		}
 		else if(pLadrillo == 4) {
-			GestorBD.execSQLVoid("INSERT INTO Personalizacion(ladrillo4) VALUES ('"+pColor+"')");
+			GestorBD.execSQLVoid("UPDATE PERSONALIZACION SET ladrillo4="+pColor+" WHERE id="+pId+"");
 		}
 		else if(pLadrillo == 5) {
-			GestorBD.execSQLVoid("INSERT INTO Personalizacion(ladrillo5) VALUES ('"+pColor+"')");
+			GestorBD.execSQLVoid("UPDATE PERSONALIZACION SET ladrillo5="+pColor+" WHERE id="+pId+"");
 		}
 		else if(pLadrillo == 6) {
-			GestorBD.execSQLVoid("INSERT INTO Personalizacion(ladrillo6) VALUES ('"+pColor+"')");
+			GestorBD.execSQLVoid("UPDATE PERSONALIZACION SET ladrillo6="+pColor+" WHERE id="+pId+"");
 		}
 		else if(pLadrillo == 7) {
-			GestorBD.execSQLVoid("INSERT INTO Personalizacion(ladrillo7) VALUES ('"+pColor+"')");
+			GestorBD.execSQLVoid("UPDATE PERSONALIZACION SET ladrillo7="+pColor+" WHERE id="+pId+"");
 		}
         System.out.println("Color de ladrillo cambiado correctamente");
 	}
-	public void cambiarSonidoBD(int pSonido) {
-		GestorBD.execSQLVoid("INSERT INTO Personalizacion(sonido) VALUES ('"+pSonido+"')");
+	public void cambiarSonidoBD(int pId,int pSonido) {
+		GestorBD.execSQLVoid("UPDATE PERSONALIZACION SET sonido="+pSonido+" WHERE id="+pId+"");
         System.out.println("Sonido cambiado correctamente");
 	}
-	public void cambiarColoresDefaultBD() {
-		GestorBD.execSQLVoid("INSERT INTO Personalizacion(ladrillo1,ladrillo2,ladrillo3,ladrillo4,ladrillo5,ladrillo6,ladrillo7) VALUES ('0','0','0','0','0','0','0')");
-        System.out.println("Sonidos por defecto cambiados correctamente");
+	public void cambiarColoresDefaultBD(int pId) {
+		GestorBD.execSQLVoid("UPDATE PERSONALIZACION SET ladrillo1 = 0, ladrillo2 = 0, ladrillo3 = 0, ladrillo4 = 0, ladrillo5 = 0, ladrillo6 = 0, ladrillo7 = 0 WHERE id='"+pId+"'");
+        System.out.println("Colores por defecto cambiados correctamente");
 	}
 }

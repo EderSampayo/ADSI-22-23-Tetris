@@ -25,18 +25,18 @@ public class GestorPartidas
 
     public void eliminarPartidaGuardada(String pUsuario)
     {
-        GestorBD.execSQLVoid("DELETE FROM Partida WHERE usuario='"+pUsuario+"' AND fecha IS NULL");
+        GestorBD.execSQLVoid("DELETE FROM PARTIDA WHERE usuario='"+pUsuario+"' AND fecha IS NULL");
         //System.out.println("Partida antigua eliminada correctamente");
     }
 
     public void guardarPartida(String pEstadoPartida, String pUsuario)
     {
-        GestorBD.execSQLVoid("INSERT INTO Partida(estadoPartida, usuario) VALUES ('"+pEstadoPartida+"', '"+pUsuario+"')");
+        GestorBD.execSQLVoid("INSERT INTO PARTIDA(estadoPartida, usuario) VALUES ('"+pEstadoPartida+"', '"+pUsuario+"')");
         System.out.println("Partida guardada correctamente");
     }
 
     public String buscarEstadoPartida(String pUsuario) throws SQLException {
-        ResultSet resultadoSQL= GestorBD.execSQL("SELECT estadoPartida FROM Partida WHERE usuario='"+pUsuario+"' AND fecha IS NULL");
+        ResultSet resultadoSQL= GestorBD.execSQL("SELECT estadoPartida FROM PARTIDA WHERE usuario='"+pUsuario+"' AND fecha IS NULL");
         boolean hayPartida = resultadoSQL.next();
         String rdo = null;
         if(hayPartida)

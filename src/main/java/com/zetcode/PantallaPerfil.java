@@ -70,7 +70,7 @@ public class PantallaPerfil extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Window ventana = FocusManager.getCurrentManager().getActiveWindow();
 				ventana.dispose();
-				IU_Menu frameTab = new IU_Menu(pUsuario);
+				IU_Menu frameTab = new IU_Menu();
 				frameTab.setVisible(true);
 				
 			}

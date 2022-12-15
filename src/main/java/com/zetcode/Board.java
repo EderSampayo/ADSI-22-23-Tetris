@@ -58,6 +58,7 @@ public class Board extends JPanel {
     	if(idPersonalizacion == 0)	//no existe personalizacion
 		{
 			System.out.println("No tienes ninguna personalizacion guardada");
+			ponerColorDeFondoDefault();
 			ponerColoresDefault();
 		}
 		else
@@ -65,9 +66,251 @@ public class Board extends JPanel {
 			JSONObject personalizacion = Controlador.getControlador().obtenerPersonalizacion(idPersonalizacion);
 			if(personalizacion == null) {
 				System.out.println("No tienes ninguna personalizacion guardada");
+				ponerColoresDefault();
+				ponerColorDeFondoDefault();
 			}
 			else {
-				
+				if(personalizacion.getInt("colorFondo")== 0) {
+					colorFondo = null;
+				}
+				else if(personalizacion.getInt("colorFondo")== 1) {
+					colorFondo = Color.RED;
+				}
+				else if(personalizacion.getInt("colorFondo")== 2) {
+					colorFondo = Color.GREEN;
+				}
+				else if(personalizacion.getInt("colorFondo")== 3) {
+					colorFondo = Color.YELLOW;
+				}
+				else if(personalizacion.getInt("colorFondo")== 4) {
+					colorFondo = Color.BLUE;
+				}
+				else if(personalizacion.getInt("colorFondo")== 5) {
+					colorFondo = Color.PINK;
+				}
+				else if(personalizacion.getInt("colorFondo")== 6) {
+					colorFondo = Color.WHITE;
+				}
+				else if(personalizacion.getInt("colorFondo")== 7) {
+					colorFondo = Color.ORANGE;
+				}
+				else if(personalizacion.getInt("colorFondo")== 8) {
+					colorFondo = Color.LIGHT_GRAY;
+				}
+				else if(personalizacion.getInt("colorFondo")== 9) {
+					colorFondo = Color.CYAN;
+				}
+				if(personalizacion.getInt("ladrillo1")== 0) {
+					ladrillo1 = new Color(204, 102, 204);
+				}
+				else if(personalizacion.getInt("ladrillo1")== 1) {
+					ladrillo1 = Color.RED;
+				}
+				else if(personalizacion.getInt("ladrillo1")== 2) {
+					ladrillo1 = Color.GREEN;
+				}
+				else if(personalizacion.getInt("ladrillo1")== 3) {
+					ladrillo1 = Color.YELLOW;
+				}
+				else if(personalizacion.getInt("ladrillo1")== 4) {
+					ladrillo1 = Color.BLUE;
+				}
+				else if(personalizacion.getInt("ladrillo1")== 5) {
+					ladrillo1 = Color.PINK;
+				}
+				else if(personalizacion.getInt("ladrillo1")== 6) {
+					ladrillo1 = Color.WHITE;
+				}
+				else if(personalizacion.getInt("ladrillo1")== 7) {
+					ladrillo1 = Color.ORANGE;
+				}
+				else if(personalizacion.getInt("ladrillo1")== 8) {
+					ladrillo1 = Color.LIGHT_GRAY;
+				}
+				else if(personalizacion.getInt("ladrillo1")== 9) {
+					ladrillo1 = Color.CYAN;
+				}
+				if(personalizacion.getInt("ladrillo2")== 0) {
+					ladrillo2 = new Color(102, 102, 204);
+				}
+				else if(personalizacion.getInt("ladrillo2")== 1) {
+					ladrillo2 = Color.RED;
+				}
+				else if(personalizacion.getInt("ladrillo2")== 2) {
+					ladrillo2 = Color.GREEN;
+				}
+				else if(personalizacion.getInt("ladrillo2")== 3) {
+					ladrillo2 = Color.YELLOW;
+				}
+				else if(personalizacion.getInt("ladrillo2")== 4) {
+					ladrillo2 = Color.BLUE;
+				}
+				else if(personalizacion.getInt("ladrillo2")== 5) {
+					ladrillo2 = Color.PINK;
+				}
+				else if(personalizacion.getInt("ladrillo2")== 6) {
+					ladrillo2 = Color.WHITE;
+				}
+				else if(personalizacion.getInt("ladrillo2")== 7) {
+					ladrillo2 = Color.ORANGE;
+				}
+				else if(personalizacion.getInt("ladrillo2")== 8) {
+					ladrillo2 = Color.LIGHT_GRAY;
+				}
+				else if(personalizacion.getInt("ladrillo2")== 9) {
+					ladrillo2 = Color.CYAN;
+				}
+				if(personalizacion.getInt("ladrillo3")== 0) {
+					ladrillo3 = new Color(102, 204, 204);
+				}
+				else if(personalizacion.getInt("ladrillo3")== 1) {
+					ladrillo3 = Color.RED;
+				}
+				else if(personalizacion.getInt("ladrillo3")== 2) {
+					ladrillo3 = Color.GREEN;
+				}
+				else if(personalizacion.getInt("ladrillo3")== 3) {
+					ladrillo3 = Color.YELLOW;
+				}
+				else if(personalizacion.getInt("ladrillo3")== 4) {
+					ladrillo3 = Color.BLUE;
+				}
+				else if(personalizacion.getInt("ladrillo3")== 5) {
+					ladrillo3 = Color.PINK;
+				}
+				else if(personalizacion.getInt("ladrillo3")== 6) {
+					ladrillo3 = Color.WHITE;
+				}
+				else if(personalizacion.getInt("ladrillo3")== 7) {
+					ladrillo3 = Color.ORANGE;
+				}
+				else if(personalizacion.getInt("ladrillo3")== 8) {
+					ladrillo3 = Color.LIGHT_GRAY;
+				}
+				else if(personalizacion.getInt("ladrillo3")== 9) {
+					ladrillo3 = Color.CYAN;
+				}
+				if(personalizacion.getInt("ladrillo4")== 0) {
+					ladrillo4 = new Color(218, 170, 0);
+				}
+				else if(personalizacion.getInt("ladrillo4")== 1) {
+					ladrillo4 = Color.RED;
+				}
+				else if(personalizacion.getInt("ladrillo4")== 2) {
+					ladrillo4 = Color.GREEN;
+				}
+				else if(personalizacion.getInt("ladrillo4")== 3) {
+					ladrillo4 = Color.YELLOW;
+				}
+				else if(personalizacion.getInt("ladrillo4")== 4) {
+					ladrillo4 = Color.BLUE;
+				}
+				else if(personalizacion.getInt("ladrillo4")== 5) {
+					ladrillo4 = Color.PINK;
+				}
+				else if(personalizacion.getInt("ladrillo4")== 6) {
+					ladrillo4 = Color.WHITE;
+				}
+				else if(personalizacion.getInt("ladrillo4")== 7) {
+					ladrillo4 = Color.ORANGE;
+				}
+				else if(personalizacion.getInt("ladrillo4")== 8) {
+					ladrillo4 = Color.LIGHT_GRAY;
+				}
+				else if(personalizacion.getInt("ladrillo4")== 9) {
+					ladrillo4 = Color.CYAN;
+				}
+				if(personalizacion.getInt("ladrillo5")== 0) {
+					ladrillo5 = new Color(204, 204, 102);
+				}
+				else if(personalizacion.getInt("ladrillo5")== 1) {
+					ladrillo5 = Color.RED;
+				}
+				else if(personalizacion.getInt("ladrillo5")== 2) {
+					ladrillo5 = Color.GREEN;
+				}
+				else if(personalizacion.getInt("ladrillo5")== 3) {
+					ladrillo5 = Color.YELLOW;
+				}
+				else if(personalizacion.getInt("ladrillo5")== 4) {
+					ladrillo5 = Color.BLUE;
+				}
+				else if(personalizacion.getInt("ladrillo5")== 5) {
+					ladrillo5 = Color.PINK;
+				}
+				else if(personalizacion.getInt("ladrillo5")== 6) {
+					ladrillo5 = Color.WHITE;
+				}
+				else if(personalizacion.getInt("ladrillo5")== 7) {
+					ladrillo5 = Color.ORANGE;
+				}
+				else if(personalizacion.getInt("ladrillo5")== 8) {
+					ladrillo5 = Color.LIGHT_GRAY;
+				}
+				else if(personalizacion.getInt("ladrillo5")== 9) {
+					ladrillo5 = Color.CYAN;
+				}
+				if(personalizacion.getInt("ladrillo6")== 0) {
+					ladrillo6 = new Color(204, 102, 102);
+				}
+				else if(personalizacion.getInt("ladrillo6")== 1) {
+					ladrillo6 = Color.RED;
+				}
+				else if(personalizacion.getInt("ladrillo6")== 2) {
+					ladrillo6 = Color.GREEN;
+				}
+				else if(personalizacion.getInt("ladrillo6")== 3) {
+					ladrillo6 = Color.YELLOW;
+				}
+				else if(personalizacion.getInt("ladrillo6")== 4) {
+					ladrillo6 = Color.BLUE;
+				}
+				else if(personalizacion.getInt("ladrillo6")== 5) {
+					ladrillo6 = Color.PINK;
+				}
+				else if(personalizacion.getInt("ladrillo6")== 6) {
+					ladrillo6 = Color.WHITE;
+				}
+				else if(personalizacion.getInt("ladrillo6")== 7) {
+					ladrillo6 = Color.ORANGE;
+				}
+				else if(personalizacion.getInt("ladrillo6")== 8) {
+					ladrillo6 = Color.LIGHT_GRAY;
+				}
+				else if(personalizacion.getInt("ladrillo6")== 9) {
+					ladrillo6 = Color.CYAN;
+				}
+				if(personalizacion.getInt("ladrillo7")== 0) {
+					ladrillo7 = new Color(102, 204, 102);
+				}
+				else if(personalizacion.getInt("ladrillo7")== 1) {
+					ladrillo7 = Color.RED;
+				}
+				else if(personalizacion.getInt("ladrillo7")== 2) {
+					ladrillo7 = Color.GREEN;
+				}
+				else if(personalizacion.getInt("ladrillo7")== 3) {
+					ladrillo7 = Color.YELLOW;
+				}
+				else if(personalizacion.getInt("ladrillo7")== 4) {
+					ladrillo7 = Color.BLUE;
+				}
+				else if(personalizacion.getInt("ladrillo7")== 5) {
+					ladrillo7 = Color.PINK;
+				}
+				else if(personalizacion.getInt("ladrillo7")== 6) {
+					ladrillo7 = Color.WHITE;
+				}
+				else if(personalizacion.getInt("ladrillo7")== 7) {
+					ladrillo7 = Color.ORANGE;
+				}
+				else if(personalizacion.getInt("ladrillo7")== 8) {
+					ladrillo7 = Color.LIGHT_GRAY;
+				}
+				else if(personalizacion.getInt("ladrillo7")== 9) {
+					ladrillo7 = Color.CYAN;
+				}
+				sonido = personalizacion.getInt("sonido");
 			}
 		}
     }
@@ -85,9 +328,11 @@ public class Board extends JPanel {
     	this.padre = parent;
         setFocusable(true);
         statusbar = parent.getStatusBar();
-        this.setBackground(colorFondo);
+        if(colorFondo != null) {
+        	 this.setBackground(colorFondo);
+        }
         addKeyListener(new TAdapter());
-        if(sonido == 1) {
+        /*if(sonido == 1) {
         	File audioFile = new File(audioFilePath);
 			 
 			AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
@@ -120,7 +365,7 @@ public class Board extends JPanel {
 			Clip audioClip = (Clip) AudioSystem.getLine(info);
 			audioClip.open(audioStream);
 			audioClip.start();
-		}
+		}*/
     }
 
     private int squareWidth() {
@@ -420,10 +665,10 @@ public class Board extends JPanel {
 
     private void drawSquare(Graphics g, int x, int y, Tetrominoe shape) {
 
-        Color colors[] = {new Color(0, 0, 0), ladrillo1,
-        		ladrillo2, ladrillo3,
-        		ladrillo4, ladrillo5,
-        		ladrillo6, ladrillo7
+        Color colors[] = {new Color(0, 0, 0), ladrillo6,
+        		ladrillo7, ladrillo2,
+        		ladrillo5, ladrillo1,
+        		ladrillo3, ladrillo4
         };
 
         var color = colors[shape.ordinal()];

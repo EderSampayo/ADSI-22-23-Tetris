@@ -68,23 +68,23 @@ public class Controlador
         }
     }
     
-    public void cambiarColorFondoBD(int pColor)
+    public void cambiarColorFondoBD(int pId,int pColor)
     {
-        GestorPersonalizacion.getGestorPersonalizacion().cambiarColorFondoBD(pColor);
+        GestorPersonalizacion.getGestorPersonalizacion().cambiarColorFondoBD(pId,pColor);
     }
-    public void cambiarColorLadrilloBD(int pColor,int pLadrillo)
+    public void cambiarColorLadrilloBD(int pId,int pColor,int pLadrillo)
     {
-        GestorPersonalizacion.getGestorPersonalizacion().cambiarColorLadrilloBD(pColor,pLadrillo);
+        GestorPersonalizacion.getGestorPersonalizacion().cambiarColorLadrilloBD(pId,pColor,pLadrillo);
     }
-    public void cambiarSonidoBD(int pSonido)
+    public void cambiarSonidoBD(int pId,int pSonido)
     {
 
-        GestorPersonalizacion.getGestorPersonalizacion().cambiarSonidoBD(pSonido);
+        GestorPersonalizacion.getGestorPersonalizacion().cambiarSonidoBD(pId,pSonido);
 
     }
-    public void ponerColoresDefaultBD()
+    public void ponerColoresDefaultBD(int pId)
     {
-    	GestorPersonalizacion.getGestorPersonalizacion().cambiarColoresDefaultBD();
+    	GestorPersonalizacion.getGestorPersonalizacion().cambiarColoresDefaultBD(pId);
         
     }
 }
