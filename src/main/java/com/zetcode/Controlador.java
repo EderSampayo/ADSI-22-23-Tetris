@@ -1,0 +1,120 @@
+package main.java.com.zetcode;
+
+import java.sql.ResultSet;
+
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Vector;
+
+public class Controlador {
+	private static Controlador miControlador;
+
+	public Controlador() {
+
+	}
+
+	public static Controlador getControlador() {
+		if (Controlador.miControlador == null) {
+			Controlador.miControlador = new Controlador();
+		}
+		return Controlador.miControlador;
+	}
+
+	// metodos
+	@SuppressWarnings("null")
+	public Usuario getUserContraseña(String user, String password) throws SQLException {
+		Usuario u = null;
+		ResultSet resultadoSQL = GestorBD
+				.execSQL("SELECT * FROM USUARIO WHERE usuario='" + user + "' and pwd='" + password + "'");
+		boolean hayUser = resultadoSQL.next();
+		if (hayUser) {
+			u.setUser(resultadoSQL.getString(1));
+			u.setClave(resultadoSQL.getString(2));
+			u.setEmail(resultadoSQL.getString(3));
+			u.setNombre(resultadoSQL.getString(4));
+			u.setApellidos(resultadoSQL.getString(5));
+			u.setDNI(resultadoSQL.getString(6));
+			u.setFechaNacimiento(resultadoSQL.getDate(7));
+			resultadoSQL.close();
+			return u;
+		}
+		return u;
+	}
+
+	public void deleteUser(Usuario user) {
+		GestorBD.execSQLVoid("DELETE FROM USUARIO WHERE usuario='" + user.getUser() + "'");
+	}
+
+	public Vector<Usuario> getUsersList(String pUsuario) {
+		Vector<Usuario> res = new Vector<Usuario>();
+		Vector<Usuario> resultadoSQL = GestorBD.execSQLList("SELECT * FROM USUARIO");
+		List<Usuario> u = resultadoSQL;
+		for (Usuario users : u) {
+			System.out.println(users.toString());
+			res.add(users);
+		}
+		return res;
+	}
+
+	public boolean getUser(String user) throws SQLException {
+		ResultSet resultadoSQL = GestorBD.execSQL("SELECT * FROM USUARIO WHERE usuario='" + user + "'");
+		boolean hayUser = resultadoSQL.next();
+		resultadoSQL.close();
+		return hayUser;
+	}
+
+	public void storeUser(Usuario user) {
+		GestorBD.execSQLVoid("INSERT INTO USUARIO VALUES (" + user.getUser() + "," + user.getClave() + ","
+				+ user.getEmail() + "," + user.getNombre() + "," + user.getApellidos() + "," + user.getDNI() + ","
+				+ user.getFechaNacimiento() + ")");
+	}
+
+	public boolean getDNI(String email, String DNI) throws SQLException {
+		ResultSet resultadoSQL = GestorBD
+				.execSQL("SELECT * FROM USUARIO WHERE email='" + email + "' and DNI='" + DNI + "'");
+		boolean hayUser = resultadoSQL.next();
+		resultadoSQL.close();
+		return hayUser;
+	}
+
+	@SuppressWarnings("null")
+	public Usuario getUser_2(String email, String DNI) throws SQLException {
+		Usuario u = null;
+		ResultSet resultadoSQL = GestorBD
+				.execSQL("SELECT * FROM USUARIO WHERE email='" + email + "' and DNI='" + DNI + "'");
+		boolean hayUser = resultadoSQL.next();
+		if (hayUser) {
+			u.setUser(resultadoSQL.getString(1));
+			u.setClave(resultadoSQL.getString(2));
+			u.setEmail(resultadoSQL.getString(3));
+			u.setNombre(resultadoSQL.getString(4));
+			u.setApellidos(resultadoSQL.getString(5));
+			u.setDNI(resultadoSQL.getString(6));
+			u.setFechaNacimiento(resultadoSQL.getDate(7));
+			resultadoSQL.close();
+			return u;
+		}
+		return u;
+	}
+
+	public void setContraseña(String password, String pUsuario) {
+		GestorBD.execSQLVoid("UPDATE USUARIO SET pwd='" + password + "' WHERE usuario='" + pUsuario + "'");
+	}
+
+	public void eliminarPartidaGuardada(String pUsuario) {
+		GestorPartidas.getGestorPartidas().eliminarPartidaGuardada(pUsuario);
+	}
+
+	public void guardarPartida(String pEstadoPartida, String pUsuario) {
+		GestorPartidas.getGestorPartidas().guardarPartida(pEstadoPartida, pUsuario);
+	}
+
+	public String buscarEstadoPartida(String pUsuario) {
+		try {
+			return GestorPartidas.getGestorPartidas().buscarEstadoPartida(pUsuario);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+}
