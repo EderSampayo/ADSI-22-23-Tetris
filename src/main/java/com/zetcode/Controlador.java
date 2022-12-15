@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Vector;
 
 import org.json.JSONObject;
+import org.json.JSONArray;
 
 public class Controlador
 {
@@ -91,7 +92,7 @@ public class Controlador
     }
     
     @SuppressWarnings("null")
-	public Usuario getUserContraseña(String user, String password) throws SQLException {
+	public Usuario getUserContraseÃ±a(String user, String password) throws SQLException {
 		Usuario u = null;
 		ResultSet resultadoSQL = GestorBD
 				.execSQL("SELECT * FROM USUARIO WHERE usuario='" + user + "' and pwd='" + password + "'");
@@ -166,8 +167,22 @@ public class Controlador
 		return u;
 	}
 
-	public void setContraseña(String password, String pUsuario) {
+	public void setContraseÃ±a(String password, String pUsuario) {
 		GestorBD.execSQLVoid("UPDATE USUARIO SET pwd='" + password + "' WHERE usuario='" + pUsuario + "'");
 	}
+	
+	
+	 public JSONObject buscarMejoresPartidas(String pUsuario) throws SQLException
+	{
+    		JSONObject j1 = new JSONObject();
+		j1 = GestorPartidas.getGestorPartidas().buscarMejoresPartidas(pUsuario);
+		return j1;
+	}
+    
+    	public JSONArray buscarMejoresXNivel()
+    	{
+    		JSONArray j2 = new JSONArray();
+		j2 = GestorPartidas.getGestorPartidas().buscarMejoresXNivel();
+		return j2;
+    	}
 }
-
