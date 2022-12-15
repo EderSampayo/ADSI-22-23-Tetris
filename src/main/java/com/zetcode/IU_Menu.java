@@ -68,7 +68,9 @@ public class IU_Menu extends JFrame {
 		JButton btnRankings = new JButton("Rankings");
 		btnRankings.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TODO Controlador de Rankings
+				dispose();
+				IU_Rankings frameTab = new IU_Rankings(pUsuario);
+				frameTab.setVisible(true);
 			}
 		});
 		contentPane.add(btnRankings);
