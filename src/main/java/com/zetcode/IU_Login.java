@@ -72,15 +72,15 @@ public class IU_Login extends JFrame {
 		contentPane.add(userField);
 		userField.setColumns(10);
 
-		JLabel JLabelContraseña = new JLabel("Contrase\u00F1a:");
-		JLabelContraseña.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		JLabelContraseña.setBounds(34, 166, 111, 14);
-		contentPane.add(JLabelContraseña);
+		JLabel JLabelContraseÃ±a = new JLabel("Contrase\u00F1a:");
+		JLabelContraseÃ±a.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		JLabelContraseÃ±a.setBounds(34, 166, 111, 14);
+		contentPane.add(JLabelContraseÃ±a);
 
-		JButton JButtonRecuperarContraseña = new JButton("RecuperarContrase\u00F1a");
-		JButtonRecuperarContraseña.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		JButtonRecuperarContraseña.setBounds(338, 117, 230, 93);
-		contentPane.add(JButtonRecuperarContraseña);
+		JButton JButtonRecuperarContraseÃ±a = new JButton("RecuperarContrase\u00F1a");
+		JButtonRecuperarContraseÃ±a.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		JButtonRecuperarContraseÃ±a.setBounds(338, 117, 230, 93);
+		contentPane.add(JButtonRecuperarContraseÃ±a);
 
 		passwordField = new JPasswordField();
 		passwordField.setColumns(10);
@@ -117,20 +117,27 @@ public class IU_Login extends JFrame {
 					JLabelError.setText("Introduzca los datos solicitados");
 				} else {
 					if (String.valueOf(passwordField.getPassword()) == null) {
-						JLabelError.setText("Introduzca la contraseña");
+						JLabelError.setText("Introduzca la contraseÃ±a");
 					} else {
 						if (userField.getText() == null) {
 							JLabelError.setText("Introduzca el usuario");
 						} else {
 							String password = String.valueOf(passwordField.getPassword());
 							String user = userField.getText();
+							String admin = "admin";
 							try {
-								if (main.java.com.zetcode.Controlador.getControlador().getUserContraseña(user, password) != null) {
-									JLabelError.setText("Logeado con exito");
-									IU_Menu a = new IU_Menu(user);
-									a.setVisible(true);
+								if (main.java.com.zetcode.Controlador.getControlador().getUserContraseÃ±a(user, password) != null) {
+									if(user.compareTo(admin)==0) {
+										JLabelError.setText("Logeado con exito");
+										IU_MenuAdmin a = new IU_MenuAdmin(admin);
+										a.setVisible(true);
+									}else {
+										JLabelError.setText("Logeado con exito");
+										IU_Menu a = new IU_Menu(user);
+										a.setVisible(true);
+									}
 								} else {
-									JLabelError.setText("Usuario o contraseña invalidos");
+									JLabelError.setText("Usuario o contraseÃ±a invalidos");
 								}
 							} catch (SQLException e1) {
 								e1.printStackTrace();
@@ -151,9 +158,9 @@ public class IU_Login extends JFrame {
 			}
 		});
 
-		JButtonRecuperarContraseña.addActionListener(new java.awt.event.ActionListener() {
+		JButtonRecuperarContraseÃ±a.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
-				IU_RecuperarContraseña rc = new IU_RecuperarContraseña();
+				IU_RecuperarContraseÃ±a rc = new IU_RecuperarContraseÃ±a();
 				rc.setVisible(true);
 				jButton2_actionPerformed(e);
 
