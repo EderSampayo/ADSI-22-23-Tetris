@@ -16,7 +16,7 @@ import java.awt.event.ActionEvent;
 public class IU_Menu extends JFrame {
 
 	private JPanel contentPane;
-
+	
 	/**
 	 * Create the frame.
 	 */

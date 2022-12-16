@@ -8,10 +8,10 @@ public class Usuario {
 	private String apellidos;
 	private String DNI;
 	private String email;
-	private Date fechaNacimiento;
+	private String fechaNacimiento;
 	private String clave;
 
-	public Usuario(String user, String nombre, String apellidos, String dNI, String email, Date fechaNacimiento,
+	public Usuario(String user, String nombre, String apellidos, String dNI, String email, String fechaNacimiento,
 			String clave) {
 		this.user = user;
 		this.nombre = nombre;
@@ -62,11 +62,11 @@ public class Usuario {
 		this.email = email;
 	}
 
-	public Date getFechaNacimiento() {
+	public String getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 
-	public void setFechaNacimiento(Date fechaNacimiento) {
+	public void setFechaNacimiento(String fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
