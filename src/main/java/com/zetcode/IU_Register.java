@@ -199,6 +199,7 @@ public class IU_Register extends JFrame {
 										user_new.setDNI(DNI);
 										com.zetcode.Controlador.getControlador().storeUser(user_new);
 										JLabelError.setText("Registradoconexito");
+										dispose();
 										IU_Login hacerLogin = new IU_Login();
 										hacerLogin.setVisible(true);
 									}

@@ -94,8 +94,7 @@ public class Controlador
     @SuppressWarnings("null")
 	public Usuario getUserContrasena(String user, String password) throws SQLException {
 		Usuario u = null;
-		ResultSet resultadoSQL = GestorBD
-				.execSQL("SELECT * FROM USUARIO WHERE usuario='" + user + "' and pwd='" + password + "'");
+		ResultSet resultadoSQL = GestorBD.execSQL("SELECT * FROM USUARIO WHERE usuario='" + user + "' and pwd='" + password + "'");
 		boolean hayUser = resultadoSQL.next();
 		if (hayUser) {
 			u.setUser(resultadoSQL.getString(1));
@@ -179,10 +178,29 @@ public class Controlador
 		return j1;
 	}
     
-    	public JSONArray buscarMejoresXNivel()
-    	{
-    		JSONArray j2 = new JSONArray();
-		j2 = GestorPartidas.getGestorPartidas().buscarMejoresXNivel();
-		return j2;
-    	}
+	public JSONArray buscarMejoresXNivel()
+	{
+		JSONArray j2 = new JSONArray();
+	j2 = GestorPartidas.getGestorPartidas().buscarMejoresXNivel();
+	return j2;
+	}
+	public void cambiarDificultad(String dificultad,String pUsuario) {
+    	if (dificultad == "Facil") {
+			Board.getBoard(pUsuario).setBoardWidth(5);
+			Board.getBoard(pUsuario).setBoardHeight(11);
+			Board.getBoard(pUsuario).setPeriodInterval(450);
+
+		} else if (dificultad == "Normal") {
+			Board.getBoard(pUsuario).setBoardWidth(10);
+			Board.getBoard(pUsuario).setBoardHeight(22);
+			Board.getBoard(pUsuario).setPeriodInterval(300);
+
+		} else if (dificultad == "Dificil") {
+			Board.getBoard(pUsuario).setBoardWidth(20);
+			Board.getBoard(pUsuario).setBoardHeight(44);
+			Board.getBoard(pUsuario).setPeriodInterval(150);
+
+		}
+    	
+    }
 }

@@ -25,9 +25,9 @@ import java.sql.SQLException;
 public class Board extends JPanel {
 
 	private static Board miBoard;
-    private final int BOARD_WIDTH = 10;
-    private final int BOARD_HEIGHT = 22;
-    private final int PERIOD_INTERVAL = 300;
+    private int BOARD_WIDTH = 10;
+    private int BOARD_HEIGHT = 22;
+    private int PERIOD_INTERVAL = 300;
 
     private Timer timer;
     private boolean isFallingFinished = false;
@@ -47,13 +47,12 @@ public class Board extends JPanel {
     private Color ladrillo6;
     private Color ladrillo7;
     private int sonido;
-    /** ADSI **/
-    private String usuario = "eder";
+    private String usuario; 
     private Tetris padre;
-    /** ADSI **/
     
 
-    public Board(){
+    public Board(String pUsuario){
+    	usuario = pUsuario;
     	int idPersonalizacion = Controlador.getControlador().obtenerId(usuario);
     	if(idPersonalizacion == 0)	//no existe personalizacion
 		{
@@ -315,9 +314,9 @@ public class Board extends JPanel {
 		}
     }
 
-    public static Board getBoard(){
+    public static Board getBoard(String pUsuario){
 		if (Board.miBoard == null) {
-			Board.miBoard = new Board();
+			Board.miBoard = new Board(pUsuario);
 			
 		}
 		return Board.miBoard;
@@ -737,6 +736,21 @@ public class Board extends JPanel {
     	sonido = num;
     }
 
+    public void setBoardWidth(int width) {
+    	this.BOARD_WIDTH = width;
+    	
+    }
+    
+    public void setBoardHeight(int height) {
+    	this.BOARD_HEIGHT = height;
+    	
+    }
+    
+    public void setPeriodInterval(int periodInterval){
+    	this.PERIOD_INTERVAL = periodInterval;
+    	
+    }
+    
     private class GameCycle implements ActionListener {
 
         @Override

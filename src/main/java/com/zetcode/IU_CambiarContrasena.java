@@ -73,6 +73,7 @@ public class IU_CambiarContrasena extends JFrame {
 					if (password.compareTo(password2) == 0) {
 						Controlador.getControlador().setContrasena(password,pUsuario);
 						JLabelError.setText("Las contraseñas se han modificado correctamente");
+						dispose();
 						IU_Login rc = new IU_Login();
 						rc.setVisible(true);
 						jButton2_actionPerformed(e);

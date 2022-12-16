@@ -36,12 +36,14 @@ public class IU_MenuAdmin extends JFrame {
 
 		JButtonMenu.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
+				dispose();
 				IU_Menu m = new IU_Menu(pUsuario);
 				m.setVisible(true);
 			}
 		});
 		JButtonEliminarUser.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
+				dispose();
 				IU_EliminarUser eu = new IU_EliminarUser(pUsuario);
 				eu.setVisible(true);
 			}

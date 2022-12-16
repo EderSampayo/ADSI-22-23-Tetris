@@ -89,6 +89,7 @@ public class IU_Login extends JFrame {
 
 		JButtonAtras.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
+				dispose();
 				IU_MenuIniciador mi = new IU_MenuIniciador();
 				mi.setVisible(true);
 				jButton2_actionPerformed(e);
@@ -113,10 +114,12 @@ public class IU_Login extends JFrame {
 								if (Controlador.getControlador().getUserContrasena(user, password) != null) {
 									if(user.compareTo(admin)==0) {
 										JLabelError.setText("Logeado con exito");
+										dispose();
 										IU_MenuAdmin a = new IU_MenuAdmin(admin);
 										a.setVisible(true);
 									}else {
 										JLabelError.setText("Logeado con exito");
+										dispose();
 										IU_Menu a = new IU_Menu(user);
 										a.setVisible(true);
 									}
@@ -144,6 +147,7 @@ public class IU_Login extends JFrame {
 
 		JButtonRecuperarContrasena.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
+				dispose();
 				IU_RecuperarContrasena rc = new IU_RecuperarContrasena();
 				rc.setVisible(true);
 				jButton2_actionPerformed(e);

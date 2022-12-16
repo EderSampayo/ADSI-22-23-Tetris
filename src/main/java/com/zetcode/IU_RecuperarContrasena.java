@@ -70,10 +70,11 @@ public class IU_RecuperarContrasena extends JFrame {
 				if (validar(DNI)) {
 					if (emailVerify(email)) {
 						try {
-							if (com.zetcode.Controlador.getControlador().getDNI(email, DNI)) {
+							if (Controlador.getControlador().getDNI(email, DNI)) {
 								Usuario u = null;
-								u = com.zetcode.Controlador.getControlador().getUser_2(email,DNI);
-								IU_CambiarContraseña cc = new IU_CambiarContraseña(u.getUser());
+								u = Controlador.getControlador().getUser_2(email,DNI);
+								dispose();
+								IU_CambiarContrasena cc = new IU_CambiarContrasena(u.getUser());
 								cc.setVisible(true);
 							}
 						} catch (SQLException e1) {
@@ -87,6 +88,7 @@ public class IU_RecuperarContrasena extends JFrame {
 
 		JButtonAtras.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
+				dispose();
 				IU_Login l = new IU_Login();
 				l.setVisible(true);
 				jButton2_actionPerformed(e);

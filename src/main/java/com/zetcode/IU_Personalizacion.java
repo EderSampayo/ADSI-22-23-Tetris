@@ -64,6 +64,14 @@ public class IU_Personalizacion extends JFrame {
 		});
 		panelBotones.add(botonSonidos);
 		JButton botonDificultad = new JButton("Dificultad");
+		botonDificultad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Window ventana = FocusManager.getCurrentManager().getActiveWindow();
+				ventana.dispose();
+				IU_Dificultad frameTab = new IU_Dificultad(pUsuario);
+				frameTab.setVisible(true);
+			}
+		});
 		panelBotones.add(botonDificultad);
 		contentPane.add(panelBotones);
 		

@@ -53,6 +53,7 @@ public class IU_MenuIniciador extends JFrame {
 		
 		JButtonRegistrarse.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
+				dispose();
 				IU_Register r = new IU_Register();
 				r.setVisible(true);
 				jButton2_actionPerformed(e);
@@ -60,6 +61,7 @@ public class IU_MenuIniciador extends JFrame {
 		});
 		JButtonLogueate.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
+				dispose();
 				IU_Login l = new IU_Login();
 				l.setVisible(true);
 				jButton2_actionPerformed(e);
