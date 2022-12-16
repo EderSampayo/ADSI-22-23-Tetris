@@ -92,7 +92,7 @@ public class Controlador
     }
     
     @SuppressWarnings("null")
-	public Usuario getUserContraseña(String user, String password) throws SQLException {
+	public Usuario getUserContrasena(String user, String password) throws SQLException {
 		Usuario u = null;
 		ResultSet resultadoSQL = GestorBD
 				.execSQL("SELECT * FROM USUARIO WHERE usuario='" + user + "' and pwd='" + password + "'");
@@ -167,7 +167,7 @@ public class Controlador
 		return u;
 	}
 
-	public void setContraseña(String password, String pUsuario) {
+	public void setContrasena(String password, String pUsuario) {
 		GestorBD.execSQLVoid("UPDATE USUARIO SET pwd='" + password + "' WHERE usuario='" + pUsuario + "'");
 	}
 	

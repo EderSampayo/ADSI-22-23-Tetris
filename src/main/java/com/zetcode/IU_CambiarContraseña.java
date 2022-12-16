@@ -1,4 +1,4 @@
-package main.java.com.zetcode;
+package com.zetcode;
 
 import java.awt.EventQueue;
 
@@ -19,22 +19,6 @@ public class IU_CambiarContraseña extends JFrame {
 	private JPanel contentPane;
 	private JPasswordField passwordField;
 	private JPasswordField passwordField2; 
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					IU_CambiarContraseña frame = new IU_CambiarContraseña(null);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -87,7 +71,7 @@ public class IU_CambiarContraseña extends JFrame {
 					String password = String.valueOf(passwordField.getPassword());
 					String password2 = String.valueOf(passwordField2.getPassword());
 					if (password.compareTo(password2) == 0) {
-						main.java.com.zetcode.Controlador.getControlador().setContraseña(password,pUsuario);
+						Controlador.getControlador().setContrasena(password,pUsuario);
 						JLabelError.setText("Las contraseñas se han modificado correctamente");
 						IU_Login rc = new IU_Login();
 						rc.setVisible(true);

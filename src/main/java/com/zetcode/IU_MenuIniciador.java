@@ -1,4 +1,4 @@
-package main.java.com.zetcode;
+package com.zetcode;
 
 import java.awt.EventQueue;
 

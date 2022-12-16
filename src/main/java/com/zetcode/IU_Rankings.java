@@ -22,22 +22,6 @@ import javax.swing.JLabel;
 public class IU_Rankings extends JFrame {
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					IU_Rankings frame = new IU_Rankings("");
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public IU_Rankings(String usu) {
@@ -99,7 +83,7 @@ public class IU_Rankings extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Window ventana = FocusManager.getCurrentManager().getActiveWindow();
 				ventana.dispose();
-				Tetris frameTab = new Tetris();
+				IU_Menu frameTab = new IU_Menu(usu);
 				frameTab.setVisible(true);
 				
 			}

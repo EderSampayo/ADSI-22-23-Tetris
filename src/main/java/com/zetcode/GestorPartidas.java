@@ -63,7 +63,7 @@ public class GestorPartidas
     	JSONObject j1 = new JSONObject();
     	if (pUsuario.equals("")) 	//búsqueda global
     	{
-    		ResultSet resultadoSQL = GestorBD.getGestorBD().execSQL("SELECT * FROM Partida ORDER BY puntos DESC LIMIT 5");
+    		ResultSet resultadoSQL = GestorBD.execSQL("SELECT * FROM PARTIDA ORDER BY puntos DESC LIMIT 5");
     		while (resultadoSQL.next()) //Mientras haya datos 
     		{
     			String quien = resultadoSQL.getString("usuario"); 	//quién ha jugado dicha partida
@@ -74,7 +74,7 @@ public class GestorPartidas
     	}
     	else		//búsqueda solo de usuario
     	{
-    		ResultSet resultadoSQL = GestorBD.getGestorBD().execSQL("SELECT * FROM Partida WHERE usuario=%pUsuario% ORDER BY puntos DESC LIMIT 5");
+    		ResultSet resultadoSQL = GestorBD.execSQL("SELECT * FROM PARTIDA WHERE usuario=%pUsuario% ORDER BY puntos DESC LIMIT 5");
     		while (resultadoSQL.next())
     		{
     			int cuanto = resultadoSQL.getInt("puntos");		//puntuación obtenida en la partida
@@ -93,7 +93,7 @@ public class GestorPartidas
     	JSONObject j1n2 = new JSONObject();
     	JSONObject j1n3 = new JSONObject();
     	
-    	ResultSet resultadoSQL1 = GestorBD.getGestorBD().execSQL("SELECT * FROM Partida WHERE nivel=1 ORDER BY puntos DESC LIMIT 5");
+    	ResultSet resultadoSQL1 = GestorBD.execSQL("SELECT * FROM PARTIDA WHERE nivel=1 ORDER BY puntos DESC LIMIT 5");
 		try {
 			while (resultadoSQL1.next())
 			{
@@ -113,7 +113,7 @@ public class GestorPartidas
 		}
 		
 		
-		ResultSet resultadoSQL2 = GestorBD.getGestorBD().execSQL("SELECT * FROM Partida WHERE nivel=2 ORDER BY puntos DESC LIMIT 5");
+		ResultSet resultadoSQL2 = GestorBD.execSQL("SELECT * FROM PARTIDA WHERE nivel=2 ORDER BY puntos DESC LIMIT 5");
 		try {
 			while (resultadoSQL2.next())
 			{
@@ -133,7 +133,7 @@ public class GestorPartidas
 		}
 		
 		
-		ResultSet resultadoSQL3 = GestorBD.getGestorBD().execSQL("SELECT * FROM Partida WHERE nivel=3 ORDER BY puntos DESC LIMIT 5");
+		ResultSet resultadoSQL3 = GestorBD.execSQL("SELECT * FROM PARTIDA WHERE nivel=3 ORDER BY puntos DESC LIMIT 5");
 		try {
 			while (resultadoSQL3.next())
 			{

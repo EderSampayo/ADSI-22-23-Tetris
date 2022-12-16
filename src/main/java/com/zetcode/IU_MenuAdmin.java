@@ -1,4 +1,4 @@
-package main.java.com.zetcode;
+package com.zetcode;
 
 import java.awt.EventQueue;
 
@@ -11,22 +11,6 @@ import java.awt.Font;
 public class IU_MenuAdmin extends JFrame {
 
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					IU_MenuAdmin frame = new IU_MenuAdmin(null);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.

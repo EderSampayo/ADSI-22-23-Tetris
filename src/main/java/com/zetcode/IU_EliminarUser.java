@@ -1,4 +1,4 @@
-package main.java.com.zetcode;
+package com.zetcode;
 
 import java.awt.EventQueue;
 
@@ -23,22 +23,6 @@ public class IU_EliminarUser extends JFrame {
 	private JPanel contentPane;
 	private JComboBox<Usuario> comboBox = new JComboBox<Usuario>();
 	DefaultComboBoxModel<Usuario> modelEvents = new DefaultComboBoxModel<Usuario>();
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					IU_EliminarUser frame = new IU_EliminarUser(null);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -73,7 +57,7 @@ public class IU_EliminarUser extends JFrame {
 		contentPane.add(JLabelError);
 		
 		
-		Vector<Usuario> users = main.java.com.zetcode.Controlador.getControlador().getUsersList(pUsuario);
+		Vector<Usuario> users = Controlador.getControlador().getUsersList(pUsuario);
 		for(Usuario u:users) {
 			modelEvents.addElement(u);
 			comboBox.repaint();
@@ -87,6 +71,6 @@ public class IU_EliminarUser extends JFrame {
 	
 	private void jButtonCreate_actionPerformed(ActionEvent e) {
 		Usuario user = (Usuario) comboBox.getSelectedItem();
-		main.java.com.zetcode.Controlador.getControlador().deleteUser(user);
+		Controlador.getControlador().deleteUser(user);
 	}
 }

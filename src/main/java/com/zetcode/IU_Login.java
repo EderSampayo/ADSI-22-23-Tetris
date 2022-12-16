@@ -1,4 +1,4 @@
-package main.java.com.zetcode;
+package com.zetcode;
 
 import java.awt.EventQueue;
 import java.sql.*;
@@ -30,22 +30,6 @@ public class IU_Login extends JFrame {
 	private JPasswordField passwordField;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					IU_Login frame = new IU_Login();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public IU_Login() {
@@ -72,15 +56,15 @@ public class IU_Login extends JFrame {
 		contentPane.add(userField);
 		userField.setColumns(10);
 
-		JLabel JLabelContraseña = new JLabel("Contrase\u00F1a:");
-		JLabelContraseña.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		JLabelContraseña.setBounds(34, 166, 111, 14);
-		contentPane.add(JLabelContraseña);
+		JLabel JLabelContrasena = new JLabel("Contrase\u00F1a:");
+		JLabelContrasena.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		JLabelContrasena.setBounds(34, 166, 111, 14);
+		contentPane.add(JLabelContrasena);
 
-		JButton JButtonRecuperarContraseña = new JButton("RecuperarContrase\u00F1a");
-		JButtonRecuperarContraseña.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		JButtonRecuperarContraseña.setBounds(338, 117, 230, 93);
-		contentPane.add(JButtonRecuperarContraseña);
+		JButton JButtonRecuperarContrasena = new JButton("RecuperarContrase\u00F1a");
+		JButtonRecuperarContrasena.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		JButtonRecuperarContrasena.setBounds(338, 117, 230, 93);
+		contentPane.add(JButtonRecuperarContrasena);
 
 		passwordField = new JPasswordField();
 		passwordField.setColumns(10);
@@ -126,7 +110,7 @@ public class IU_Login extends JFrame {
 							String user = userField.getText();
 							String admin = "admin";
 							try {
-								if (main.java.com.zetcode.Controlador.getControlador().getUserContraseña(user, password) != null) {
+								if (Controlador.getControlador().getUserContrasena(user, password) != null) {
 									if(user.compareTo(admin)==0) {
 										JLabelError.setText("Logeado con exito");
 										IU_MenuAdmin a = new IU_MenuAdmin(admin);
@@ -158,9 +142,9 @@ public class IU_Login extends JFrame {
 			}
 		});
 
-		JButtonRecuperarContraseña.addActionListener(new java.awt.event.ActionListener() {
+		JButtonRecuperarContrasena.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
-				IU_RecuperarContraseña rc = new IU_RecuperarContraseña();
+				IU_RecuperarContrasena rc = new IU_RecuperarContrasena();
 				rc.setVisible(true);
 				jButton2_actionPerformed(e);
 

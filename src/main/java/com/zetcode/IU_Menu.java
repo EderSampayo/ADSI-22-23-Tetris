@@ -18,26 +18,9 @@ public class IU_Menu extends JFrame {
 	private JPanel contentPane;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					IU_Menu frame = new IU_Menu(null);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public IU_Menu(String pUsuario) {
-//		String pUsuario = "eder";
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -59,7 +42,7 @@ public class IU_Menu extends JFrame {
 		btnPerfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				PantallaPerfil perfil = new PantallaPerfil(pUsuario);
+				IU_Perfil perfil = new IU_Perfil(pUsuario);
 				perfil.setVisible(true);
 			}
 		});

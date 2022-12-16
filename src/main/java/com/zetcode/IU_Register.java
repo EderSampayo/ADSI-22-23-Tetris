@@ -1,6 +1,4 @@
-package main.java.com.zetcode;
-
-import java.awt.EventQueue;
+package com.zetcode;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -46,22 +44,6 @@ public class IU_Register extends JFrame {
 	private JTextField dniField;
 	private JPasswordField passwordField2;
 	private JTextField emailField;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					IU_Register frame = new IU_Register();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -208,14 +190,14 @@ public class IU_Register extends JFrame {
 						if (password.compareTo(password2) == 0) {
 							if (emailVerify(email)) {
 								try {
-									if (!main.java.com.zetcode.Controlador.getControlador().getUser(user)) {
+									if (!com.zetcode.Controlador.getControlador().getUser(user)) {
 										Usuario user_new = new Usuario(user, nombre, apellidos, DNI, email, fecha,
 												password);
 										user_new.setNombre(nombre);
 										user_new.setApellidos(apellidos);
 										user_new.setUser(user);
 										user_new.setDNI(DNI);
-										main.java.com.zetcode.Controlador.getControlador().storeUser(user_new);
+										com.zetcode.Controlador.getControlador().storeUser(user_new);
 										JLabelError.setText("Registradoconexito");
 										IU_Login hacerLogin = new IU_Login();
 										hacerLogin.setVisible(true);
