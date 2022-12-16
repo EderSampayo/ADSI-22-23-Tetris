@@ -8,14 +8,15 @@
 -- Estructura de tabla para la tabla 'partida'
 --
 
-CREATE TABLE PARTIDA IF NOT EXISTS(
+CREATE TABLE IF NOT EXISTS PARTIDA(
   id  int(11) NOT NULL,
   estadoPartida varchar(10000) NOT NULL,
   puntos int(11) DEFAULT NULL,
   nivel varchar(20) DEFAULT NULL,
   usuario varchar(40) NOT NULL,
   fecha date DEFAULT NULL,
-  hora time DEFAULT NULL
+  hora time DEFAULT NULL,
+  PRIMARY KEY(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -31,7 +32,7 @@ INSERT INTO PARTIDA(id, estadoPartida, puntos, nivel, usuario, fecha, hora) VALU
 -- Estructura de tabla para la tabla USUARIO
 --
 
-CREATE TABLE USUARIO IF NOT EXISTS(
+CREATE TABLE IF NOT EXISTS USUARIO(
   usuario varchar(40) NOT NULL,
   pwd varchar(40) NOT NULL,
   email varchar(40) NOT NULL,
@@ -39,7 +40,8 @@ CREATE TABLE USUARIO IF NOT EXISTS(
   apellidos varchar(40) NOT NULL,
   DNI varchar(9) NOT NULL,
   fNac date NOT NULL,
-  idPersonalizacion int AUTO_INCREMENT 
+  idPersonalizacion int AUTO_INCREMENT ;
+  PRIMARY KEY(usuario)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -55,7 +57,7 @@ INSERT INTO USUARIO(usuario, pwd, email, nombre, apellidos, DNI, fNac,idPersonal
 -- Estructura de tabla para la tabla PERSONALIZACION
 --
 
-CREATE TABLE PERSONALIZACION IF NOT EXISTS(
+CREATE TABLE IF NOT EXISTS PERSONALIZACION(
   id int NOT NULL,
   colorFondo int NOT NULL DEFAULT 0,
   ladrillo1 int NOT NULL DEFAULT 0,
@@ -65,7 +67,8 @@ CREATE TABLE PERSONALIZACION IF NOT EXISTS(
   ladrillo5 int NOT NULL DEFAULT 0,
   ladrillo6 int NOT NULL DEFAULT 0,
   ladrillo7 int NOT NULL DEFAULT 0,
-  sonido int NOT NULL DEFAULT 0
+  sonido int NOT NULL DEFAULT 0,
+  PRIMARY KEY(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -83,23 +86,13 @@ INSERT INTO PERSONALIZACION(id,colorFondo,ladrillo1,ladrillo2,ladrillo3,ladrillo
 -- Indices de la tabla PARTIDA
 --
 ALTER TABLE PARTIDA
-  ADD PRIMARY KEY (id),
   ADD KEY Test (USUARIO);
 
 --
 -- Indices de la tabla USUARIO
 --
 ALTER TABLE USUARIO
-  ADD PRIMARY KEY(USUARIO);
   ADD FOREIGN KEY(idPersonalizacion) REFERENCES PERSONALIZACION(id);
-
-
---
--- Indices de la tabla PERSONALIZACION
---
-ALTER TABLE PERSONALIZACION
-  ADD PRIMARY KEY (id);
-
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
@@ -119,7 +112,7 @@ ALTER TABLE partida
 --
 ALTER TABLE partida
   ADD CONSTRAINT partida_ibfk_1 FOREIGN KEY (usuario) REFERENCES usuario (usuario);
-COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
