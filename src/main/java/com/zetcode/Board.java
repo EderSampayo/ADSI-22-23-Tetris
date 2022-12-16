@@ -5,6 +5,8 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.DataLine;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -20,14 +22,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class Board extends JPanel {
 
 	private static Board miBoard;
-    private final int BOARD_WIDTH = 10;
-    private final int BOARD_HEIGHT = 22;
-    private final int PERIOD_INTERVAL = 300;
+    private int BOARD_WIDTH = 10;
+    private int BOARD_HEIGHT = 22;
+    private int PERIOD_INTERVAL = 300;
 
     private Timer timer;
     private boolean isFallingFinished = false;
@@ -47,13 +50,12 @@ public class Board extends JPanel {
     private Color ladrillo6;
     private Color ladrillo7;
     private int sonido;
-    /** ADSI **/
-    private String usuario = "eder";
+    private String usuario; 
     private Tetris padre;
-    /** ADSI **/
     
 
-    public Board(){
+    public Board(String pUsuario){
+    	usuario = pUsuario;
     	int idPersonalizacion = Controlador.getControlador().obtenerId(usuario);
     	if(idPersonalizacion == 0)	//no existe personalizacion
 		{
@@ -315,9 +317,9 @@ public class Board extends JPanel {
 		}
     }
 
-    public static Board getBoard(){
+    public static Board getBoard(String pUsuario){
 		if (Board.miBoard == null) {
-			Board.miBoard = new Board();
+			Board.miBoard = new Board(pUsuario);
 			
 		}
 		return Board.miBoard;
@@ -332,40 +334,15 @@ public class Board extends JPanel {
         	 this.setBackground(colorFondo);
         }
         addKeyListener(new TAdapter());
-        /*if(sonido == 1) {
-        	File audioFile = new File(audioFilePath);
-			 
-			AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
-			AudioFormat format = audioStream.getFormat();
-			 
-			DataLine.Info info = new DataLine.Info(Clip.class, format);
-			Clip audioClip = (Clip) AudioSystem.getLine(info);
-			audioClip.open(audioStream);
-			audioClip.start();
+        if(sonido == 1) {
+        	reproducirSonido("sonidos/menu.wav");
 		}
 		else if(sonido == 2) {
-			File audioFile = new File(audioFilePath);
-			 
-			AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
-			AudioFormat format = audioStream.getFormat();
-			 
-			DataLine.Info info = new DataLine.Info(Clip.class, format);
-			Clip audioClip = (Clip) AudioSystem.getLine(info);
-			audioClip.open(audioStream);
-			audioClip.start();
-
+			reproducirSonido("sonidos/juego.wav");
 		}
 		else if(sonido == 3) {
-			File audioFile = new File(audioFilePath);
-			 
-			AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
-			AudioFormat format = audioStream.getFormat();
-			 
-			DataLine.Info info = new DataLine.Info(Clip.class, format);
-			Clip audioClip = (Clip) AudioSystem.getLine(info);
-			audioClip.open(audioStream);
-			audioClip.start();
-		}*/
+			reproducirSonido("sonidos/juego2.wav");
+		}
     }
 
     private int squareWidth() {
@@ -736,7 +713,33 @@ public class Board extends JPanel {
     public void cambiarSonido(int num) {
     	sonido = num;
     }
+    
+    public void reproducirSonido(String nombreSonido){
+        try {
+         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(nombreSonido).getAbsoluteFile());
+         Clip clip = AudioSystem.getClip();
+         clip.open(audioInputStream);
+         clip.start();
+        } catch(UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
+          System.out.println("Error al reproducir el sonido.");
+        }
+      }
 
+    public void setBoardWidth(int width) {
+    	this.BOARD_WIDTH = width;
+    	
+    }
+    
+    public void setBoardHeight(int height) {
+    	this.BOARD_HEIGHT = height;
+    	
+    }
+    
+    public void setPeriodInterval(int periodInterval){
+    	this.PERIOD_INTERVAL = periodInterval;
+    	
+    }
+    
     private class GameCycle implements ActionListener {
 
         @Override

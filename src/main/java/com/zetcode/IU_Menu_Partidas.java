@@ -15,7 +15,6 @@ public class IU_Menu_Partidas extends JFrame {
 	private JPanel contentPane;
 
 	public IU_Menu_Partidas(String pUsuario) {
-		String usuario = pUsuario;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -59,7 +58,7 @@ public class IU_Menu_Partidas extends JFrame {
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();	//Cierra la ventana actual
-				IU_Menu menuPrincipal = new IU_Menu();
+				IU_Menu menuPrincipal = new IU_Menu(pUsuario);
 				menuPrincipal.setVisible(true);
 			}
 		});

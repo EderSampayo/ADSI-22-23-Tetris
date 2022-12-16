@@ -16,6 +16,7 @@ import java.awt.event.ActionEvent;
 public class IU_Menu extends JFrame {
 
 	private JPanel contentPane;
+	private static String usuario = "eder";
 
 	/**
 	 * Launch the application.
@@ -24,7 +25,7 @@ public class IU_Menu extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					IU_Menu frame = new IU_Menu();
+					IU_Menu frame = new IU_Menu(usuario);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -32,12 +33,11 @@ public class IU_Menu extends JFrame {
 			}
 		});
 	}
-
+	
 	/**
 	 * Create the frame.
 	 */
-	public IU_Menu() {
-		String pUsuario = "eder";
+	public IU_Menu(String pUsuario) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -59,7 +59,7 @@ public class IU_Menu extends JFrame {
 		btnPerfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				PantallaPerfil perfil = new PantallaPerfil(pUsuario);
+				IU_Perfil perfil = new IU_Perfil(pUsuario);
 				perfil.setVisible(true);
 			}
 		});
@@ -68,7 +68,9 @@ public class IU_Menu extends JFrame {
 		JButton btnRankings = new JButton("Rankings");
 		btnRankings.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TODO Controlador de Rankings
+				dispose();
+				IU_Rankings frameTab = new IU_Rankings(pUsuario);
+				frameTab.setVisible(true);
 			}
 		});
 		contentPane.add(btnRankings);

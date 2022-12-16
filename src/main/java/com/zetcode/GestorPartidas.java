@@ -3,6 +3,10 @@ package com.zetcode;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+
 public class GestorPartidas
 {
     private static GestorPartidas miGestorPartidas;
@@ -51,6 +55,108 @@ public class GestorPartidas
             resultadoSQL.close();
             return null;
         }
+    }
+    
+    
+    public JSONObject buscarMejoresPartidas(String pUsuario) throws SQLException
+	{
+    	JSONObject j1 = new JSONObject();
+    	if (pUsuario.equals("")) 	//búsqueda global
+    	{
+    		ResultSet resultadoSQL = GestorBD.execSQL("SELECT * FROM PARTIDA ORDER BY puntos DESC LIMIT 5");
+    		while (resultadoSQL.next()) //Mientras haya datos 
+    		{
+    			String quien = resultadoSQL.getString("usuario"); 	//quién ha jugado dicha partida
+    			int cuanto = resultadoSQL.getInt("puntos");		//puntuación obtenida en la partida
+    			j1.put(quien, cuanto);
+    		}
+    		resultadoSQL.close();
+    	}
+    	else		//búsqueda solo de usuario
+    	{
+    		ResultSet resultadoSQL = GestorBD.execSQL("SELECT * FROM PARTIDA WHERE usuario=%pUsuario% ORDER BY puntos DESC LIMIT 5");
+    		while (resultadoSQL.next())
+    		{
+    			int cuanto = resultadoSQL.getInt("puntos");		//puntuación obtenida en la partida
+    			//no se pregunta el usuario de cada partida porque ya se conoce
+    			j1.put(pUsuario, cuanto);
+    		}
+    		resultadoSQL.close();
+    	}
+    	return j1;
+	}
+    
+    public JSONArray buscarMejoresXNivel()
+    {
+    	JSONArray j2 = new JSONArray();
+    	JSONObject j1n1 = new JSONObject();
+    	JSONObject j1n2 = new JSONObject();
+    	JSONObject j1n3 = new JSONObject();
+    	
+    	ResultSet resultadoSQL1 = GestorBD.execSQL("SELECT * FROM PARTIDA WHERE nivel=1 ORDER BY puntos DESC LIMIT 5");
+		try {
+			while (resultadoSQL1.next())
+			{
+				int cuanto = resultadoSQL1.getInt("puntos");		//puntuación obtenida en la partida
+				String quien = resultadoSQL1.getString("usuario");	//quién ha jugado dicha partida
+				j1n1.put(quien, cuanto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			resultadoSQL1.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		ResultSet resultadoSQL2 = GestorBD.execSQL("SELECT * FROM PARTIDA WHERE nivel=2 ORDER BY puntos DESC LIMIT 5");
+		try {
+			while (resultadoSQL2.next())
+			{
+				int cuanto = resultadoSQL2.getInt("puntos");		//puntuación obtenida en la partida
+				String quien = resultadoSQL2.getString("usuario");	//quién ha jugado dicha partida
+				j1n2.put(quien, cuanto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			resultadoSQL2.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		ResultSet resultadoSQL3 = GestorBD.execSQL("SELECT * FROM PARTIDA WHERE nivel=3 ORDER BY puntos DESC LIMIT 5");
+		try {
+			while (resultadoSQL3.next())
+			{
+				int cuanto = resultadoSQL3.getInt("puntos");		//puntuación obtenida en la partida
+				String quien = resultadoSQL3.getString("usuario");	//quién ha jugado dicha partida
+				j1n3.put(quien, cuanto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			resultadoSQL3.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		j2.put(j1n1);
+		j2.put(j1n2);
+		j2.put(j1n3);
+		
+		return j2;
     }
 
 }

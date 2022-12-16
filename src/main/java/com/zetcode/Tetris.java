@@ -32,15 +32,15 @@ public class Tetris extends JFrame {
 
     public Tetris(String pEstadoPartida, String pUsuario) { //ADSI
 
-        initUI(pEstadoPartida);
+        initUI(pEstadoPartida,pUsuario);
     }
 
-    private void initUI(String pEstadoPartida) { //ADSI
+    private void initUI(String pEstadoPartida,String pUsuario) { //ADSI
 
         statusbar = new JLabel(" 0");
         add(statusbar, BorderLayout.SOUTH);
 
-        var board = Board.getBoard();
+        var board = Board.getBoard(pUsuario);
         board.initBoard(this);
         add(board);
         board.start(pEstadoPartida); //ADSI

@@ -1,10 +1,13 @@
 package com.zetcode;
 
 import java.io.File;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.util.Vector;
+
 import org.apache.ibatis.jdbc.ScriptRunner;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -137,4 +140,27 @@ public class GestorBD
     	}
     	return resultado;
     }
+    
+    @SuppressWarnings("unchecked")
+   	public static Vector<Usuario> execSQLList(String pConsulta) { //SELECT
+       	Vector<Usuario> res = new Vector<Usuario>();
+       	try {
+               if (conexion != null) {
+                   conexion.close();
+               }
+               if (consulta != null) {
+                   consulta.close();
+               }
+               conexion = GestorBD.getConnection();
+       		consulta = conexion.createStatement();
+       		Vector<Usuario>  list = (Vector<Usuario>) consulta.executeQuery(pConsulta);
+       		for(Usuario result : list) {
+       			res.add(result);
+       		}
+       	} catch (Exception e) {
+               e.printStackTrace();
+       		System.err.println(e);
+       	}
+       	return res;
+       }
 }
