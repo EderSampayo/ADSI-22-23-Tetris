@@ -33,15 +33,14 @@ INSERT INTO PARTIDA(id, estadoPartida, puntos, nivel, usuario, fecha, hora) VALU
 --
 
 CREATE TABLE IF NOT EXISTS USUARIO(
-  usuario varchar(40) NOT NULL,
+  usuario varchar(40) NOT NULL PRIMARY KEY,
   pwd varchar(40) NOT NULL,
   email varchar(40) NOT NULL,
   nombre varchar(40) NOT NULL,
   apellidos varchar(40) NOT NULL,
   DNI varchar(9) NOT NULL,
   fNac varchar(40) NOT NULL,
-  idPersonalizacion IDENTITY NOT NULL,
-  PRIMARY KEY(usuario)
+  idPersonalizacion NOT NULL AUTO_INCREMENT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -58,7 +57,7 @@ INSERT INTO USUARIO(usuario, pwd, email, nombre, apellidos, DNI, fNac,idPersonal
 --
 
 CREATE TABLE IF NOT EXISTS PERSONALIZACION(
-  id int NOT NULL,
+  id int IDENTITY NOT NULL PRIMARY KEY,
   colorFondo int NOT NULL DEFAULT 0,
   ladrillo1 int NOT NULL DEFAULT 0,
   ladrillo2 int NOT NULL DEFAULT 0,
@@ -67,8 +66,7 @@ CREATE TABLE IF NOT EXISTS PERSONALIZACION(
   ladrillo5 int NOT NULL DEFAULT 0,
   ladrillo6 int NOT NULL DEFAULT 0,
   ladrillo7 int NOT NULL DEFAULT 0,
-  sonido int NOT NULL DEFAULT 0,
-  PRIMARY KEY(id)
+  sonido int NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
