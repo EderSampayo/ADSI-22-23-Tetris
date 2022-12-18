@@ -9,7 +9,7 @@
 --
 
 CREATE TABLE IF NOT EXISTS PARTIDA(
-  id int(11) IDENTITY NOT NULL PRIMARY KEY,
+  id int NOT NULL AUTO_INCREMENT,
   estadoPartida varchar(10000) DEFAULT NULL,
   puntos int(11) DEFAULT NULL,
   nivel int DEFAULT NULL,
