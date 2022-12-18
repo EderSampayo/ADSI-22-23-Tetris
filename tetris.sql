@@ -66,24 +66,6 @@ CREATE TABLE IF NOT EXISTS PERSONALIZACION(
 -- Volcado de datos para la tabla PERSONALIZACION
 --
 
-INSERT INTO PERSONALIZACION(id,colorFondo,ladrillo1,ladrillo2,ladrillo3,ladrillo4,ladrillo5,ladrillo6,ladrillo7,sonido) VALUES
-(1,0,0,0,0,0,0,0,0,0);
-
---
--- Índices para tablas volcadas
---
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla partida
---
-ALTER TABLE partida
-  ADD CONSTRAINT partida_ibfk_1 FOREIGN KEY (usuario) REFERENCES usuario (usuario);
-
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
