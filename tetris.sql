@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS USUARIO(
   apellidos varchar(40) NOT NULL,
   DNI varchar(9) NOT NULL,
   fNac varchar(40) NOT NULL,
-  idPersonalizacion NOT NULL AUTO_INCREMENT
+  idPersonalizacion int NOT NULL AUTO_INCREMENT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
