@@ -103,4 +103,8 @@ public class GestorPersonalizacion
 		GestorBD.execSQLVoid("UPDATE PERSONALIZACION SET ladrillo1 = 0, ladrillo2 = 0, ladrillo3 = 0, ladrillo4 = 0, ladrillo5 = 0, ladrillo6 = 0, ladrillo7 = 0 WHERE id='"+pId+"'");
         System.out.println("Colores por defecto cambiados correctamente");
 	}
+
+	public void crearPersonalizacion(int pId) {
+		GestorBD.execSQLVoid("INSERT INTO PERSONALIZACION(id,colorFondo,ladrillo1,ladrillo2,ladrillo3,ladrillo4,ladrillo5,ladrillo6,ladrillo7,sonido) VALUES ("+pId+",0,0,0,0,0,0,0,0,0)");
+	}
 }

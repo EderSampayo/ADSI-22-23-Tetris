@@ -136,9 +136,11 @@ public class Controlador
 
 	public void storeUser(Usuario user) {
 		String email = user.getEmail();
-		GestorBD.execSQLVoid("INSERT INTO USUARIO VALUES ('" + user.getUser() + "','" + user.getClave() + "','"
+		GestorBD.execSQLVoid("INSERT INTO USUARIO(usuario, pwd, email, nombre, apellidos, DNI, fNac) VALUES ('" + user.getUser() + "','" + user.getClave() + "','"
 				+ email + "','" + user.getNombre() + "','" + user.getApellidos() + "','" + user.getDNI() + "','"
 				+ user.getFechaNacimiento() + "',)");
+		int id = obtenerId(user.getUser());
+		GestorPersonalizacion.getGestorPersonalizacion().crearPersonalizacion(id);
 	}
 
 	public boolean getDNI(String email, String DNI) throws SQLException {
