@@ -31,8 +31,6 @@ import javax.swing.JTextField;
 //import main.java.com.zetcode.InternetAddress;
 //import javax.mail.internet.InternetAddress;
 
-import com.toedter.calendar.JDateChooser;
-
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.EventQueue;
