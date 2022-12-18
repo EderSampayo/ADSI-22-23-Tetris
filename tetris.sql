@@ -33,23 +33,15 @@ INSERT INTO PARTIDA(id, estadoPartida, puntos, nivel, usuario, fecha, hora) VALU
 --
 
 CREATE TABLE IF NOT EXISTS USUARIO(
-  usuario varchar(40) NOT NULL,
+  usuario varchar(40) NOT NULL PRIMARY KEY,
   pwd varchar(40) NOT NULL,
   email varchar(40) NOT NULL,
   nombre varchar(40) NOT NULL,
   apellidos varchar(40) NOT NULL,
   DNI varchar(9) NOT NULL,
   fNac varchar(40) NOT NULL,
-  idPersonalizacion IDENTITY NOT NULL,
-  PRIMARY KEY(usuario)
+  idPersonalizacion int NOT NULL AUTO_INCREMENT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla USUARIO
---
-
-INSERT INTO USUARIO(usuario, pwd, email, nombre, apellidos, DNI, fNac,idPersonalizacion) VALUES
-('eder', 'eder', 'eder@eder.com', 'Eder', 'Sampayo', '55555555K', '2002-03-12',1);
 
 -- --------------------------------------------------------
 
@@ -58,7 +50,7 @@ INSERT INTO USUARIO(usuario, pwd, email, nombre, apellidos, DNI, fNac,idPersonal
 --
 
 CREATE TABLE IF NOT EXISTS PERSONALIZACION(
-  id int NOT NULL,
+  id int NOT NULL PRIMARY KEY,
   colorFondo int NOT NULL DEFAULT 0,
   ladrillo1 int NOT NULL DEFAULT 0,
   ladrillo2 int NOT NULL DEFAULT 0,
@@ -67,37 +59,12 @@ CREATE TABLE IF NOT EXISTS PERSONALIZACION(
   ladrillo5 int NOT NULL DEFAULT 0,
   ladrillo6 int NOT NULL DEFAULT 0,
   ladrillo7 int NOT NULL DEFAULT 0,
-  sonido int NOT NULL DEFAULT 0,
-  PRIMARY KEY(id)
+  sonido int NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla PERSONALIZACION
 --
-
-INSERT INTO PERSONALIZACION(id,colorFondo,ladrillo1,ladrillo2,ladrillo3,ladrillo4,ladrillo5,ladrillo6,ladrillo7,sonido) VALUES
-(1,0,0,0,0,0,0,0,0,0);
-
---
--- Índices para tablas volcadas
---
-
-
---
--- Indices de la tabla USUARIO
---
-ALTER TABLE USUARIO
-  ADD FOREIGN KEY(idPersonalizacion) REFERENCES PERSONALIZACION(id);
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla partida
---
-ALTER TABLE partida
-  ADD CONSTRAINT partida_ibfk_1 FOREIGN KEY (usuario) REFERENCES usuario (usuario);
-
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
