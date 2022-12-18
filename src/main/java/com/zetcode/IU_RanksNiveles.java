@@ -133,97 +133,109 @@ public class IU_RanksNiveles extends JFrame {
 		JSONObject j1n3 = (JSONObject) j2.remove(2);		//Mejores partidas nivel 3
 		
 		//Actualizar ranking Nivel 1
-		Iterator<String> itr1 = j1n1.keys();
-		int i1 = 1;
-		while(itr1.hasNext())
+		if (j1n1!=null)
 		{
-			String quien = itr1.next();
-			int cuanto = (int) j1n1.remove(quien); 	//Cuántos puntos ha hecho ese usuario
-			String cuantoS = Integer.toString(cuanto);
-			if(i1==1)
+			Iterator<String> itr1 = j1n1.keys();
+			int i1 = 1;
+			while(itr1.hasNext())
 			{
-				n11.setText("1- "+quien+" "+cuantoS);
+				String quien = itr1.next();
+				int cuanto = (int) j1n1.remove(quien); 	//Cuï¿½ntos puntos ha hecho ese usuario
+				String cuantoS = Integer.toString(cuanto);
+				if(i1==1)
+				{
+					n11.setText("1- "+quien+" "+cuantoS);
+				}
+				if(i1==2)
+				{
+					n12.setText("2- "+quien+" "+cuantoS);		
+				}
+				if(i1==3)
+				{
+					n13.setText("3- "+quien+" "+cuantoS);			
+				}
+				if(i1==4)
+				{
+					n14.setText("4- "+quien+" "+cuantoS);			
+				}
+				if(i1==5)
+				{
+					n15.setText("5- "+quien+" "+cuantoS);			
+				}
+				i1++;
 			}
-			else if(i1==2)
-			{
-				n12.setText("2- "+quien+" "+cuantoS);		
-			}
-			else if(i1==3)
-			{
-				n13.setText("3- "+quien+" "+cuantoS);			
-			}
-			else if(i1==4)
-			{
-				n14.setText("4- "+quien+" "+cuantoS);			
-			}
-			else if(i1==5)
-			{
-				n15.setText("5- "+quien+" "+cuantoS);			
-			}
-			i1++;
-		}
-
-		//Actualizar ranking Nivel 2
-		Iterator<String> itr2 = j1n2.keys();
-		int i2 = 1;
-		while(itr2.hasNext())
-		{
-			String quien = itr2.next();
-			int cuanto = (int) j1n2.remove(quien); 	//Cuántos puntos ha hecho ese usuario
-			String cuantoS = Integer.toString(cuanto);
-			if(i2==1)
-			{
-				n21.setText("1- "+quien+" "+cuantoS);
-			}
-			else if(i2==2)
-			{
-				n22.setText("2- "+quien+" "+cuantoS);		
-			}
-			else if(i2==3)
-			{
-				n23.setText("3- "+quien+" "+cuantoS);			
-			}
-			else if(i2==4)
-			{
-				n24.setText("4- "+quien+" "+cuantoS);			
-			}
-			else if(i2==5)
-			{
-				n25.setText("5- "+quien+" "+cuantoS);			
-			}
-			i2++;
 		}
 		
-		//Actualizar ranking Nivel 3
-		Iterator<String> itr3 = j1n3.keys();
-		int i3 = 1;
-		while(itr3.hasNext())
+
+		//Actualizar ranking Nivel 2
+		if (j1n2!=null)
 		{
-			String quien = itr3.next();
-			int cuanto = (int) j1n3.remove(quien); 	//Cuántos puntos ha hecho ese usuario
-			String cuantoS = Integer.toString(cuanto);
-			if(i3==1)
+			Iterator<String> itr2 = j1n2.keys();
+			int i2 = 1;
+			while(itr2.hasNext())
 			{
-				n31.setText("1- "+quien+" "+cuantoS);
+				String quien = itr2.next();
+				int cuanto = (int) j1n2.remove(quien); 	//Cuï¿½ntos puntos ha hecho ese usuario
+				String cuantoS = Integer.toString(cuanto);
+				if(i2==1)
+				{
+					n21.setText("1- "+quien+" "+cuantoS);
+				}
+				if(i2==2)
+				{
+					n22.setText("2- "+quien+" "+cuantoS);		
+				}
+				if(i2==3)
+				{
+					n23.setText("3- "+quien+" "+cuantoS);			
+				}
+				if(i2==4)
+				{
+					n24.setText("4- "+quien+" "+cuantoS);			
+				}
+				if(i2==5)
+				{
+					n25.setText("5- "+quien+" "+cuantoS);			
+				}
+				i2++;
 			}
-			else if(i3==2)
-			{
-				n32.setText("2- "+quien+" "+cuantoS);		
-			}
-			else if(i3==3)
-			{
-				n33.setText("3- "+quien+" "+cuantoS);			
-			}
-			else if(i3==4)
-			{
-				n34.setText("4- "+quien+" "+cuantoS);			
-			}
-			else if(i3==5)
-			{
-				n35.setText("5- "+quien+" "+cuantoS);			
-			}
-			i3++;
 		}
+		
+		
+		//Actualizar ranking Nivel 3
+		if (j1n3!=null)
+		{
+			Iterator<String> itr3 = j1n3.keys();
+			int i3 = 1;
+			while(itr3.hasNext())
+			{
+				String quien = itr3.next();
+				int cuanto = (int) j1n3.remove(quien); 	//Cuï¿½ntos puntos ha hecho ese usuario
+				String cuantoS = Integer.toString(cuanto);
+				if(i3==1)
+				{
+					n31.setText("1- "+quien+" "+cuantoS);
+				}
+				if(i3==2)
+				{
+					n32.setText("2- "+quien+" "+cuantoS);		
+				}
+				if(i3==3)
+				{
+					n33.setText("3- "+quien+" "+cuantoS);			
+				}
+				if(i3==4)
+				{
+					n34.setText("4- "+quien+" "+cuantoS);			
+				}
+				if(i3==5)
+				{
+					n35.setText("5- "+quien+" "+cuantoS);			
+				}
+				i3++;
+			}
+		}
+		
 	}
 
 }

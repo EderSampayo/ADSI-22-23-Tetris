@@ -18,7 +18,7 @@ public class IU_Pausa extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public IU_Pausa(String pEstadoPartida, String pUsuario) {
+	public IU_Pausa(String pEstadoPartida, String pUsuario,int puntos) {
 		String estadoPartida = pEstadoPartida;
 		String usuario = pUsuario;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,7 +36,7 @@ public class IU_Pausa extends JFrame {
 		btnReanudar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();	//Cierra la ventana actual
-				Tetris tetris = new Tetris(pEstadoPartida, pUsuario);
+				Tetris tetris = new Tetris(pEstadoPartida, pUsuario, puntos);
 				tetris.setVisible(true);
 				//System.out.println(pEstadoPartida);
 			}
@@ -47,7 +47,7 @@ public class IU_Pausa extends JFrame {
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Controlador.getControlador().eliminarPartidaGuardada(pUsuario);
-				Controlador.getControlador().guardarPartida(pEstadoPartida, pUsuario);
+				Controlador.getControlador().guardarPartida(pEstadoPartida, pUsuario, puntos);
 			}
 		});
 		panel.add(btnGuardar);
@@ -62,22 +62,5 @@ public class IU_Pausa extends JFrame {
 		});
 		panel.add(btnSalir);
 
-		new ActionListener()
-		{
-			public void actionPerformed(ActionEvent e) {
-				if(e.getSource().equals(btnReanudar))
-				{
-
-				}
-				else if(e.getSource().equals(btnGuardar))
-				{
-					com.zetcode.Controlador.getControlador().guardarPartida(estadoPartida, usuario);
-				}
-				else if(e.getSource().equals(btnSalir))
-				{
-
-				}
-			}
-		};
 	}
 }

@@ -125,17 +125,15 @@ public class IU_RanksGlobal extends JFrame {
 		JLabel lblNewLabel_7 = new JLabel("");
 		contentPane.add(lblNewLabel_7);
 		contentPane.add(btnVolver);
-		
-		
-		JSONObject j1 = new JSONObject();
+	
 
-		j1 = Controlador.getControlador().buscarMejoresPartidas("");		//Se buscan las mejores partidas de entre todos los usuarios
+		JSONObject j1 = Controlador.getControlador().buscarMejoresPartidas("");		//Se buscan las mejores partidas de entre todos los usuarios
 		Iterator<String> itr = j1.keys();  //Iterador de los usuarios
 		int i = 1;
 		while(itr.hasNext())
 		{
 			String quien = itr.next();
-			int cuanto = (int) j1.remove(quien); 	//Cuántos puntos ha hecho ese usuario
+			int cuanto = (int) j1.remove("puntos"); 	//Cuántos puntos ha hecho ese usuario
 			String cuantoS = Integer.toString(cuanto);
 			if(i==1)
 			{

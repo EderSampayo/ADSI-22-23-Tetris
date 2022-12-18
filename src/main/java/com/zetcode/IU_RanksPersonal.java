@@ -128,8 +128,7 @@ public class IU_RanksPersonal extends JFrame {
 		
 		
 		
-		JSONObject j1 = new JSONObject();
-		j1 = Controlador.getControlador().buscarMejoresPartidas("Usuario");		//Se buscan las mejores partidas del usuario que está jugando. Hay que hacer un getUsuario
+		JSONObject j1 = Controlador.getControlador().buscarMejoresPartidas(usu);		//Se buscan las mejores partidas del usuario que está jugando. Hay que hacer un getUsuario
 		
 		Iterator<String> itr = j1.keys();  //Iterador de los usuarios
 		int i = 1;

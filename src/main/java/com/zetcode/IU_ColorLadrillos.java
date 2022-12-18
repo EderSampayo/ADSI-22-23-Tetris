@@ -78,37 +78,37 @@ public class IU_ColorLadrillos extends JFrame {
 		botonRojo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(botonCuadrado.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.RED,1);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.RED,1);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,1,1);
 				}
 				else if(botonRecto.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.RED,2);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.RED,2);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,1,2);
 				}
 				else if(botonL.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.RED,3);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.RED,3);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,1,3);
 				}
 				else if(botonLInversa.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.RED,4);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.RED,4);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,1,4);
 				}
 				else if(botonTPequena.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.RED,5);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.RED,5);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,1,5);
 				}
 				else if(botonZ.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.RED,6);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.RED,6);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,1,6);
 				}
 				else if(botonZInversa.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.RED,7);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.RED,7);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,1,7);
 				}
@@ -121,37 +121,37 @@ public class IU_ColorLadrillos extends JFrame {
 		botonVerde.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(botonCuadrado.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.GREEN,1);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.GREEN,1);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,2,1);
 				}
 				else if(botonRecto.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.GREEN,2);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.GREEN,2);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,2,2);
 				}
 				else if(botonL.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.GREEN,3);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.GREEN,3);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,2,3);
 				}
 				else if(botonLInversa.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.GREEN,4);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.GREEN,4);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,2,4);
 				}
 				else if(botonTPequena.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.GREEN,5);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.GREEN,5);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,2,5);
 				}
 				else if(botonZ.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.GREEN,6);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.GREEN,6);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,2,6);
 				}
 				else if(botonZInversa.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.GREEN,7);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.GREEN,7);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,2,7);
 				}
@@ -164,37 +164,37 @@ public class IU_ColorLadrillos extends JFrame {
 		botonAmarillo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(botonCuadrado.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.YELLOW,1);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.YELLOW,1);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,3,1);
 				}
 				else if(botonRecto.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.YELLOW,2);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.YELLOW,2);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,3,2);
 				}
 				else if(botonL.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.YELLOW,3);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.YELLOW,3);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,3,3);
 				}
 				else if(botonLInversa.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.YELLOW,4);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.YELLOW,4);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,3,4);
 				}
 				else if(botonTPequena.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.YELLOW,5);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.YELLOW,5);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,3,5);
 				}
 				else if(botonZ.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.YELLOW,6);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.YELLOW,6);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,3,6);
 				}
 				else if(botonZInversa.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.YELLOW,7);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.YELLOW,7);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,3,7);
 				}
@@ -206,37 +206,37 @@ public class IU_ColorLadrillos extends JFrame {
 		botonAzul.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(botonCuadrado.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.BLUE,1);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.BLUE,1);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,4,1);
 				}
 				else if(botonRecto.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.BLUE,2);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.BLUE,2);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,4,2);
 				}
 				else if(botonL.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.BLUE,3);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.BLUE,3);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,4,3);
 				}
 				else if(botonLInversa.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.BLUE,4);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.BLUE,4);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,4,4);
 				}
 				else if(botonTPequena.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.BLUE,5);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.BLUE,5);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,4,5);
 				}
 				else if(botonZ.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.BLUE,6);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.BLUE,6);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,4,6);
 				}
 				else if(botonZInversa.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.BLUE,7);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.BLUE,7);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,4,7);
 				}
@@ -248,37 +248,37 @@ public class IU_ColorLadrillos extends JFrame {
 		botonRosa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(botonCuadrado.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.PINK,1);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.PINK,1);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,5,1);
 				}
 				else if(botonRecto.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.PINK,2);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.PINK,2);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,5,2);
 				}
 				else if(botonL.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.PINK,3);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.PINK,3);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,5,3);
 				}
 				else if(botonLInversa.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.PINK,4);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.PINK,4);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,5,4);
 				}
 				else if(botonTPequena.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.PINK,5);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.PINK,5);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,5,5);
 				}
 				else if(botonZ.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.PINK,6);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.PINK,6);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,5,6);
 				}
 				else if(botonZInversa.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.PINK,7);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.PINK,7);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,5,7);
 				}
@@ -290,37 +290,37 @@ public class IU_ColorLadrillos extends JFrame {
 		botonBlanco.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(botonCuadrado.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.WHITE,1);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.WHITE,1);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,6,1);
 				}
 				else if(botonRecto.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.WHITE,2);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.WHITE,2);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,6,2);
 				}
 				else if(botonL.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.WHITE,3);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.WHITE,3);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,6,3);
 				}
 				else if(botonLInversa.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.WHITE,4);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.WHITE,4);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,6,4);
 				}
 				else if(botonTPequena.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.WHITE,5);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.WHITE,5);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,6,5);
 				}
 				else if(botonZ.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.WHITE,6);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.WHITE,6);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,6,6);
 				}
 				else if(botonZInversa.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.WHITE,7);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.WHITE,7);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,6,7);
 				}
@@ -332,37 +332,37 @@ public class IU_ColorLadrillos extends JFrame {
 		botonNaranja.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(botonCuadrado.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.ORANGE,1);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.ORANGE,1);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,7,1);
 				}
 				else if(botonRecto.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.ORANGE,2);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.ORANGE,2);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,7,2);
 				}
 				else if(botonL.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.ORANGE,3);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.ORANGE,3);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,7,3);
 				}
 				else if(botonLInversa.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.ORANGE,4);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.ORANGE,4);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,7,4);
 				}
 				else if(botonTPequena.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.ORANGE,5);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.ORANGE,5);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,7,5);
 				}
 				else if(botonZ.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.ORANGE,6);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.ORANGE,6);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,7,6);
 				}
 				else if(botonZInversa.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.ORANGE,7);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.ORANGE,7);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,7,7);
 				}
@@ -374,37 +374,37 @@ public class IU_ColorLadrillos extends JFrame {
 		botonGrisClaro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(botonCuadrado.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.LIGHT_GRAY,1);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.LIGHT_GRAY,1);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,8,1);
 				}
 				else if(botonRecto.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.LIGHT_GRAY,2);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.LIGHT_GRAY,2);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,8,2);
 				}
 				else if(botonL.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.LIGHT_GRAY,3);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.LIGHT_GRAY,3);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,8,3);
 				}
 				else if(botonLInversa.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.LIGHT_GRAY,4);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.LIGHT_GRAY,4);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,8,4);
 				}
 				else if(botonTPequena.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.LIGHT_GRAY,5);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.LIGHT_GRAY,5);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,8,5);
 				}
 				else if(botonZ.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.LIGHT_GRAY,6);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.LIGHT_GRAY,6);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,8,6);
 				}
 				else if(botonZInversa.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.LIGHT_GRAY,7);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.LIGHT_GRAY,7);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,8,7);
 				}
@@ -416,37 +416,37 @@ public class IU_ColorLadrillos extends JFrame {
 		botonCyan.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(botonCuadrado.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.CYAN,1);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.CYAN,1);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,9,1);
 				}
 				else if(botonRecto.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.CYAN,2);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.CYAN,2);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,9,2);
 				}
 				else if(botonL.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.CYAN,3);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.CYAN,3);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,9,3);
 				}
 				else if(botonLInversa.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.CYAN,4);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.CYAN,4);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,9,4);
 				}
 				else if(botonTPequena.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.CYAN,5);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.CYAN,5);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,9,5);
 				}
 				else if(botonZ.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.CYAN,6);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.CYAN,6);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,9,6);
 				}
 				else if(botonZInversa.isSelected()) {
-					Board.getBoard(pUsuario).cambiarColorLadrillo(Color.CYAN,7);
+					Board.getBoard(pUsuario,0).cambiarColorLadrillo(Color.CYAN,7);
 					int id = Controlador.getControlador().obtenerId(pUsuario);
 					Controlador.getControlador().cambiarColorLadrilloBD(id,9,7);
 				}
@@ -470,7 +470,7 @@ public class IU_ColorLadrillos extends JFrame {
 		JButton botonColoresDefault = new JButton("Colores default");
 		botonColoresDefault.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Board.getBoard(pUsuario).ponerColoresDefault();
+				Board.getBoard(pUsuario,0).ponerColoresDefault();
 				int id = Controlador.getControlador().obtenerId(pUsuario);
 				Controlador.getControlador().ponerColoresDefaultBD(id);
 			}

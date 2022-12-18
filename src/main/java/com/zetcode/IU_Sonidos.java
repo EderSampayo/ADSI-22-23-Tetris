@@ -42,7 +42,7 @@ public class IU_Sonidos extends JFrame {
 		JButton botonSonido1 = new JButton("Sonido 1");
 		botonSonido1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Board.getBoard(pUsuario).cambiarSonido(1);
+				Board.getBoard(pUsuario,0).cambiarSonido(1);
 				int id = Controlador.getControlador().obtenerId(pUsuario);
 				Controlador.getControlador().cambiarSonidoBD(id,1);
 			}
@@ -51,7 +51,7 @@ public class IU_Sonidos extends JFrame {
 		JButton botonSonido2 = new JButton("Sonido 2");
 		botonSonido2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Board.getBoard(pUsuario).cambiarSonido(2);
+				Board.getBoard(pUsuario,0).cambiarSonido(2);
 				int id = Controlador.getControlador().obtenerId(pUsuario);
 				Controlador.getControlador().cambiarSonidoBD(id,2);
 			}
@@ -60,7 +60,7 @@ public class IU_Sonidos extends JFrame {
 		JButton botonSonido3 = new JButton("Sonido 3");
 		botonSonido3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Board.getBoard(pUsuario).cambiarSonido(3);
+				Board.getBoard(pUsuario,0).cambiarSonido(3);
 				int id = Controlador.getControlador().obtenerId(pUsuario);
 				Controlador.getControlador().cambiarSonidoBD(id,3);
 			}

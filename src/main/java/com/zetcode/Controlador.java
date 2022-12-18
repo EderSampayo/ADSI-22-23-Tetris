@@ -33,9 +33,9 @@ public class Controlador
         GestorPartidas.getGestorPartidas().eliminarPartidaGuardada(pUsuario);
     }
 
-    public void guardarPartida(String pEstadoPartida, String pUsuario)
+    public void guardarPartida(String pEstadoPartida, String pUsuario, int puntos)
     {
-        GestorPartidas.getGestorPartidas().guardarPartida(pEstadoPartida, pUsuario);
+        GestorPartidas.getGestorPartidas().guardarPartida(pEstadoPartida, pUsuario, puntos);
     }
 
     public String buscarEstadoPartida(String pUsuario)
@@ -185,27 +185,41 @@ public class Controlador
     
 	public JSONArray buscarMejoresXNivel()
 	{
-		JSONArray j2 = new JSONArray();
-	j2 = GestorPartidas.getGestorPartidas().buscarMejoresXNivel();
+		JSONArray j2 = GestorPartidas.getGestorPartidas().buscarMejoresXNivel();
 	return j2;
 	}
 	public void cambiarDificultad(int dificultad,String pUsuario) {
     	if (dificultad == 1) {
-			Board.getBoard(pUsuario).setBoardWidth(5);
-			Board.getBoard(pUsuario).setBoardHeight(11);
-			Board.getBoard(pUsuario).setPeriodInterval(450);
+			Board.getBoard(pUsuario,0).setBoardWidth(5);
+			Board.getBoard(pUsuario,0).setBoardHeight(11);
+			Board.getBoard(pUsuario,0).setPeriodInterval(450);
 
 		} else if (dificultad == 2) {
-			Board.getBoard(pUsuario).setBoardWidth(10);
-			Board.getBoard(pUsuario).setBoardHeight(22);
-			Board.getBoard(pUsuario).setPeriodInterval(300);
+			Board.getBoard(pUsuario,0).setBoardWidth(10);
+			Board.getBoard(pUsuario,0).setBoardHeight(22);
+			Board.getBoard(pUsuario,0).setPeriodInterval(300);
 
 		} else if (dificultad == 3) {
-			Board.getBoard(pUsuario).setBoardWidth(20);
-			Board.getBoard(pUsuario).setBoardHeight(44);
-			Board.getBoard(pUsuario).setPeriodInterval(150);
+			Board.getBoard(pUsuario,0).setBoardWidth(20);
+			Board.getBoard(pUsuario,0).setBoardHeight(44);
+			Board.getBoard(pUsuario,0).setPeriodInterval(150);
 
 		}
     	
     }
+
+	public int obtenerPuntos(String pUsuario) {
+		try {
+			return GestorPartidas.getGestorPartidas().obtenerPuntos(pUsuario);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
+	public void guardarPartidaTerminada(int puntos, int nivel, String usuario) {
+		GestorPartidas.getGestorPartidas().guardarPartidaTerminada(puntos,nivel,usuario);
+		
+	}
 }

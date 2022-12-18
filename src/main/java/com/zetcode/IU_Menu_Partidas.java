@@ -30,7 +30,7 @@ public class IU_Menu_Partidas extends JFrame {
 		btnNuevaPartida.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();	//Cierra la ventana actual
-				Tetris tetris = new Tetris(null, pUsuario);				//aqui igual hay que poner lo de niveles
+				Tetris tetris = new Tetris(null, pUsuario,0);				//aqui igual hay que poner lo de niveles
 				tetris.setVisible(true);
 			}
 		});
@@ -47,7 +47,8 @@ public class IU_Menu_Partidas extends JFrame {
 				else
 				{
 					dispose();	//Cierra la ventana actual
-					Tetris tetris = new Tetris(estadoPartida, pUsuario);
+					int puntos = Controlador.getControlador().obtenerPuntos(pUsuario);
+					Tetris tetris = new Tetris(estadoPartida, pUsuario,puntos);
 					tetris.setVisible(true);
 				}
 			}
