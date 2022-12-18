@@ -334,15 +334,6 @@ public class Board extends JPanel {
         	 this.setBackground(colorFondo);
         }
         addKeyListener(new TAdapter());
-        if(sonido == 1) {
-        	reproducirSonido("sonidos/menu.wav");
-		}
-		else if(sonido == 2) {
-			reproducirSonido("sonidos/juego.wav");
-		}
-		else if(sonido == 3) {
-			reproducirSonido("sonidos/juego2.wav");
-		}
     }
 
     private int squareWidth() {
@@ -477,7 +468,7 @@ public class Board extends JPanel {
 
     private void doDrawing(Graphics g) {
 
-        var size = getSize();
+    	var size = getSize();
         int boardTop = (int) size.getHeight() - BOARD_HEIGHT * squareHeight();
 
         for (int i = 0; i < BOARD_HEIGHT; i++) {
@@ -528,7 +519,7 @@ public class Board extends JPanel {
     private void oneLineDown() {
 
         if (!tryMove(curPiece, curX, curY - 1)) {
-
+        
             pieceDropped();
         }
     }
@@ -544,7 +535,7 @@ public class Board extends JPanel {
     private void pieceDropped() {
 
         for (int i = 0; i < 4; i++) {
-
+        	
             int x = curX + curPiece.x(i);
             int y = curY - curPiece.y(i);
             board[(y * BOARD_WIDTH) + x] = curPiece.getShape();
@@ -566,6 +557,7 @@ public class Board extends JPanel {
 
         if (!tryMove(curPiece, curX, curY)) {
 
+        	
             curPiece.setShape(Tetrominoe.NoShape);
             timer.stop();
 
@@ -620,6 +612,15 @@ public class Board extends JPanel {
 
             if (lineIsFull) {
 
+            	if(sonido == 1) {
+                	reproducirSonido("sonidos/bloque.wav");
+        		}
+        		else if(sonido == 2) {
+        			reproducirSonido("sonidos/golpe.wav");
+        		}
+        		else if(sonido == 3) {
+        			reproducirSonido("sonidos/arco.wav");
+        		}
                 numFullLines++;
 
                 for (int k = i; k < BOARD_HEIGHT - 1; k++) {

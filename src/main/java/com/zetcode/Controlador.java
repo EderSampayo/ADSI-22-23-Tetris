@@ -93,8 +93,8 @@ public class Controlador
     
     @SuppressWarnings("null")
 	public Usuario getUserContrasena(String user, String password) throws SQLException {
-		Usuario u = null;
-		ResultSet resultadoSQL = GestorBD.execSQL("SELECT * FROM USUARIO WHERE usuario='" + user + "' and pwd='" + password + "'");
+		Usuario u = new Usuario(null,null,null,null,null,null,null);
+		ResultSet resultadoSQL = GestorBD.execSQL("SELECT * FROM USUARIO WHERE usuario='" + user + "' AND pwd='" + password + "'");
 		boolean hayUser = resultadoSQL.next();
 		if (hayUser) {
 			u.setUser(resultadoSQL.getString(1));
@@ -103,11 +103,13 @@ public class Controlador
 			u.setNombre(resultadoSQL.getString(4));
 			u.setApellidos(resultadoSQL.getString(5));
 			u.setDNI(resultadoSQL.getString(6));
-			u.setFechaNacimiento(resultadoSQL.getDate(7));
+			u.setFechaNacimiento(resultadoSQL.getString(7));
 			resultadoSQL.close();
 			return u;
 		}
-		return u;
+		else {
+			return null;
+		}
 	}
 
 	public void deleteUser(Usuario user) {
@@ -133,9 +135,12 @@ public class Controlador
 	}
 
 	public void storeUser(Usuario user) {
-		GestorBD.execSQLVoid("INSERT INTO USUARIO VALUES (" + user.getUser() + "," + user.getClave() + ","
-				+ user.getEmail() + "," + user.getNombre() + "," + user.getApellidos() + "," + user.getDNI() + ","
-				+ user.getFechaNacimiento() + ")");
+		String email = user.getEmail();
+		GestorBD.execSQLVoid("INSERT INTO USUARIO(usuario, pwd, email, nombre, apellidos, DNI, fNac) VALUES ('" + user.getUser() + "','" + user.getClave() + "','"
+				+ email + "','" + user.getNombre() + "','" + user.getApellidos() + "','" + user.getDNI() + "','"
+				+ user.getFechaNacimiento() + "',)");
+		int id = obtenerId(user.getUser());
+		GestorPersonalizacion.getGestorPersonalizacion().crearPersonalizacion(id);
 	}
 
 	public boolean getDNI(String email, String DNI) throws SQLException {
@@ -148,7 +153,7 @@ public class Controlador
 
 	@SuppressWarnings("null")
 	public Usuario getUser_2(String email, String DNI) throws SQLException {
-		Usuario u = null;
+		Usuario u = new Usuario(null,null,null,null,null,null,null);
 		ResultSet resultadoSQL = GestorBD
 				.execSQL("SELECT * FROM USUARIO WHERE email='" + email + "' and DNI='" + DNI + "'");
 		boolean hayUser = resultadoSQL.next();
@@ -159,7 +164,7 @@ public class Controlador
 			u.setNombre(resultadoSQL.getString(4));
 			u.setApellidos(resultadoSQL.getString(5));
 			u.setDNI(resultadoSQL.getString(6));
-			u.setFechaNacimiento(resultadoSQL.getDate(7));
+			u.setFechaNacimiento(resultadoSQL.getString(7));
 			resultadoSQL.close();
 			return u;
 		}
@@ -184,18 +189,18 @@ public class Controlador
 	j2 = GestorPartidas.getGestorPartidas().buscarMejoresXNivel();
 	return j2;
 	}
-	public void cambiarDificultad(String dificultad,String pUsuario) {
-    	if (dificultad == "Facil") {
+	public void cambiarDificultad(int dificultad,String pUsuario) {
+    	if (dificultad == 1) {
 			Board.getBoard(pUsuario).setBoardWidth(5);
 			Board.getBoard(pUsuario).setBoardHeight(11);
 			Board.getBoard(pUsuario).setPeriodInterval(450);
 
-		} else if (dificultad == "Normal") {
+		} else if (dificultad == 2) {
 			Board.getBoard(pUsuario).setBoardWidth(10);
 			Board.getBoard(pUsuario).setBoardHeight(22);
 			Board.getBoard(pUsuario).setPeriodInterval(300);
 
-		} else if (dificultad == "Dificil") {
+		} else if (dificultad == 3) {
 			Board.getBoard(pUsuario).setBoardWidth(20);
 			Board.getBoard(pUsuario).setBoardHeight(44);
 			Board.getBoard(pUsuario).setPeriodInterval(150);
