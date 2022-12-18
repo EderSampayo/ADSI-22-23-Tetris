@@ -43,6 +43,12 @@ CREATE TABLE IF NOT EXISTS USUARIO(
   idPersonalizacion int NOT NULL AUTO_INCREMENT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Metemos el administrador en la base de datos manualmente
+--
+
+INSERT INTO USUARIO(usuario, pwd, email, nombre, apellidos, DNI, fNac,idPersonalizacion) VALUES
+('admin', 'admin', 'admin@gmail.com', 'Administrador', 'Admin Admin', '55555555K', '2002-03-12',1);
 -- --------------------------------------------------------
 
 --
