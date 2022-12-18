@@ -149,7 +149,7 @@ public class Controlador
 
 	@SuppressWarnings("null")
 	public Usuario getUser_2(String email, String DNI) throws SQLException {
-		Usuario u = null;
+		Usuario u = new Usuario(null,null,null,null,null,null,null);
 		ResultSet resultadoSQL = GestorBD
 				.execSQL("SELECT * FROM USUARIO WHERE email='" + email + "' and DNI='" + DNI + "'");
 		boolean hayUser = resultadoSQL.next();
