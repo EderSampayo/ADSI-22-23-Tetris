@@ -43,13 +43,6 @@ CREATE TABLE IF NOT EXISTS USUARIO(
   idPersonalizacion int NOT NULL AUTO_INCREMENT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla USUARIO
---
-
-INSERT INTO USUARIO(usuario, pwd, email, nombre, apellidos, DNI, fNac,idPersonalizacion) VALUES
-('eder', 'eder', 'eder@eder.com', 'Eder', 'Sampayo', '55555555K', '2002-03-12',1);
-
 -- --------------------------------------------------------
 
 --
@@ -80,12 +73,6 @@ INSERT INTO PERSONALIZACION(id,colorFondo,ladrillo1,ladrillo2,ladrillo3,ladrillo
 -- Índices para tablas volcadas
 --
 
-
---
--- Indices de la tabla USUARIO
---
-ALTER TABLE USUARIO
-  ADD FOREIGN KEY(idPersonalizacion) REFERENCES PERSONALIZACION(id);
 --
 -- Restricciones para tablas volcadas
 --
