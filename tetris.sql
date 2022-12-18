@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS USUARIO(
   apellidos varchar(40) NOT NULL,
   DNI varchar(9) NOT NULL,
   fNac date NOT NULL,
-  idPersonalizacion int AUTO_INCREMENT ;
+  idPersonalizacion int NOT NULL AUTO_INCREMENT,
   PRIMARY KEY(usuario)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -82,27 +82,12 @@ INSERT INTO PERSONALIZACION(id,colorFondo,ladrillo1,ladrillo2,ladrillo3,ladrillo
 -- Índices para tablas volcadas
 --
 
---
--- Indices de la tabla PARTIDA
---
-ALTER TABLE PARTIDA
-  ADD KEY Test (USUARIO);
 
 --
 -- Indices de la tabla USUARIO
 --
 ALTER TABLE USUARIO
   ADD FOREIGN KEY(idPersonalizacion) REFERENCES PERSONALIZACION(id);
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla partida
---
-ALTER TABLE PARTIDA
-  MODIFY id int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
 --
 -- Restricciones para tablas volcadas
 --
