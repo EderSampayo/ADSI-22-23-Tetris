@@ -44,7 +44,7 @@ public class IU_ColorDeFondo extends JFrame {
 		botonRojo.setBackground(Color.RED);
 		botonRojo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Board.getBoard(pUsuario).cambiarColorFondo(Color.RED);
+				Board.getBoard(pUsuario,0).cambiarColorFondo(Color.RED);
 				int id = Controlador.getControlador().obtenerId(pUsuario);
 				Controlador.getControlador().cambiarColorFondoBD(id,1);
 			}
@@ -54,7 +54,7 @@ public class IU_ColorDeFondo extends JFrame {
 		botonVerde.setBackground(Color.GREEN);
 		botonVerde.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Board.getBoard(pUsuario).cambiarColorFondo(Color.GREEN);
+				Board.getBoard(pUsuario,0).cambiarColorFondo(Color.GREEN);
 				int id = Controlador.getControlador().obtenerId(pUsuario);
 				Controlador.getControlador().cambiarColorFondoBD(id,2);
 			}
@@ -64,7 +64,7 @@ public class IU_ColorDeFondo extends JFrame {
 		botonAmarillo.setBackground(Color.YELLOW);
 		botonAmarillo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Board.getBoard(pUsuario).cambiarColorFondo(Color.YELLOW);
+				Board.getBoard(pUsuario,0).cambiarColorFondo(Color.YELLOW);
 				int id = Controlador.getControlador().obtenerId(pUsuario);
 				Controlador.getControlador().cambiarColorFondoBD(id,3);
 			}
@@ -74,7 +74,7 @@ public class IU_ColorDeFondo extends JFrame {
 		botonAzul.setBackground(Color.BLUE);
 		botonAzul.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Board.getBoard(pUsuario).cambiarColorFondo(Color.BLUE);
+				Board.getBoard(pUsuario,0).cambiarColorFondo(Color.BLUE);
 				int id = Controlador.getControlador().obtenerId(pUsuario);
 				Controlador.getControlador().cambiarColorFondoBD(id,4);
 			}
@@ -84,7 +84,7 @@ public class IU_ColorDeFondo extends JFrame {
 		botonRosa.setBackground(Color.PINK);
 		botonRosa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Board.getBoard(pUsuario).cambiarColorFondo(Color.PINK);
+				Board.getBoard(pUsuario,0).cambiarColorFondo(Color.PINK);
 				int id = Controlador.getControlador().obtenerId(pUsuario);
 				Controlador.getControlador().cambiarColorFondoBD(id,5);
 			}
@@ -94,7 +94,7 @@ public class IU_ColorDeFondo extends JFrame {
 		botonBlanco.setBackground(Color.WHITE);
 		botonBlanco.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Board.getBoard(pUsuario).cambiarColorFondo(Color.WHITE);
+				Board.getBoard(pUsuario,0).cambiarColorFondo(Color.WHITE);
 				int id = Controlador.getControlador().obtenerId(pUsuario);
 				Controlador.getControlador().cambiarColorFondoBD(id,6);
 			}
@@ -104,7 +104,7 @@ public class IU_ColorDeFondo extends JFrame {
 		botonNaranja.setBackground(Color.ORANGE);
 		botonNaranja.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Board.getBoard(pUsuario).cambiarColorFondo(Color.ORANGE);
+				Board.getBoard(pUsuario,0).cambiarColorFondo(Color.ORANGE);
 				int id = Controlador.getControlador().obtenerId(pUsuario);
 				Controlador.getControlador().cambiarColorFondoBD(id,7);
 			}
@@ -114,7 +114,7 @@ public class IU_ColorDeFondo extends JFrame {
 		botonGrisClaro.setBackground(Color.LIGHT_GRAY);
 		botonGrisClaro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Board.getBoard(pUsuario).cambiarColorFondo(Color.LIGHT_GRAY);
+				Board.getBoard(pUsuario,0).cambiarColorFondo(Color.LIGHT_GRAY);
 				int id = Controlador.getControlador().obtenerId(pUsuario);
 				Controlador.getControlador().cambiarColorFondoBD(id,8);
 			}
@@ -124,7 +124,7 @@ public class IU_ColorDeFondo extends JFrame {
 		botonCyan.setBackground(Color.CYAN);
 		botonCyan.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Board.getBoard(pUsuario).cambiarColorFondo(Color.CYAN);
+				Board.getBoard(pUsuario,0).cambiarColorFondo(Color.CYAN);
 				int id = Controlador.getControlador().obtenerId(pUsuario);
 				Controlador.getControlador().cambiarColorFondoBD(id,9);
 			}
@@ -147,7 +147,7 @@ public class IU_ColorDeFondo extends JFrame {
 		JButton botonColoresDefault = new JButton("Colores default");
 		botonColoresDefault.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Board.getBoard(pUsuario).ponerColorDeFondoDefault();
+				Board.getBoard(pUsuario,0).ponerColorDeFondoDefault();
 				int id = Controlador.getControlador().obtenerId(pUsuario);
 				Controlador.getControlador().cambiarColorFondoBD(id,0);
 			}

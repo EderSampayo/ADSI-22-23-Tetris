@@ -25,22 +25,20 @@ Author: Jan Bodnar
 Website: https://zetcode.com
  */
 public class Tetris extends JFrame {
-	
-	private static final Logger logger = LogManager.getLogger(Tetris.class);
 
 	private JLabel statusbar;
 
-    public Tetris(String pEstadoPartida, String pUsuario) { //ADSI
+    public Tetris(String pEstadoPartida, String pUsuario,int puntos) { //ADSI
 
-        initUI(pEstadoPartida,pUsuario);
+        initUI(pEstadoPartida,pUsuario,puntos);
     }
 
-    private void initUI(String pEstadoPartida,String pUsuario) { //ADSI
+    private void initUI(String pEstadoPartida,String pUsuario,int puntos) { //ADSI
 
-        statusbar = new JLabel(" 0");
+        statusbar = new JLabel(String.valueOf(puntos));
         add(statusbar, BorderLayout.SOUTH);
 
-        var board = Board.getBoard(pUsuario);
+        var board = Board.getBoard(pUsuario,puntos);
         board.initBoard(this);
         add(board);
         board.start(pEstadoPartida); //ADSI
@@ -54,15 +52,5 @@ public class Tetris extends JFrame {
     JLabel getStatusBar() {
 
         return statusbar;
-    }
-    
-    public static void main(String[] args) {
-
-    	logger.info("Playing");
-        EventQueue.invokeLater(() -> {
-
-        	var game = new Tetris(null, "eder");
-            game.setVisible(true);
-        });
     }
 }

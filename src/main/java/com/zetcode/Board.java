@@ -24,6 +24,9 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Board extends JPanel {
 
@@ -54,7 +57,8 @@ public class Board extends JPanel {
     private Tetris padre;
     
 
-    public Board(String pUsuario){
+    public Board(String pUsuario,int puntos){
+    	numLinesRemoved = puntos;
     	usuario = pUsuario;
     	int idPersonalizacion = Controlador.getControlador().obtenerId(usuario);
     	if(idPersonalizacion == 0)	//no existe personalizacion
@@ -317,9 +321,9 @@ public class Board extends JPanel {
 		}
     }
 
-    public static Board getBoard(String pUsuario){
+    public static Board getBoard(String pUsuario,int puntos){
 		if (Board.miBoard == null) {
-			Board.miBoard = new Board(pUsuario);
+			Board.miBoard = new Board(pUsuario,puntos);
 			
 		}
 		return Board.miBoard;
@@ -382,7 +386,8 @@ public class Board extends JPanel {
             padre.dispose();
             String estadoPartida = this.convertirBoardAString();
 
-            IU_Pausa pausa= new IU_Pausa(estadoPartida, usuario);
+            miBoard = null;
+            IU_Pausa pausa= new IU_Pausa(estadoPartida, usuario, numLinesRemoved);
             pausa.setVisible(true);
         } else {
 
@@ -561,6 +566,17 @@ public class Board extends JPanel {
             curPiece.setShape(Tetrominoe.NoShape);
             timer.stop();
 
+            int nivel = 0;
+            if(BOARD_WIDTH == 5) {
+            	nivel = 1;
+            }
+            else if(BOARD_WIDTH == 10) {
+            	nivel = 2;
+            }
+            else if(BOARD_WIDTH == 20) {
+            	nivel = 3;
+            }
+            Controlador.getControlador().guardarPartidaTerminada(numLinesRemoved,nivel,usuario);
             var msg = String.format("Game over. Score: %d", numLinesRemoved);
             statusbar.setText(msg);
         }

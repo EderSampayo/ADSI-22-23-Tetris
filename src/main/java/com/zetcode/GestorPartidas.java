@@ -33,9 +33,9 @@ public class GestorPartidas
         //System.out.println("Partida antigua eliminada correctamente");
     }
 
-    public void guardarPartida(String pEstadoPartida, String pUsuario)
+    public void guardarPartida(String pEstadoPartida, String pUsuario, int puntos)
     {
-        GestorBD.execSQLVoid("INSERT INTO PARTIDA(estadoPartida, usuario) VALUES ('"+pEstadoPartida+"', '"+pUsuario+"')");
+        GestorBD.execSQLVoid("INSERT INTO PARTIDA(estadoPartida, puntos, usuario) VALUES ('"+pEstadoPartida+"',"+puntos+",'"+pUsuario+"')");
         System.out.println("Partida guardada correctamente");
     }
 
@@ -66,20 +66,18 @@ public class GestorPartidas
     		ResultSet resultadoSQL = GestorBD.execSQL("SELECT * FROM PARTIDA ORDER BY puntos DESC LIMIT 5");
     		while (resultadoSQL.next()) //Mientras haya datos 
     		{
-    			String quien = resultadoSQL.getString("usuario"); 	//quién ha jugado dicha partida
-    			int cuanto = resultadoSQL.getInt("puntos");		//puntuación obtenida en la partida
-    			j1.put(quien, cuanto);
+    			j1.put("quien",resultadoSQL.getString("usuario")); 	//quién ha jugado dicha partida
+    			j1.put("puntos",resultadoSQL.getInt("puntos"));		//puntuación obtenida en la partida
     		}
     		resultadoSQL.close();
     	}
     	else		//búsqueda solo de usuario
     	{
-    		ResultSet resultadoSQL = GestorBD.execSQL("SELECT * FROM PARTIDA WHERE usuario= "+pUsuario+" ORDER BY puntos DESC LIMIT 5");
+    		ResultSet resultadoSQL = GestorBD.execSQL("SELECT * FROM PARTIDA WHERE usuario='"+pUsuario+"' ORDER BY puntos DESC LIMIT 5");
     		while (resultadoSQL.next())
     		{
-    			int cuanto = resultadoSQL.getInt("puntos");		//puntuación obtenida en la partida
+    			j1.put("puntos",resultadoSQL.getInt("puntos"));
     			//no se pregunta el usuario de cada partida porque ya se conoce
-    			j1.put(pUsuario, cuanto);
     		}
     		resultadoSQL.close();
     	}
@@ -158,5 +156,28 @@ public class GestorPartidas
 		
 		return j2;
     }
+
+	public int obtenerPuntos(String pUsuario) throws SQLException {
+		ResultSet resultadoSQL= GestorBD.execSQL("SELECT puntos FROM PARTIDA WHERE usuario='"+pUsuario+"' AND fecha IS NULL");
+        boolean hayPartida = resultadoSQL.next();
+        int rdo = 0;
+        if(hayPartida)
+        {
+            rdo = resultadoSQL.getInt(1);
+            resultadoSQL.close();
+            return rdo;
+        }
+        else
+        {
+            System.out.println("No tienes ninguna partida guardada");
+            resultadoSQL.close();
+            return rdo;
+        } 
+	}
+
+	public void guardarPartidaTerminada(int puntos, int nivel, String usuario) {
+		GestorBD.execSQLVoid("INSERT INTO PARTIDA(puntos, nivel, usuario, fecha, hora) VALUES ("+puntos+","+nivel+",'"+usuario+"',CURDATE(),CURTIME())");
+        System.out.println("Partida guardada correctamente");
+	}
 
 }
