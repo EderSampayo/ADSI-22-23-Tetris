@@ -128,41 +128,45 @@ public class IU_RanksGlobal extends JFrame {
 	
 
 		JSONObject j1 = Controlador.getControlador().buscarMejoresPartidas("");		//Se buscan las mejores partidas de entre todos los usuarios
-		Iterator<String> itr = j1.keys();  //Iterador de los usuarios
-		int i = 1;
-		while(itr.hasNext())
+		if (j1!=null)
 		{
-			String quien = itr.next();
-			int cuanto = (int) j1.remove("puntos"); 	//Cuántos puntos ha hecho ese usuario
-			String cuantoS = Integer.toString(cuanto);
-			if(i==1)
+			Iterator<String> itr = j1.keys();  //Iterador de los usuarios
+			int i = 1;
+			while(itr.hasNext())
 			{
-				nom1.setText(quien);
-				pts1.setText(cuantoS);
+				String quien = itr.next();
+				int cuanto = (int) j1.remove(quien); 	//Cuï¿½ntos puntos ha hecho ese usuario
+				String cuantoS = Integer.toString(cuanto);
+				if(i==1)
+				{
+					nom1.setText(quien);
+					pts1.setText(cuantoS);
+				}
+				else if(i==2)
+				{
+					nom2.setText(quien);
+					pts2.setText(cuantoS);				
+				}
+				else if(i==3)
+				{
+					nom3.setText(quien);
+					pts3.setText(cuantoS);				
+				}
+				else if(i==4)
+				{
+					nom4.setText(quien);
+					pts4.setText(cuantoS);				
+				}
+				else if(i==5)
+				{
+					nom5.setText(quien);
+					pts5.setText(cuantoS);				
+				}
+				
+				i++;
 			}
-			else if(i==2)
-			{
-				nom2.setText(quien);
-				pts2.setText(cuantoS);				
-			}
-			else if(i==3)
-			{
-				nom3.setText(quien);
-				pts3.setText(cuantoS);				
-			}
-			else if(i==4)
-			{
-				nom4.setText(quien);
-				pts4.setText(cuantoS);				
-			}
-			else if(i==5)
-			{
-				nom5.setText(quien);
-				pts5.setText(cuantoS);				
-			}
-			
-			i++;
 		}
+		
 		
 		
 		
