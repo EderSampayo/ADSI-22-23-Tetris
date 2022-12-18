@@ -12,6 +12,8 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.Period;
@@ -33,6 +35,7 @@ import com.toedter.calendar.JDateChooser;
 
 import javax.swing.JButton;
 import java.awt.Color;
+import java.awt.EventQueue;
 
 public class IU_Register extends JFrame {
 
@@ -44,6 +47,7 @@ public class IU_Register extends JFrame {
 	private JTextField dniField;
 	private JPasswordField passwordField2;
 	private JTextField emailField;
+	private JTextField fechaField;
 
 	/**
 	 * Create the frame.
@@ -112,10 +116,6 @@ public class IU_Register extends JFrame {
 		dniField.setBounds(489, 115, 185, 20);
 		contentPane.add(dniField);
 
-		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setBounds(489, 158, 185, 20);
-		contentPane.add(dateChooser);
-
 		JLabel JLabelRepetirContraseña = new JLabel("Repetir contrase\u00F1a:");
 		JLabelRepetirContraseña.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		JLabelRepetirContraseña.setBounds(27, 189, 132, 29);
@@ -158,6 +158,11 @@ public class IU_Register extends JFrame {
 		JLabelError.setBounds(349, 35, 325, 14);
 		contentPane.add(JLabelError);
 
+		fechaField = new JTextField();
+		fechaField.setColumns(10);
+		fechaField.setBounds(489, 155, 185, 20);
+		contentPane.add(fechaField);
+
 		JButtonAtras.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
 				IU_MenuIniciador mi = new IU_MenuIniciador();
@@ -170,7 +175,7 @@ public class IU_Register extends JFrame {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				if (userField.getText() == null || passwordField.getPassword() == null || emailField.getText() == null
-						|| dniField.getText() == null || dateChooser.getDate() == null) {
+						|| dniField.getText() == null || fechaField.getText() == null) {
 					JLabelError.setText("Porfavor complete todos los campos");
 				} else {
 					String nombre = nombreField.getText();
@@ -180,7 +185,7 @@ public class IU_Register extends JFrame {
 					String password2 = String.valueOf(passwordField2.getPassword());
 					String email = emailField.getText();
 					String DNI = dniField.getText();
-					Date fecha = dateChooser.getDate();
+					String fecha = fechaField.getText();
 //					LocalDate birthDate = LocalDate.of(fecha.getYear(), fecha.getMonth(), fecha.getDay());
 //					Date currentDate = Date.from(Instant.now());
 //					LocalDate currentDate2 = LocalDate.of(currentDate.getYear(), currentDate.getMonth(),
@@ -189,23 +194,26 @@ public class IU_Register extends JFrame {
 					if (validar(DNI)) {
 						if (password.compareTo(password2) == 0) {
 							if (emailVerify(email)) {
-								try {
-									if (!com.zetcode.Controlador.getControlador().getUser(user)) {
-										Usuario user_new = new Usuario(user, nombre, apellidos, DNI, email, fecha,
-												password);
-										user_new.setNombre(nombre);
-										user_new.setApellidos(apellidos);
-										user_new.setUser(user);
-										user_new.setDNI(DNI);
-										com.zetcode.Controlador.getControlador().storeUser(user_new);
-										JLabelError.setText("Registradoconexito");
-										dispose();
-										IU_Login hacerLogin = new IU_Login();
-										hacerLogin.setVisible(true);
+								if (validateJavaDate(fecha)) {
+									try {
+										if (!Controlador.getControlador().getUser(user)) {
+											Usuario user_new = new Usuario(user, nombre, apellidos, DNI, email, fecha,password);
+											user_new.setNombre(nombre);
+											user_new.setApellidos(apellidos);
+											user_new.setUser(user);
+											user_new.setDNI(DNI);
+											Controlador.getControlador().storeUser(user_new);
+											JLabelError.setText("Registradoconexito");
+											dispose();
+											IU_Login hacerLogin = new IU_Login();
+											hacerLogin.setVisible(true);
+										}
+									} catch (SQLException e1) {
+										e1.printStackTrace();
+										JLabelError.setText("El nombre de usuario ya existe");
 									}
-								} catch (SQLException e1) {
-									e1.printStackTrace();
-									JLabelError.setText("El nombre de usuario ya existe");
+								} else {
+									JLabelError.setText("La fecha no es valida(formato MM/dd/yyyy)");
 								}
 							} else {
 								JLabelError.setText("El email no es valido");
@@ -288,8 +296,23 @@ public class IU_Register extends JFrame {
 
 	}
 
+	public static boolean validateJavaDate(String strDate) {
+		if (strDate.trim().equals("")) {
+			return true;
+		} else {
+			SimpleDateFormat sdfrmt = new SimpleDateFormat("MM/dd/yyyy");
+			sdfrmt.setLenient(false);
+			try {
+				@SuppressWarnings("unused")
+				Date javaDate = sdfrmt.parse(strDate);
+			} catch (ParseException e) {
+				return false;
+			}
+			return true;
+		}
+	}
+
 	private void jButton2_actionPerformed(ActionEvent e) {
 		this.setVisible(false);
 	}
-
 }

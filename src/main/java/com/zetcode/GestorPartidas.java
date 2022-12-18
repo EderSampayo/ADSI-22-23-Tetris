@@ -74,7 +74,7 @@ public class GestorPartidas
     	}
     	else		//búsqueda solo de usuario
     	{
-    		ResultSet resultadoSQL = GestorBD.execSQL("SELECT * FROM PARTIDA WHERE usuario=%pUsuario% ORDER BY puntos DESC LIMIT 5");
+    		ResultSet resultadoSQL = GestorBD.execSQL("SELECT * FROM PARTIDA WHERE usuario= "+pUsuario+" ORDER BY puntos DESC LIMIT 5");
     		while (resultadoSQL.next())
     		{
     			int cuanto = resultadoSQL.getInt("puntos");		//puntuación obtenida en la partida

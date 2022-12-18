@@ -93,7 +93,7 @@ public class Controlador
     
     @SuppressWarnings("null")
 	public Usuario getUserContrasena(String user, String password) throws SQLException {
-		Usuario u = null;
+		Usuario u = new Usuario(null,null,null,null,null,null,null);
 		ResultSet resultadoSQL = GestorBD.execSQL("SELECT * FROM USUARIO WHERE usuario='" + user + "' and pwd='" + password + "'");
 		boolean hayUser = resultadoSQL.next();
 		if (hayUser) {
@@ -103,7 +103,7 @@ public class Controlador
 			u.setNombre(resultadoSQL.getString(4));
 			u.setApellidos(resultadoSQL.getString(5));
 			u.setDNI(resultadoSQL.getString(6));
-			u.setFechaNacimiento(resultadoSQL.getDate(7));
+			u.setFechaNacimiento(resultadoSQL.getString(7));
 			resultadoSQL.close();
 			return u;
 		}
@@ -133,8 +133,9 @@ public class Controlador
 	}
 
 	public void storeUser(Usuario user) {
+		String email = user.getEmail();
 		GestorBD.execSQLVoid("INSERT INTO USUARIO VALUES (" + user.getUser() + "," + user.getClave() + ","
-				+ user.getEmail() + "," + user.getNombre() + "," + user.getApellidos() + "," + user.getDNI() + ","
+				+ email + "," + user.getNombre() + "," + user.getApellidos() + "," + user.getDNI() + ","
 				+ user.getFechaNacimiento() + ")");
 	}
 
@@ -159,7 +160,7 @@ public class Controlador
 			u.setNombre(resultadoSQL.getString(4));
 			u.setApellidos(resultadoSQL.getString(5));
 			u.setDNI(resultadoSQL.getString(6));
-			u.setFechaNacimiento(resultadoSQL.getDate(7));
+			u.setFechaNacimiento(resultadoSQL.getString(7));
 			resultadoSQL.close();
 			return u;
 		}

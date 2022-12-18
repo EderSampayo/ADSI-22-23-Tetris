@@ -16,23 +16,6 @@ import java.awt.event.ActionEvent;
 public class IU_Menu extends JFrame {
 
 	private JPanel contentPane;
-	private static String usuario = "eder";
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					IU_Menu frame = new IU_Menu(usuario);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 	
 	/**
 	 * Create the frame.
