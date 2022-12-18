@@ -57,7 +57,7 @@ INSERT INTO USUARIO(usuario, pwd, email, nombre, apellidos, DNI, fNac,idPersonal
 --
 
 CREATE TABLE IF NOT EXISTS PERSONALIZACION(
-  id int IDENTITY NOT NULL PRIMARY KEY,
+  id int NOT NULL PRIMARY KEY,
   colorFondo int NOT NULL DEFAULT 0,
   ladrillo1 int NOT NULL DEFAULT 0,
   ladrillo2 int NOT NULL DEFAULT 0,
