@@ -9,7 +9,7 @@
 --
 
 CREATE TABLE IF NOT EXISTS PARTIDA(
-  id  int(11) NOT NULL AUTO_INCREMENT,
+  id int(11) IDENTITY NOT NULL PRIMARY KEY,
   estadoPartida varchar(10000) DEFAULT NULL,
   puntos int(11) DEFAULT NULL,
   nivel int DEFAULT NULL,
@@ -18,13 +18,6 @@ CREATE TABLE IF NOT EXISTS PARTIDA(
   hora time DEFAULT NULL,
   PRIMARY KEY(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla PARTIDA
---
-
-INSERT INTO PARTIDA(id, estadoPartida, puntos, nivel, usuario, fecha, hora) VALUES
-(13, 'NoShape NoShape ZShape NoShape SquareShape SquareShape NoShape NoShape LineShape NoShape NoShape NoShape ZShape ZShape SquareShape SquareShape NoShape NoShape LineShape NoShape NoShape NoShape NoShape ZShape TShape NoShape NoShape NoShape LineShape NoShape NoShape NoShape NoShape TShape TShape TShape NoShape NoShape LineShape NoShape NoShape NoShape NoShape NoShape SquareShape SquareShape NoShape NoShape LineShape NoShape NoShape NoShape NoShape NoShape SquareShape SquareShape NoShape NoShape LineShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape LineShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape LineShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape NoShape', NULL, NULL, 'eder', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -43,6 +36,12 @@ CREATE TABLE IF NOT EXISTS USUARIO(
   idPersonalizacion int NOT NULL AUTO_INCREMENT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Metemos el administrador en la base de datos manualmente
+--
+
+INSERT INTO USUARIO(usuario, pwd, email, nombre, apellidos, DNI, fNac) VALUES
+('admin', 'admin', 'admin@gmail.com', 'Administrador', 'Admin Admin', '55555555K', '2002-03-12');
 -- --------------------------------------------------------
 
 --
@@ -62,6 +61,7 @@ CREATE TABLE IF NOT EXISTS PERSONALIZACION(
   sonido int NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+INSERT INTO PERSONALIZACION(id,colorFondo,ladrillo1,ladrillo2,ladrillo3,ladrillo4,ladrillo5,ladrillo6,ladrillo7,sonido) VALUES (1,0,0,0,0,0,0,0,0,0)
 --
 -- Volcado de datos para la tabla PERSONALIZACION
 --
