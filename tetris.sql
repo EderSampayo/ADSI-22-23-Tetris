@@ -39,8 +39,8 @@ CREATE TABLE IF NOT EXISTS USUARIO(
   nombre varchar(40) NOT NULL,
   apellidos varchar(40) NOT NULL,
   DNI varchar(9) NOT NULL,
-  fNac String NOT NULL,
-  idPersonalizacion identity(1,1),
+  fNac varchar(40) NOT NULL,
+  idPersonalizacion IDENTITY NOT NULL,
   PRIMARY KEY(usuario)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
