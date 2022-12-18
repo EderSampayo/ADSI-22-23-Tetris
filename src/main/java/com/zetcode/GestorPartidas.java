@@ -66,8 +66,8 @@ public class GestorPartidas
     		ResultSet resultadoSQL = GestorBD.execSQL("SELECT * FROM PARTIDA ORDER BY puntos DESC LIMIT 5");
     		while (resultadoSQL.next()) //Mientras haya datos 
     		{
-    			j1.put("quien",resultadoSQL.getString("usuario")); 	//quién ha jugado dicha partida
-    			j1.put("puntos",resultadoSQL.getInt("puntos"));		//puntuación obtenida en la partida
+    			j1.put(resultadoSQL.getString("usuario"), resultadoSQL.getInt("puntos")); 	//quién ha jugado dicha partida
+    				//puntuación obtenida en la partida
     		}
     		resultadoSQL.close();
     	}
@@ -76,7 +76,7 @@ public class GestorPartidas
     		ResultSet resultadoSQL = GestorBD.execSQL("SELECT * FROM PARTIDA WHERE usuario='"+pUsuario+"' ORDER BY puntos DESC LIMIT 5");
     		while (resultadoSQL.next())
     		{
-    			j1.put("puntos",resultadoSQL.getInt("puntos"));
+    			j1.put(pUsuario,resultadoSQL.getInt("puntos"));
     			//no se pregunta el usuario de cada partida porque ya se conoce
     		}
     		resultadoSQL.close();
