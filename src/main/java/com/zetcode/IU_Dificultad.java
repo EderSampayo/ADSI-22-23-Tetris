@@ -85,7 +85,7 @@ public class IU_Dificultad extends JFrame {
 		return panel;
 	}
 
-	public void cambiarDificultad(String dificultad) {
+	public void cambiarDificultad(int dificultad) {
 		Controlador.getControlador().cambiarDificultad(dificultad,usuario);
 
 	}
@@ -97,8 +97,7 @@ public class IU_Dificultad extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					JButton fuente = (JButton) e.getSource();
 					if (botonFacil == fuente) {
-						cambiarDificultad("Facil");
-						JOptionPane.showMessageDialog(null, "A");
+						cambiarDificultad(1);
 					}
 				}
 			});
@@ -114,7 +113,7 @@ public class IU_Dificultad extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					JButton fuente = (JButton) e.getSource();
 					if (botonNormal == fuente) {
-						cambiarDificultad("Normal");
+						cambiarDificultad(2);
 					}
 				}
 			});
@@ -130,7 +129,7 @@ public class IU_Dificultad extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					JButton fuente = (JButton) e.getSource();
 					if (BotonDificil == fuente) {
-						cambiarDificultad("Dificil");
+						cambiarDificultad(1);
 					}
 				}
 			});

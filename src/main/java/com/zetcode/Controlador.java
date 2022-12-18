@@ -94,7 +94,7 @@ public class Controlador
     @SuppressWarnings("null")
 	public Usuario getUserContrasena(String user, String password) throws SQLException {
 		Usuario u = new Usuario(null,null,null,null,null,null,null);
-		ResultSet resultadoSQL = GestorBD.execSQL("SELECT * FROM USUARIO WHERE usuario='" + user + "' and pwd='" + password + "'");
+		ResultSet resultadoSQL = GestorBD.execSQL("SELECT * FROM USUARIO WHERE usuario='" + user + "' AND pwd='" + password + "'");
 		boolean hayUser = resultadoSQL.next();
 		if (hayUser) {
 			u.setUser(resultadoSQL.getString(1));
@@ -107,7 +107,9 @@ public class Controlador
 			resultadoSQL.close();
 			return u;
 		}
-		return u;
+		else {
+			return null;
+		}
 	}
 
 	public void deleteUser(Usuario user) {
@@ -134,9 +136,9 @@ public class Controlador
 
 	public void storeUser(Usuario user) {
 		String email = user.getEmail();
-		GestorBD.execSQLVoid("INSERT INTO USUARIO VALUES (" + user.getUser() + "," + user.getClave() + ","
-				+ email + "," + user.getNombre() + "," + user.getApellidos() + "," + user.getDNI() + ","
-				+ user.getFechaNacimiento() + ")");
+		GestorBD.execSQLVoid("INSERT INTO USUARIO VALUES ('" + user.getUser() + "','" + user.getClave() + "','"
+				+ email + "','" + user.getNombre() + "','" + user.getApellidos() + "','" + user.getDNI() + "','"
+				+ user.getFechaNacimiento() + "',)");
 	}
 
 	public boolean getDNI(String email, String DNI) throws SQLException {
@@ -185,18 +187,18 @@ public class Controlador
 	j2 = GestorPartidas.getGestorPartidas().buscarMejoresXNivel();
 	return j2;
 	}
-	public void cambiarDificultad(String dificultad,String pUsuario) {
-    	if (dificultad == "Facil") {
+	public void cambiarDificultad(int dificultad,String pUsuario) {
+    	if (dificultad == 1) {
 			Board.getBoard(pUsuario).setBoardWidth(5);
 			Board.getBoard(pUsuario).setBoardHeight(11);
 			Board.getBoard(pUsuario).setPeriodInterval(450);
 
-		} else if (dificultad == "Normal") {
+		} else if (dificultad == 2) {
 			Board.getBoard(pUsuario).setBoardWidth(10);
 			Board.getBoard(pUsuario).setBoardHeight(22);
 			Board.getBoard(pUsuario).setPeriodInterval(300);
 
-		} else if (dificultad == "Dificil") {
+		} else if (dificultad == 3) {
 			Board.getBoard(pUsuario).setBoardWidth(20);
 			Board.getBoard(pUsuario).setBoardHeight(44);
 			Board.getBoard(pUsuario).setPeriodInterval(150);
