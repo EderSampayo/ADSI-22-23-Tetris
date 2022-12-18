@@ -129,7 +129,7 @@ public class IU_Dificultad extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					JButton fuente = (JButton) e.getSource();
 					if (BotonDificil == fuente) {
-						cambiarDificultad(1);
+						cambiarDificultad(3);
 					}
 				}
 			});
