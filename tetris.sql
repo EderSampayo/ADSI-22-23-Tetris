@@ -10,11 +10,11 @@
 
 CREATE TABLE IF NOT EXISTS PARTIDA(
   id  int(11) NOT NULL AUTO_INCREMENT,
-  estadoPartida varchar(10000) NOT NULL,
+  estadoPartida varchar(10000) DEFAULT NULL,
   puntos int(11) DEFAULT NULL,
   nivel int DEFAULT NULL,
   usuario varchar(40) NOT NULL,
-  fecha varchar(10) DEFAULT NULL,
+  fecha date DEFAULT NULL,
   hora time DEFAULT NULL,
   PRIMARY KEY(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -39,8 +39,8 @@ CREATE TABLE IF NOT EXISTS USUARIO(
   nombre varchar(40) NOT NULL,
   apellidos varchar(40) NOT NULL,
   DNI varchar(9) NOT NULL,
-  fNac varchar(10) NOT NULL,
-  idPersonalizacion int NOT NULL AUTO_INCREMENT,
+  fNac String NOT NULL,
+  idPersonalizacion identity(1,1),
   PRIMARY KEY(usuario)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
