@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS PARTIDA(
   id  int(11) NOT NULL AUTO_INCREMENT,
   estadoPartida varchar(10000) NOT NULL,
   puntos int(11) DEFAULT NULL,
-  nivel varchar(20) DEFAULT NULL,
+  nivel int DEFAULT NULL,
   usuario varchar(40) NOT NULL,
   fecha date DEFAULT NULL,
   hora time DEFAULT NULL,
@@ -100,7 +100,7 @@ ALTER TABLE USUARIO
 --
 -- AUTO_INCREMENT de la tabla partida
 --
-ALTER TABLE partida
+ALTER TABLE PARTIDA
   MODIFY id int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
