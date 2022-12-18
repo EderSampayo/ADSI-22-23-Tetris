@@ -56,7 +56,8 @@ public class Shape {
 
     public void setRandomShape() {
 
-        var r = new Random();
+    	Random r;
+        r = new Random();
         int x = Math.abs(r.nextInt()) % 7 + 1;
 
         Tetrominoe[] values = Tetrominoe.values();
@@ -95,7 +96,8 @@ public class Shape {
             return this;
         }
 
-        var result = new Shape();
+        Shape result;
+        result = new Shape();
         result.pieceShape = pieceShape;
 
         for (int i = 0; i < 4; ++i) {
@@ -114,7 +116,8 @@ public class Shape {
             return this;
         }
 
-        var result = new Shape();
+        Shape result;
+        result = new Shape();
         result.pieceShape = pieceShape;
 
         for (int i = 0; i < 4; ++i) {

@@ -38,7 +38,8 @@ public class Tetris extends JFrame {
         statusbar = new JLabel(String.valueOf(puntos));
         add(statusbar, BorderLayout.SOUTH);
 
-        var board = Board.getBoard(pUsuario,puntos);
+        Board board;
+        board = Board.getBoard(pUsuario,puntos);
         board.initBoard(this);
         add(board);
         board.start(pEstadoPartida); //ADSI

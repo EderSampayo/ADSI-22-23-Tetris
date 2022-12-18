@@ -16,6 +16,7 @@ import org.json.JSONObject;
 import com.zetcode.Shape.Tetrominoe;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -473,7 +474,8 @@ public class Board extends JPanel {
 
     private void doDrawing(Graphics g) {
 
-    	var size = getSize();
+    	Dimension size;
+    	size = getSize();
         int boardTop = (int) size.getHeight() - BOARD_HEIGHT * squareHeight();
 
         for (int i = 0; i < BOARD_HEIGHT; i++) {
@@ -577,7 +579,8 @@ public class Board extends JPanel {
             	nivel = 3;
             }
             Controlador.getControlador().guardarPartidaTerminada(numLinesRemoved,nivel,usuario);
-            var msg = String.format("Game over. Score: %d", numLinesRemoved);
+            String msg;
+            msg = String.format("Game over. Score: %d", numLinesRemoved);
             statusbar.setText(msg);
         }
     }
@@ -665,7 +668,8 @@ public class Board extends JPanel {
         		ladrillo3, ladrillo4
         };
 
-        var color = colors[shape.ordinal()];
+        Color color;
+        color = colors[shape.ordinal()];
 
         g.setColor(color);
         g.fillRect(x + 1, y + 1, squareWidth() - 2, squareHeight() - 2);
@@ -804,13 +808,13 @@ public class Board extends JPanel {
             // Java 12 switch expressions
             switch (keycode) {
 
-                case KeyEvent.VK_P -> pause();
-                case KeyEvent.VK_LEFT -> tryMove(curPiece, curX - 1, curY);
-                case KeyEvent.VK_RIGHT -> tryMove(curPiece, curX + 1, curY);
-                case KeyEvent.VK_DOWN -> tryMove(curPiece.rotateRight(), curX, curY);
-                case KeyEvent.VK_UP -> tryMove(curPiece.rotateLeft(), curX, curY);
-                case KeyEvent.VK_SPACE -> dropDown();
-                case KeyEvent.VK_D -> oneLineDown();
+//                case KeyEvent.VK_P -> pause();
+//                case KeyEvent.VK_LEFT -> tryMove(curPiece, curX - 1, curY);
+//                case KeyEvent.VK_RIGHT -> tryMove(curPiece, curX + 1, curY);
+//                case KeyEvent.VK_DOWN -> tryMove(curPiece.rotateRight(), curX, curY);
+//                case KeyEvent.VK_UP -> tryMove(curPiece.rotateLeft(), curX, curY);
+//                case KeyEvent.VK_SPACE -> dropDown();
+//                case KeyEvent.VK_D -> oneLineDown();
             }
         }
     }

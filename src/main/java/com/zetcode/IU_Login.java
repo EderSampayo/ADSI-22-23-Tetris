@@ -129,15 +129,6 @@ public class IU_Login extends JFrame {
 							} catch (SQLException e1) {
 								e1.printStackTrace();
 							}
-							// if ((facade.getUserLogin(user, password).getAdmin(user, password)) == false)
-							// {
-//							IU_Menu a = new IU_Menu(user);
-//							a.setVisible(true);
-							// VisibleFalse(e);
-							// } else {
-							//
-							// MainGUI m = new MainGUI();
-							// m.setVisible(true);
 
 						}
 					}

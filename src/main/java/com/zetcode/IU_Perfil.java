@@ -17,16 +17,16 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 public class IU_Perfil extends JFrame {
-	
+
 	private JPanel contentPane;
-		
+
 	public IU_Perfil(String pUsuario) {
 
-        iniciarPerfil(pUsuario);
-    }
+		iniciarPerfil(pUsuario);
+	}
 
 	private void iniciarPerfil(String pUsuario) {
-		
+
 		setTitle("Perfil");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -34,26 +34,15 @@ public class IU_Perfil extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(3, 0, 0, 0));
-		
+
 		JPanel datos = new JPanel();
-		datos.setLayout(new GridLayout(4, 1, 0, 0));
-		
-		
-		JLabel nombre = new JLabel("Nombre: ??");
-		nombre.setHorizontalAlignment(SwingConstants.CENTER);
-		JLabel apellido = new JLabel("Apellido: ??");
-		apellido.setHorizontalAlignment(SwingConstants.CENTER);
-		JLabel clave = new JLabel("Clave: ??");
-		clave.setHorizontalAlignment(SwingConstants.CENTER);
-		JLabel mejorMarca = new JLabel("Mejor marca: ??");
-		mejorMarca.setHorizontalAlignment(SwingConstants.CENTER);
-		
-		datos.add(nombre);
-		datos.add(apellido);
-		datos.add(clave);
-		datos.add(mejorMarca);
 		contentPane.add(datos);
-		
+		datos.setLayout(null);
+
+		JButton JButtonCambiarContrasena = new JButton("CambiarContrasena");
+		JButtonCambiarContrasena.setBounds(0, 0, 426, 84);
+		datos.add(JButtonCambiarContrasena);
+
 		JButton botonPersonalizar = new JButton("Personalizar juego");
 		botonPersonalizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -64,7 +53,7 @@ public class IU_Perfil extends JFrame {
 			}
 		});
 		contentPane.add(botonPersonalizar);
-		
+
 		JButton botonVolver = new JButton("Volver");
 		botonVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -72,9 +61,17 @@ public class IU_Perfil extends JFrame {
 				ventana.dispose();
 				IU_Menu frameTab = new IU_Menu(pUsuario);
 				frameTab.setVisible(true);
-				
+
 			}
 		});
 		contentPane.add(botonVolver);
-	}	
+
+		JButtonCambiarContrasena.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				IU_CambiarContrasena c = new IU_CambiarContrasena(pUsuario);
+				c.setVisible(true);
+			}
+		});
+
+	}
 }

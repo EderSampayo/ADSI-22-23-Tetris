@@ -141,26 +141,30 @@ public class GestorBD
     	return resultado;
     }
     
-    @SuppressWarnings("unchecked")
-   	public static Vector<Usuario> execSQLList(String pConsulta) { //SELECT
-       	Vector<Usuario> res = new Vector<Usuario>();
-       	try {
-               if (conexion != null) {
-                   conexion.close();
-               }
-               if (consulta != null) {
-                   consulta.close();
-               }
-               conexion = GestorBD.getConnection();
-       		consulta = conexion.createStatement();
-       		Vector<Usuario>  list = (Vector<Usuario>) consulta.executeQuery(pConsulta);
-       		for(Usuario result : list) {
-       			res.add(result);
-       		}
-       	} catch (Exception e) {
-               e.printStackTrace();
-       		System.err.println(e);
-       	}
-       	return res;
-       }
+    public static Vector<String> execSQLList(String pConsulta) { // SELECT
+		ResultSet resultado = null;
+		Vector<String> list = new Vector<String>();
+
+		try {
+			if (conexion != null) {
+				conexion.close();
+			}
+			if (consulta != null) {
+				consulta.close();
+			}
+			conexion = GestorBD.getConnection();
+			consulta = conexion.createStatement();
+			resultado = consulta.executeQuery(pConsulta);
+			while(resultado.next()) {
+				String res = resultado.getString("usuario");
+				list.add(res);
+				resultado.next();
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println(e);
+		}
+		return list;
+	}
 }

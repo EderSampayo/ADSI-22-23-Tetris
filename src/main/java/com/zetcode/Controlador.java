@@ -91,7 +91,7 @@ public class Controlador
         
     }
     
-    @SuppressWarnings("null")
+
 	public Usuario getUserContrasena(String user, String password) throws SQLException {
 		Usuario u = new Usuario(null,null,null,null,null,null,null);
 		ResultSet resultadoSQL = GestorBD.execSQL("SELECT * FROM USUARIO WHERE usuario='" + user + "' AND pwd='" + password + "'");
@@ -116,11 +116,11 @@ public class Controlador
 		GestorBD.execSQLVoid("DELETE FROM USUARIO WHERE usuario='" + user.getUser() + "'");
 	}
 
-	public Vector<Usuario> getUsersList(String pUsuario) {
-		Vector<Usuario> res = new Vector<Usuario>();
-		Vector<Usuario> resultadoSQL = GestorBD.execSQLList("SELECT * FROM USUARIO");
-		List<Usuario> u = resultadoSQL;
-		for (Usuario users : u) {
+	public Vector<String> getUsersList(String pUsuario) {
+		Vector<String> res = new Vector<String>();
+		Vector<String> resultadoSQL = GestorBD.execSQLList("SELECT usuario FROM USUARIO");
+		List<String> u = resultadoSQL;
+		for (String users : u) {
 			System.out.println(users.toString());
 			res.add(users);
 		}
@@ -136,14 +136,14 @@ public class Controlador
 
 	public void storeUser(Usuario user) {
 		String email = user.getEmail();
-		GestorBD.execSQLVoid("INSERT INTO USUARIO(usuario, pwd, email, nombre, apellidos, DNI, fNac) VALUES ('" + user.getUser() + "','" + user.getClave() + "','"
-				+ email + "','" + user.getNombre() + "','" + user.getApellidos() + "','" + user.getDNI() + "','"
-				+ user.getFechaNacimiento() + "',)");
+		GestorBD.execSQLVoid("INSERT INTO USUARIO(usuario, pwd, email, nombre, apellidos, DNI, fNac) VALUES ('"
+				+ user.getUser() + "','" + user.getClave() + "','" + email + "','" + user.getNombre() + "','"
+				+ user.getApellidos() + "','" + user.getDNI() + "','" + user.getFechaNacimiento() + "',)");
 		int id = obtenerId(user.getUser());
 		GestorPersonalizacion.getGestorPersonalizacion().crearPersonalizacion(id);
 	}
 
-	public boolean getDNI(String email, String DNI) throws SQLException {
+	public boolean comprobarDatos(String email, String DNI) throws SQLException {
 		ResultSet resultadoSQL = GestorBD
 				.execSQL("SELECT * FROM USUARIO WHERE email='" + email + "' and DNI='" + DNI + "'");
 		boolean hayUser = resultadoSQL.next();
@@ -151,9 +151,9 @@ public class Controlador
 		return hayUser;
 	}
 
-	@SuppressWarnings("null")
+
 	public Usuario getUser_2(String email, String DNI) throws SQLException {
-		Usuario u = new Usuario(null,null,null,null,null,null,null);
+		Usuario u = new Usuario(null, null, null, null, null, null, null);
 		ResultSet resultadoSQL = GestorBD
 				.execSQL("SELECT * FROM USUARIO WHERE email='" + email + "' and DNI='" + DNI + "'");
 		boolean hayUser = resultadoSQL.next();
@@ -171,6 +171,25 @@ public class Controlador
 		return u;
 	}
 
+	public Usuario getUser_3(String user) throws SQLException {
+		Usuario u = new Usuario(null, null, null, null, null, null, null);
+		ResultSet resultadoSQL = GestorBD
+				.execSQL("SELECT * FROM USUARIO WHERE usuario='" + user + "'");
+		boolean hayUser = resultadoSQL.next();
+		if (hayUser) {
+			u.setUser(resultadoSQL.getString(1));
+			u.setClave(resultadoSQL.getString(2));
+			u.setEmail(resultadoSQL.getString(3));
+			u.setNombre(resultadoSQL.getString(4));
+			u.setApellidos(resultadoSQL.getString(5));
+			u.setDNI(resultadoSQL.getString(6));
+			u.setFechaNacimiento(resultadoSQL.getString(7));
+			resultadoSQL.close();
+			return u;
+		}
+		return u;
+	}
+	
 	public void setContrasena(String password, String pUsuario) {
 		GestorBD.execSQLVoid("UPDATE USUARIO SET pwd='" + password + "' WHERE usuario='" + pUsuario + "'");
 	}

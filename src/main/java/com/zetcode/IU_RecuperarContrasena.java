@@ -70,7 +70,7 @@ public class IU_RecuperarContrasena extends JFrame {
 				if (validar(DNI)) {
 					if (emailVerify(email)) {
 						try {
-							if (Controlador.getControlador().getDNI(email, DNI)) {
+							if (Controlador.getControlador().comprobarDatos(email, DNI)) {
 								Usuario u = null;
 								u = Controlador.getControlador().getUser_2(email,DNI);
 								dispose();
